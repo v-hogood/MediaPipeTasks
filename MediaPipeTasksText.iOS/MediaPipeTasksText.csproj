@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0-ios</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
+    <PackOnBuild>true</PackOnBuild>
+    <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
+    <PackageId>MediaPipeTasksText.iOS</PackageId>
+    <PackageVersion>0.10.9</PackageVersion>
+    <Authors>Howard Good</Authors>
+    <PackageLicense>LICENSE</PackageLicense>
+    <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
+    <RepositoryUrl>https://github.com/google/mediapipe</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
+    <Summary>iOS .NET bindings for MediaPipe Tasks Text Library.</Summary>
+    <PackageTags>maui ios mediapipe</PackageTags>
+    <Title>MediaPipeTasksText</Title>
+    <Description>.NET iOS bindings for MediaPipe Tasks Text Library.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="frameworks/MediaPipeTasksText.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+      <LinkerFlags>-ObjC</LinkerFlags>
+    </NativeReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediaPipeTasksCommon.iOS\MediaPipeTasksCommon.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="frameworks/**/*" />
+  </ItemGroup>
+  <Target Name="DownloadFile" BeforeTargets="BeforeBuild">
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20231212-133853/MediaPipeTasksText-0.10.9.tar.gz" DestinationFolder="." />
+    <Exec Command="tar -xf MediaPipeTasksText-0.10.9.tar.gz" />
+  </Target>
+</Project>
