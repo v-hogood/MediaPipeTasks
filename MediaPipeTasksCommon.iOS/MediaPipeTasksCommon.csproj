@@ -9,7 +9,7 @@
     <PackageId>MediaPipeTasksCommon.iOS</PackageId>
     <PackageVersion>0.10.9</PackageVersion>
     <Authors>Howard Good</Authors>
-    <PackageLicense>LICENSE</PackageLicense>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
     <RepositoryUrl>https://github.com/google/mediapipe</RepositoryUrl>
     <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
@@ -21,6 +21,7 @@
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+    <None Include="LICENSE" Pack="true" PackagePath=""/>
   </ItemGroup>
   <ItemGroup>
     <NativeReference Include="frameworks/MediaPipeTasksCommon.xcframework">
