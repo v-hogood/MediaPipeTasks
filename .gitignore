@@ -1,0 +1,8 @@
+bin
+obj
+.vs
+*.aar
+*.jar
+*.tar.gz
+Frameworks
+LICENSE
