@@ -1,0 +1,14 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.text.languagedetector']" name="managedName">MediaPipe.Tasks.Text.LanguageDetector</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.text.textclassifier']" name="managedName">MediaPipe.Tasks.Text.TextClassifier</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.text.textembedder']" name="managedName">MediaPipe.Tasks.Text.TextEmbedder</attr>
+
+</metadata>

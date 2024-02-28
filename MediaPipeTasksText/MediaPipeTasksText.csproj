@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>24</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PackOnBuild>true</PackOnBuild>
+    <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
+    <PackageId>MediaPipeTasksText</PackageId>
+    <PackageVersion>0.10.10</PackageVersion>
+    <Authors>Howard Good</Authors>
+    <PackageLicenseUrl>https://github.com/tensorflow/tflite-support/blob/master/LICENSE</PackageLicenseUrl>
+    <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
+    <RepositoryUrl>https://github.com/tensorflow/tflite-support</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
+    <Summary>Android .NET bindings for MediaPipe Tasks Text Library.</Summary>
+    <PackageTags>xamarin android tensorflow</PackageTags>
+    <Title>MediaPipeTasksText</Title>
+    <Description>Android .NET bindings for MediaPipe Tasks Text Library.</Description>
+    <NoWarn>1701;1702;CS1573;CS1591;CS0108;CS0114;CS0618;CS8764;BG8403</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediaPipeTasksCore\MediaPipeTasksCore.csproj" />
+  </ItemGroup>
+  <Target Name="DownloadFile" BeforeTargets="_ExtractAar">
+    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-text/0.10.10/tasks-text-0.10.10.aar" DestinationFolder="Jars" />
+  </Target>
+</Project>
