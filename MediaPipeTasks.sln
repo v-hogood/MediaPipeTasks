@@ -1,11 +1,12 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1706.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksText", "MediaPipeTasksText\MediaPipeTasksText.csproj", "{4662CA96-728D-47A8-A436-5FE4F863EB65}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksCore", "MediaPipeTasksCore\MediaPipeTasksCore.csproj", "{5F707D71-28CF-46BE-831B-9114FC354B38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksVision", "MediaPipeTasksVision\MediaPipeTasksVision.csproj", "{E66ECF46-3952-42A0-9E93-E0FD29819BA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +22,10 @@ Global
 		{5F707D71-28CF-46BE-831B-9114FC354B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F707D71-28CF-46BE-831B-9114FC354B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F707D71-28CF-46BE-831B-9114FC354B38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E66ECF46-3952-42A0-9E93-E0FD29819BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E66ECF46-3952-42A0-9E93-E0FD29819BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E66ECF46-3952-42A0-9E93-E0FD29819BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E66ECF46-3952-42A0-9E93-E0FD29819BA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

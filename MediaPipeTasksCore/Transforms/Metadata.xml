@@ -65,6 +65,7 @@
   <attr path="/api/package[@name='com.google.mediapipe.tasks.components.utils']" name="managedName">MediaPipe.Tasks.Components.Utils</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.core']" name="managedName">MediaPipe.Tasks.Core</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.core.logging']" name="managedName">MediaPipe.Tasks.Core.Logging</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.proto']" name="managedName">MediaPipe.Tasks.Core.Proto</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.text.textclassifier.proto']" name="managedName">MediaPipe.Tasks.Text.TextClassifier.Proto</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.text.textembedder.proto']" name="managedName">MediaPipe.Tasks.Text.TextEmbedder.Proto</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facedetector.proto']" name="managedName">MediaPipe.Tasks.Vision.FaceDetector.Proto</attr>
@@ -83,7 +84,6 @@
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.objectdetector.proto']" name="managedName">MediaPipe.Tasks.Vision.ObjectDetector.Proto</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.posedetector.proto']" name="managedName">MediaPipe.Tasks.Vision.PoseDetector.Proto</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.poselandmarker.proto']" name="managedName">MediaPipe.Tasks.Vision.PoseLandmarker.Proto</attr>
-  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.proto']" name="managedName">MediaPipe.Tasks.Core.Proto</attr>
   <attr path="/api/package[@name='com.google.mediapipe.util.proto']" name="managedName">MediaPipe.Util.Proto</attr>
 
 </metadata>

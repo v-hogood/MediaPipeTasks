@@ -1,0 +1,24 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.core']" name="managedName">MediaPipe.Tasks.Vision.Core</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facedetector']" name="managedName">MediaPipe.Tasks.Vision.FaceDetector</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facelandmarker']" name="managedName">MediaPipe.Tasks.Vision.FaceLandmarker</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facestylizer']" name="managedName">MediaPipe.Tasks.Vision.FaceStylizer</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.gesturerecognizer']" name="managedName">MediaPipe.Tasks.Vision.GestureRecognizer</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.handlandmarker']" name="managedName">MediaPipe.Tasks.Vision.HandLandmarker</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.holisticlandmarker']" name="managedName">MediaPipe.Tasks.Vision.HolisticLandmarker</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imageclassifier']" name="managedName">MediaPipe.Tasks.Vision.ImageClassifier</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imageembedder']" name="managedName">MediaPipe.Tasks.Vision.ImageEmbedder</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagesegmenter']" name="managedName">MediaPipe.Tasks.Vision.ImageSegmenter</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.interactivesegmenter']" name="managedName">MediaPipe.Tasks.Vision.InteractiveSegmenter</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.objectdetector']" name="managedName">MediaPipe.Tasks.Vision.ObjectDetector</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.poselandmarker']" name="managedName">MediaPipe.Tasks.Vision.PoseLandmarker</attr>
+
+</metadata>
