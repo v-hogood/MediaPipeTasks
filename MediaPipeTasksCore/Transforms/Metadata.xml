@@ -1,0 +1,89 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+  <!-- Hide "private" Property fields -->
+  <remove-node path="/api/package[@name='com.google.mediapipe.tasks.core']/class[@name='OutputHandler']/field[@name='latestOutputTimestamp']" />
+  <remove-node path="/api/package[@name='com.google.mediapipe.framework']/class[@name='AssetCacheDbHelper']/field[@name='DATABASE_NAME']" />
+
+  <attr path="/api/package[@name='com.google.mediapipe.proto']/class[@name='MediaPipeLoggingProto.SolutionEvent.EventDetailsCase']" name="managedName">MediaPipeLoggingProto.SolutionEvent.EventDetailsCases</attr>
+
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.core']/class[@name='Delegate']" name="managedName">Delegates</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.proto']/class[@name='AccelerationProto.Acceleration.DelegateCase']" name="managedName">AccelerationProto.Acceleration.DelegateCases</attr>
+
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.components.containers.proto']/class[@name='EmbeddingsProto.Embedding.EmbeddingCase']" name="managedName">EmbeddingsProto.Embedding.EmbeddingCases</attr>
+
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagegenerator.proto']/class[@name='ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.ConditionTypeOptionsCase']" name="managedName">ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.ConditionTypeOptionsCases</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagegenerator.proto']/class[@name='ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.DepthConditionTypeOptions']" name="managedName">ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.DepthConditionTypeOption</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagegenerator.proto']/class[@name='ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.EdgeConditionTypeOptions']" name="managedName">ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.EdgeConditionTypeOption</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagegenerator.proto']/class[@name='ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.FaceConditionTypeOptions']" name="managedName">ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.FaceConditionTypeOption</attr>
+
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.DelegateCase']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.DelegatesCase</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Gpu']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.GPU</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Nnapi']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.NNAPI</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Xnnpack']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.XNNPACK</attr>
+
+  <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='ClassificationProto.ClassificationList']" name="managedName">ClassificationsProto.Classifications</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='DetectionProto.DetectionList']" name="managedName">DetectionProto.Detections</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='LandmarkProto.LandmarkList']" name="managedName">LandmarkProto.Landmarks</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='LocationDataProto.LocationData.BoundingBox']" name="managedName">LocationDataProto.LocationData.Bounds</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='LocationDataProto.LocationData.RelativeBoundingBox']" name="managedName">LocationDataProto.LocationData.RelativeBounds</attr>
+
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.Arrow']" name="managedName">RenderDataProto.RenderAnnotation.Arrows</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.DataCase']" name="managedName">RenderDataProto.RenderAnnotation.DataCases</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.FilledOval']" name="managedName">RenderDataProto.RenderAnnotation.FilledOvals</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.FilledRectangle']" name="managedName">RenderDataProto.RenderAnnotation.FilledRectangles</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.FilledRoundedRectangle']" name="managedName">RenderDataProto.RenderAnnotation.FilledRoundedRectangles</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.GradientLine']" name="managedName">RenderDataProto.RenderAnnotation.GradientLines</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.Line']" name="managedName">RenderDataProto.RenderAnnotation.Lines</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.Oval']" name="managedName">RenderDataProto.RenderAnnotation.Ovals</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.Point']" name="managedName">RenderDataProto.RenderAnnotation.Points</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.Rectangle']" name="managedName">RenderDataProto.RenderAnnotation.Rectangles</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.RoundedRectangle']" name="managedName">RenderDataProto.RenderAnnotation.RoundedRectangles</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.Scribble']" name="managedName">RenderDataProto.RenderAnnotation.Scribbles</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.Text']" name="managedName">RenderDataProto.RenderAnnotation.Texts</attr>
+
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']" name="managedName">MediaPipe.Calculator.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.formats.proto']" name="managedName">MediaPipe.Formats.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.formats.annotation.proto']" name="managedName">MediaPipe.Formats.Annotation.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.framework']" name="managedName">MediaPipe.Framework</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.framework.image']" name="managedName">MediaPipe.Framework.Image</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.gpu']" name="managedName">MediaPipe.Gpu</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.proto']" name="managedName">MediaPipe.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks']" name="managedName">MediaPipe.Tasks</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.audio.audioclassifier.proto']" name="managedName">MediaPipe.Tasks.Audio.AudioClassifier.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.audio.audioembedder.proto']" name="managedName">MediaPipe.Tasks.Audio.AudioEmbedder.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.components.containers']" name="managedName">MediaPipe.Tasks.Components.Containers</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.components.containers.proto']" name="managedName">MediaPipe.Tasks.Components.Containers.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.components.processors']" name="managedName">MediaPipe.Tasks.Components.Processors</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.components.processors.proto']" name="managedName">MediaPipe.Tasks.Components.Processors.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.components.utils']" name="managedName">MediaPipe.Tasks.Components.Utils</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.core']" name="managedName">MediaPipe.Tasks.Core</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.logging']" name="managedName">MediaPipe.Tasks.Core.Logging</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.text.textclassifier.proto']" name="managedName">MediaPipe.Tasks.Text.TextClassifier.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.text.textembedder.proto']" name="managedName">MediaPipe.Tasks.Text.TextEmbedder.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facedetector.proto']" name="managedName">MediaPipe.Tasks.Vision.FaceDetector.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facegeometry.calculators.proto']" name="managedName">MediaPipe.Tasks.Vision.FaceGeometry.Calculators.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facegeometry.proto']" name="managedName">MediaPipe.Tasks.Vision.FaceGeometry.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facelandmarker.proto']" name="managedName">MediaPipe.Tasks.Vision.FaceLandmarker.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facestylizer.proto']" name="managedName">MediaPipe.Tasks.Vision.FaceStylizer.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.gesturerecognizer.proto']" name="managedName">MediaPipe.Tasks.Vision.GestureRecognizer.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.handdetector.proto']" name="managedName">MediaPipe.Tasks.Vision.HandDetector.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.handlandmarker.proto']" name="managedName">MediaPipe.Tasks.Vision.HandLandmarker.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.holisticlandmarker.proto']" name="managedName">MediaPipe.Tasks.Vision.HolisticLandmarker.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imageclassifier.proto']" name="managedName">MediaPipe.Tasks.Vision.ImageClassifier.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imageembedder.proto']" name="managedName">MediaPipe.Tasks.Vision.ImageEmbedder.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagegenerator.proto']" name="managedName">MediaPipe.Tasks.Vision.ImageGenerator.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagesegmenter.proto']" name="managedName">MediaPipe.Tasks.Vision.ImageSegmenter.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.objectdetector.proto']" name="managedName">MediaPipe.Tasks.Vision.ObjectDetector.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.posedetector.proto']" name="managedName">MediaPipe.Tasks.Vision.PoseDetector.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.poselandmarker.proto']" name="managedName">MediaPipe.Tasks.Vision.PoseLandmarker.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.proto']" name="managedName">MediaPipe.Tasks.Core.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']" name="managedName">MediaPipe.Util.Proto</attr>
+
+</metadata>
