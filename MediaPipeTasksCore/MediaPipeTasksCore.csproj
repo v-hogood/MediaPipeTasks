@@ -6,8 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
-    <PackageId>MediaPipeTasksCore</PackageId>
-    <PackageVersion>0.10.10</PackageVersion>
+    <PackageId>MediaPipeTasksCore.Android</PackageId>
+    <PackageVersion>0.10.11</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseUrl>https://github.com/tensorflow/tflite-support/blob/master/LICENSE</PackageLicenseUrl>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
@@ -15,7 +15,7 @@
     <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
     <Summary>Android .NET bindings for MediaPipe Tasks Core Library.</Summary>
     <PackageTags>xamarin android tensorflow</PackageTags>
-    <Title>MediaPipeTasksCore</Title>
+    <Title>MediaPipeTasksCore.Android</Title>
     <Description>Android .NET bindings for MediaPipe Tasks Core Library.</Description>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>1701;1702;CS1573;CS1591;CS0108;CS0114;CS0618;CS8764;BG8403</NoWarn>
@@ -26,6 +26,6 @@
     <PackageReference Include="Xamarin.Grpc.Protobuf.Lite" Version=" 1.57.2.1" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="_ExtractAar">
-    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-core/0.10.10/tasks-core-0.10.10.aar" DestinationFolder="Jars" />
+    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-core/0.10.11/tasks-core-0.10.11.aar" DestinationFolder="Jars" />
   </Target>
 </Project>

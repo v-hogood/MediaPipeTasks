@@ -6,8 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
-    <PackageId>MediaPipeTasksVision</PackageId>
-    <PackageVersion>0.10.10</PackageVersion>
+    <PackageId>MediaPipeTasksVision.Android</PackageId>
+    <PackageVersion>0.10.11</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseUrl>https://github.com/tensorflow/tflite-support/blob/master/LICENSE</PackageLicenseUrl>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
@@ -15,7 +15,7 @@
     <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
     <Summary>Android .NET bindings for MediaPipe Tasks Vision Library.</Summary>
     <PackageTags>xamarin android tensorflow</PackageTags>
-    <Title>MediaPipeTasksVision</Title>
+    <Title>MediaPipeTasksVision.Android</Title>
     <Description>Android .NET bindings for MediaPipe Tasks Vision Library.</Description>
     <NoWarn>1701;1702;CS1573;CS1591;CS0108;CS0114;CS0618;CS8764;BG8403</NoWarn>
   </PropertyGroup>
@@ -23,6 +23,6 @@
     <ProjectReference Include="..\MediaPipeTasksCore\MediaPipeTasksCore.csproj" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="_ExtractAar">
-    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-vision/0.10.10/tasks-vision-0.10.10.aar" DestinationFolder="Jars" />
+    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-vision/0.10.11/tasks-vision-0.10.11.aar" DestinationFolder="Jars" />
   </Target>
 </Project>
