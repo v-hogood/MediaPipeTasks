@@ -188,6 +188,52 @@ namespace MediaPipeTasksVision
 		NativeHandle Constructor (MPPCategory[] categories, CGRect boundingBox, [NullAllowed] MPPNormalizedKeypoint[] keypoints);
 	}
 
+	// @interface MPPEmbedding : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MPPEmbedding
+	{
+		// @property (readonly, nonatomic) NSArray<NSNumber *> * _Nullable floatEmbedding;
+		[NullAllowed, Export ("floatEmbedding")]
+		NSNumber[] FloatEmbedding { get; }
+
+		// @property (readonly, nonatomic) NSArray<NSNumber *> * _Nullable quantizedEmbedding;
+		[NullAllowed, Export ("quantizedEmbedding")]
+		NSNumber[] QuantizedEmbedding { get; }
+
+		// @property (readonly, nonatomic) NSInteger headIndex;
+		[Export ("headIndex")]
+		nint HeadIndex { get; }
+
+		// @property (readonly, nonatomic) NSString * _Nullable headName;
+		[NullAllowed, Export ("headName")]
+		string HeadName { get; }
+
+		// -(instancetype _Nonnull)initWithFloatEmbedding:(NSArray<NSNumber *> * _Nullable)floatEmbedding quantizedEmbedding:(NSArray<NSNumber *> * _Nullable)quantizedEmbedding headIndex:(NSInteger)headIndex headName:(NSString * _Nullable)headName __attribute__((objc_designated_initializer));
+		[Export ("initWithFloatEmbedding:quantizedEmbedding:headIndex:headName:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor ([NullAllowed] NSNumber[] floatEmbedding, [NullAllowed] NSNumber[] quantizedEmbedding, nint headIndex, [NullAllowed] string headName);
+	}
+
+	// @interface MPPEmbeddingResult : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MPPEmbeddingResult
+	{
+		// @property (readonly, nonatomic) NSArray<MPPEmbedding *> * _Nonnull embeddings;
+		[Export ("embeddings")]
+		MPPEmbedding[] Embeddings { get; }
+
+		// @property (readonly, nonatomic) NSInteger timestampInMilliseconds;
+		[Export ("timestampInMilliseconds")]
+		nint TimestampInMilliseconds { get; }
+
+		// -(instancetype _Nonnull)initWithEmbeddings:(NSArray<MPPEmbedding *> * _Nonnull)embeddings timestampInMilliseconds:(NSInteger)timestampInMilliseconds __attribute__((objc_designated_initializer));
+		[Export ("initWithEmbeddings:timestampInMilliseconds:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPEmbedding[] embeddings, nint timestampInMilliseconds);
+	}
+
 	// @interface MPPImage : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -934,6 +980,104 @@ namespace MediaPipeTasksVision
 		bool ClassifyAsyncImage (MPPImage image, nint timestampInMilliseconds, CGRect roi, [NullAllowed] out NSError error);
 	}
 
+	// @interface MPPImageEmbedderResult : MPPTaskResult
+	[BaseType (typeof(MPPTaskResult))]
+	[DisableDefaultCtor]
+	interface MPPImageEmbedderResult
+	{
+		// @property (readonly, nonatomic) MPPEmbeddingResult * _Nonnull embeddingResult;
+		[Export ("embeddingResult")]
+		MPPEmbeddingResult EmbeddingResult { get; }
+
+		// -(instancetype _Nonnull)initWithEmbeddingResult:(MPPEmbeddingResult * _Nullable)embeddingResult timestampInMilliseconds:(NSInteger)timestampInMilliseconds;
+		[Export ("initWithEmbeddingResult:timestampInMilliseconds:")]
+		NativeHandle Constructor ([NullAllowed] MPPEmbeddingResult embeddingResult, nint timestampInMilliseconds);
+	}
+
+	// @protocol MPPImageEmbedderLiveStreamDelegate <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface MPPImageEmbedderLiveStreamDelegate
+	{
+		// @optional -(void)imageEmbedder:(MPPImageEmbedder * _Nonnull)imageEmbedder didFinishEmbeddingWithResult:(MPPImageEmbedderResult * _Nullable)result timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable)error __attribute__((swift_name("imageEmbedder(_:didFinishEmbedding:timestampInMilliseconds:error:)")));
+		[Export ("imageEmbedder:didFinishEmbeddingWithResult:timestampInMilliseconds:error:")]
+		void DidFinishEmbeddingWithResult (MPPImageEmbedder imageEmbedder, [NullAllowed] MPPImageEmbedderResult result, nint timestampInMilliseconds, [NullAllowed] NSError error);
+	}
+
+	// @interface MPPImageEmbedderOptions : MPPTaskOptions <NSCopying>
+	[BaseType (typeof(MPPTaskOptions))]
+	interface MPPImageEmbedderOptions : INSCopying
+	{
+		// @property (nonatomic) MPPRunningMode runningMode;
+		[Export ("runningMode", ArgumentSemantic.Assign)]
+		MPPRunningMode RunningMode { get; set; }
+
+		[Wrap ("WeakImageEmbedderLiveStreamDelegate")]
+		[NullAllowed]
+		MPPImageEmbedderLiveStreamDelegate ImageEmbedderLiveStreamDelegate { get; set; }
+
+		// @property (nonatomic, weak) id<MPPImageEmbedderLiveStreamDelegate> _Nullable imageEmbedderLiveStreamDelegate;
+		[NullAllowed, Export ("imageEmbedderLiveStreamDelegate", ArgumentSemantic.Weak)]
+		NSObject WeakImageEmbedderLiveStreamDelegate { get; set; }
+
+		// @property (nonatomic) BOOL l2Normalize;
+		[Export ("l2Normalize")]
+		bool L2Normalize { get; set; }
+
+		// @property (nonatomic) BOOL quantize;
+		[Export ("quantize")]
+		bool Quantize { get; set; }
+	}
+
+	// @interface MPPImageEmbedder : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MPPImageEmbedder
+	{
+		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
+		[Export ("initWithModelPath:error:")]
+		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
+
+		// -(instancetype _Nullable)initWithOptions:(MPPImageEmbedderOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
+		[Export ("initWithOptions:error:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPImageEmbedderOptions options, [NullAllowed] out NSError error);
+
+		// -(MPPImageEmbedderResult * _Nullable)embedImage:(MPPImage * _Nonnull)image error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("embed(image:)")));
+		[Export ("embedImage:error:")]
+		[return: NullAllowed]
+		MPPImageEmbedderResult EmbedImage (MPPImage image, [NullAllowed] out NSError error);
+
+		// -(MPPImageEmbedderResult * _Nullable)embedImage:(MPPImage * _Nonnull)image regionOfInterest:(CGRect)roi error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("embed(image:regionOfInterest:)")));
+		[Export ("embedImage:regionOfInterest:error:")]
+		[return: NullAllowed]
+		MPPImageEmbedderResult EmbedImage (MPPImage image, CGRect roi, [NullAllowed] out NSError error);
+
+		// -(MPPImageEmbedderResult * _Nullable)embedVideoFrame:(MPPImage * _Nonnull)image timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("embed(videoFrame:timestampInMilliseconds:)")));
+		[Export ("embedVideoFrame:timestampInMilliseconds:error:")]
+		[return: NullAllowed]
+		MPPImageEmbedderResult EmbedVideoFrame (MPPImage image, nint timestampInMilliseconds, [NullAllowed] out NSError error);
+
+		// -(MPPImageEmbedderResult * _Nullable)embedVideoFrame:(MPPImage * _Nonnull)image timestampInMilliseconds:(NSInteger)timestampInMilliseconds regionOfInterest:(CGRect)roi error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("embed(videoFrame:timestampInMilliseconds:regionOfInterest:)")));
+		[Export ("embedVideoFrame:timestampInMilliseconds:regionOfInterest:error:")]
+		[return: NullAllowed]
+		MPPImageEmbedderResult EmbedVideoFrame (MPPImage image, nint timestampInMilliseconds, CGRect roi, [NullAllowed] out NSError error);
+
+		// -(BOOL)embedAsyncImage:(MPPImage * _Nonnull)image timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("embedAsync(image:timestampInMilliseconds:)")));
+		[Export ("embedAsyncImage:timestampInMilliseconds:error:")]
+		bool EmbedAsyncImage (MPPImage image, nint timestampInMilliseconds, [NullAllowed] out NSError error);
+
+		// -(BOOL)embedAsyncImage:(MPPImage * _Nonnull)image timestampInMilliseconds:(NSInteger)timestampInMilliseconds regionOfInterest:(CGRect)roi error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("embedAsync(image:timestampInMilliseconds:regionOfInterest:)")));
+		[Export ("embedAsyncImage:timestampInMilliseconds:regionOfInterest:error:")]
+		bool EmbedAsyncImage (MPPImage image, nint timestampInMilliseconds, CGRect roi, [NullAllowed] out NSError error);
+
+		// +(NSNumber * _Nullable)cosineSimilarityBetweenEmbedding1:(MPPEmbedding * _Nonnull)embedding1 andEmbedding2:(MPPEmbedding * _Nonnull)embedding2 error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("cosineSimilarity(embedding1:embedding2:)")));
+		[Static]
+		[Export ("cosineSimilarityBetweenEmbedding1:andEmbedding2:error:")]
+		[return: NullAllowed]
+		NSNumber CosineSimilarityBetweenEmbedding1 (MPPEmbedding embedding1, MPPEmbedding embedding2, [NullAllowed] out NSError error);
+	}
+
 	// @interface MPPMask : NSObject <NSCopying>
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -1071,6 +1215,96 @@ namespace MediaPipeTasksVision
 		bool SegmentAsyncImage (MPPImage image, nint timestampInMilliseconds, [NullAllowed] out NSError error);
 	}
 
+	// @interface MPPRegionOfInterest : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MPPRegionOfInterest
+	{
+		// @property (readonly, nonatomic) MPPNormalizedKeypoint * _Nullable keypoint;
+		[NullAllowed, Export ("keypoint")]
+		MPPNormalizedKeypoint Keypoint { get; }
+
+		// @property (readonly, nonatomic) NSArray<MPPNormalizedKeypoint *> * _Nullable scribbles;
+		[NullAllowed, Export ("scribbles")]
+		MPPNormalizedKeypoint[] Scribbles { get; }
+
+		// -(instancetype _Nonnull)initWithNormalizedKeyPoint:(MPPNormalizedKeypoint * _Nonnull)normalizedKeypoint __attribute__((objc_designated_initializer));
+		[Export ("initWithNormalizedKeyPoint:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPNormalizedKeypoint normalizedKeypoint);
+
+		// -(instancetype _Nonnull)initWithScribbles:(NSArray<MPPNormalizedKeypoint *> * _Nonnull)scribbles __attribute__((objc_designated_initializer));
+		[Export ("initWithScribbles:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPNormalizedKeypoint[] scribbles);
+	}
+
+	// @interface MPPInteractiveSegmenterOptions : MPPTaskOptions <NSCopying>
+	[BaseType (typeof(MPPTaskOptions))]
+	interface MPPInteractiveSegmenterOptions : INSCopying
+	{
+		// @property (copy, nonatomic) NSString * _Nonnull displayNamesLocale;
+		[Export ("displayNamesLocale")]
+		string DisplayNamesLocale { get; set; }
+
+		// @property (nonatomic) BOOL shouldOutputConfidenceMasks;
+		[Export ("shouldOutputConfidenceMasks")]
+		bool ShouldOutputConfidenceMasks { get; set; }
+
+		// @property (nonatomic) BOOL shouldOutputCategoryMask;
+		[Export ("shouldOutputCategoryMask")]
+		bool ShouldOutputCategoryMask { get; set; }
+	}
+
+	// @interface MPPInteractiveSegmenterResult : MPPTaskResult
+	[BaseType (typeof(MPPTaskResult))]
+	interface MPPInteractiveSegmenterResult
+	{
+		// @property (readonly, nonatomic) NSArray<MPPMask *> * _Nullable confidenceMasks;
+		[NullAllowed, Export ("confidenceMasks")]
+		MPPMask[] ConfidenceMasks { get; }
+
+		// @property (readonly, nonatomic) MPPMask * _Nullable categoryMask;
+		[NullAllowed, Export ("categoryMask")]
+		MPPMask CategoryMask { get; }
+
+		// @property (readonly, nonatomic) NSArray<NSNumber *> * _Nullable qualityScores;
+		[NullAllowed, Export ("qualityScores")]
+		NSNumber[] QualityScores { get; }
+
+		// -(instancetype _Nonnull)initWithConfidenceMasks:(NSArray<MPPMask *> * _Nullable)confidenceMasks categoryMask:(MPPMask * _Nullable)categoryMask qualityScores:(NSArray<NSNumber *> * _Nullable)qualityScores timestampInMilliseconds:(NSInteger)timestampInMilliseconds;
+		[Export ("initWithConfidenceMasks:categoryMask:qualityScores:timestampInMilliseconds:")]
+		NativeHandle Constructor ([NullAllowed] MPPMask[] confidenceMasks, [NullAllowed] MPPMask categoryMask, [NullAllowed] NSNumber[] qualityScores, nint timestampInMilliseconds);
+	}
+
+	// @interface MPPInteractiveSegmenter : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MPPInteractiveSegmenter
+	{
+		// @property (readonly, nonatomic) NSArray<NSString *> * _Nonnull labels;
+		[Export ("labels")]
+		string[] Labels { get; }
+
+		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
+		[Export ("initWithModelPath:error:")]
+		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
+
+		// -(instancetype _Nullable)initWithOptions:(MPPInteractiveSegmenterOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
+		[Export ("initWithOptions:error:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPInteractiveSegmenterOptions options, [NullAllowed] out NSError error);
+
+		// -(MPPInteractiveSegmenterResult * _Nullable)segmentImage:(MPPImage * _Nonnull)image regionOfInterest:(MPPRegionOfInterest * _Nonnull)regionOfInterest error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("segment(image:regionOfInterest:)")));
+		[Export ("segmentImage:regionOfInterest:error:")]
+		[return: NullAllowed]
+		MPPInteractiveSegmenterResult SegmentImage (MPPImage image, MPPRegionOfInterest regionOfInterest, [NullAllowed] out NSError error);
+
+		// -(void)segmentImage:(MPPImage * _Nonnull)image regionOfInterest:(MPPRegionOfInterest * _Nonnull)regionOfInterest withCompletionHandler:(void (^ _Nonnull)(MPPInteractiveSegmenterResult * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("segment(image:regionOfInterest:completion:)")));
+		[Export ("segmentImage:regionOfInterest:withCompletionHandler:")]
+		void SegmentImage (MPPImage image, MPPRegionOfInterest regionOfInterest, Action<MPPInteractiveSegmenterResult, NSError> completionHandler);
+	}
+
 	// @interface MPPObjectDetectorResult : MPPTaskResult
 	[BaseType (typeof(MPPTaskResult))]
 	interface MPPObjectDetectorResult
@@ -1154,6 +1388,111 @@ namespace MediaPipeTasksVision
 		[Export ("detectVideoFrame:timestampInMilliseconds:error:")]
 		[return: NullAllowed]
 		MPPObjectDetectorResult DetectVideoFrame (MPPImage image, nint timestampInMilliseconds, [NullAllowed] out NSError error);
+
+		// -(BOOL)detectAsyncImage:(MPPImage * _Nonnull)image timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("detectAsync(image:timestampInMilliseconds:)")));
+		[Export ("detectAsyncImage:timestampInMilliseconds:error:")]
+		bool DetectAsyncImage (MPPImage image, nint timestampInMilliseconds, [NullAllowed] out NSError error);
+	}
+
+	// @interface MPPPoseLandmarkerResult : MPPTaskResult
+	[BaseType (typeof(MPPTaskResult))]
+	[DisableDefaultCtor]
+	interface MPPPoseLandmarkerResult
+	{
+		// @property (readonly, nonatomic) NSArray<NSArray<MPPNormalizedLandmark *> *> * _Nonnull landmarks;
+		[Export ("landmarks")]
+		NSArray<MPPNormalizedLandmark>[] Landmarks { get; }
+
+		// @property (readonly, nonatomic) NSArray<NSArray<MPPLandmark *> *> * _Nonnull worldLandmarks;
+		[Export ("worldLandmarks")]
+		NSArray<MPPLandmark>[] WorldLandmarks { get; }
+
+		// @property (readonly, nonatomic) NSArray<MPPMask *> * _Nonnull segmentationMasks;
+		[Export ("segmentationMasks")]
+		MPPMask[] SegmentationMasks { get; }
+
+		// -(instancetype _Nonnull)initWithLandmarks:(NSArray<NSArray<MPPNormalizedLandmark *> *> * _Nonnull)landmarks worldLandmarks:(NSArray<NSArray<MPPLandmark *> *> * _Nonnull)worldLandmarks segmentationMasks:(NSArray<MPPMask *> * _Nullable)segmentationMasks timestampInMilliseconds:(NSInteger)timestampInMilliseconds __attribute__((objc_designated_initializer));
+		[Export ("initWithLandmarks:worldLandmarks:segmentationMasks:timestampInMilliseconds:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (NSArray<MPPNormalizedLandmark>[] landmarks, NSArray<MPPLandmark>[] worldLandmarks, [NullAllowed] MPPMask[] segmentationMasks, nint timestampInMilliseconds);
+	}
+
+	// @protocol MPPPoseLandmarkerLiveStreamDelegate <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface MPPPoseLandmarkerLiveStreamDelegate
+	{
+		// @required -(void)poseLandmarker:(MPPPoseLandmarker * _Nonnull)poseLandmarker didFinishDetectionWithResult:(MPPPoseLandmarkerResult * _Nullable)result timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable)error __attribute__((swift_name("poseLandmarker(_:didFinishDetection:timestampInMilliseconds:error:)")));
+		[Abstract]
+		[Export ("poseLandmarker:didFinishDetectionWithResult:timestampInMilliseconds:error:")]
+		void DidFinishDetectionWithResult (MPPPoseLandmarker poseLandmarker, [NullAllowed] MPPPoseLandmarkerResult result, nint timestampInMilliseconds, [NullAllowed] NSError error);
+	}
+
+	// @interface MPPPoseLandmarkerOptions : MPPTaskOptions <NSCopying>
+	[BaseType (typeof(MPPTaskOptions))]
+	interface MPPPoseLandmarkerOptions : INSCopying
+	{
+		// @property (nonatomic) MPPRunningMode runningMode;
+		[Export ("runningMode", ArgumentSemantic.Assign)]
+		MPPRunningMode RunningMode { get; set; }
+
+		[Wrap ("WeakPoseLandmarkerLiveStreamDelegate")]
+		[NullAllowed]
+		MPPPoseLandmarkerLiveStreamDelegate PoseLandmarkerLiveStreamDelegate { get; set; }
+
+		// @property (nonatomic, weak) id<MPPPoseLandmarkerLiveStreamDelegate> _Nullable poseLandmarkerLiveStreamDelegate;
+		[NullAllowed, Export ("poseLandmarkerLiveStreamDelegate", ArgumentSemantic.Weak)]
+		NSObject WeakPoseLandmarkerLiveStreamDelegate { get; set; }
+
+		// @property (nonatomic) NSInteger numPoses;
+		[Export ("numPoses")]
+		nint NumPoses { get; set; }
+
+		// @property (nonatomic) float minPoseDetectionConfidence;
+		[Export ("minPoseDetectionConfidence")]
+		float MinPoseDetectionConfidence { get; set; }
+
+		// @property (nonatomic) float minPosePresenceConfidence;
+		[Export ("minPosePresenceConfidence")]
+		float MinPosePresenceConfidence { get; set; }
+
+		// @property (nonatomic) float minTrackingConfidence;
+		[Export ("minTrackingConfidence")]
+		float MinTrackingConfidence { get; set; }
+
+		// @property (nonatomic) BOOL shouldOutputSegmentationMasks;
+		[Export ("shouldOutputSegmentationMasks")]
+		bool ShouldOutputSegmentationMasks { get; set; }
+	}
+
+	// @interface MPPPoseLandmarker : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MPPPoseLandmarker
+	{
+		// @property (readonly, nonatomic, class) NSArray<MPPConnection *> * _Nonnull poseLandmarks;
+		[Static]
+		[Export ("poseLandmarks")]
+		MPPConnection[] PoseLandmarks { get; }
+
+		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
+		[Export ("initWithModelPath:error:")]
+		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
+
+		// -(instancetype _Nullable)initWithOptions:(MPPPoseLandmarkerOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
+		[Export ("initWithOptions:error:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPPoseLandmarkerOptions options, [NullAllowed] out NSError error);
+
+		// -(MPPPoseLandmarkerResult * _Nullable)detectImage:(MPPImage * _Nonnull)image error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("detect(image:)")));
+		[Export ("detectImage:error:")]
+		[return: NullAllowed]
+		MPPPoseLandmarkerResult DetectImage (MPPImage image, [NullAllowed] out NSError error);
+
+		// -(MPPPoseLandmarkerResult * _Nullable)detectVideoFrame:(MPPImage * _Nonnull)image timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("detect(videoFrame:timestampInMilliseconds:)")));
+		[Export ("detectVideoFrame:timestampInMilliseconds:error:")]
+		[return: NullAllowed]
+		MPPPoseLandmarkerResult DetectVideoFrame (MPPImage image, nint timestampInMilliseconds, [NullAllowed] out NSError error);
 
 		// -(BOOL)detectAsyncImage:(MPPImage * _Nonnull)image timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("detectAsync(image:timestampInMilliseconds:)")));
 		[Export ("detectAsyncImage:timestampInMilliseconds:error:")]

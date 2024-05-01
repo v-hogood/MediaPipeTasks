@@ -149,6 +149,31 @@ namespace MediaPipeTasksText
 		MPPBaseOptions BaseOptions { get; set; }
 	}
 
+	// @interface MPPLanguageDetectorOptions : MPPTaskOptions <NSCopying>
+	[BaseType (typeof(MPPTaskOptions))]
+	interface MPPLanguageDetectorOptions : INSCopying
+	{
+		// @property (copy, nonatomic) NSString * _Nonnull displayNamesLocale;
+		[Export ("displayNamesLocale")]
+		string DisplayNamesLocale { get; set; }
+
+		// @property (nonatomic) NSInteger maxResults;
+		[Export ("maxResults")]
+		nint MaxResults { get; set; }
+
+		// @property (nonatomic) float scoreThreshold;
+		[Export ("scoreThreshold")]
+		float ScoreThreshold { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSString *> * _Nonnull categoryAllowlist;
+		[Export ("categoryAllowlist", ArgumentSemantic.Copy)]
+		string[] CategoryAllowlist { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSString *> * _Nonnull categoryDenylist;
+		[Export ("categoryDenylist", ArgumentSemantic.Copy)]
+		string[] CategoryDenylist { get; set; }
+	}
+
 	// @interface MPPTaskResult : NSObject <NSCopying>
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -162,6 +187,57 @@ namespace MediaPipeTasksText
 		[Export ("initWithTimestampInMilliseconds:")]
 		[DesignatedInitializer]
 		NativeHandle Constructor (nint timestampInMilliseconds);
+	}
+
+	// @interface MPPLanguagePrediction : NSObject
+	[BaseType (typeof(NSObject))]
+	interface MPPLanguagePrediction
+	{
+		// @property (readonly, nonatomic) NSString * _Nonnull languageCode;
+		[Export ("languageCode")]
+		string LanguageCode { get; }
+
+		// @property (readonly, nonatomic) float probability;
+		[Export ("probability")]
+		float Probability { get; }
+
+		// -(instancetype _Nonnull)initWithLanguageCode:(NSString * _Nonnull)languageCode probability:(float)probability;
+		[Export ("initWithLanguageCode:probability:")]
+		NativeHandle Constructor (string languageCode, float probability);
+	}
+
+	// @interface MPPLanguageDetectorResult : MPPTaskResult
+	[BaseType (typeof(MPPTaskResult))]
+	[DisableDefaultCtor]
+	interface MPPLanguageDetectorResult
+	{
+		// @property (readonly, nonatomic) NSArray<MPPLanguagePrediction *> * _Nonnull languagePredictions;
+		[Export ("languagePredictions")]
+		MPPLanguagePrediction[] LanguagePredictions { get; }
+
+		// -(instancetype _Nonnull)initWithLanguagePredictions:(NSArray<MPPLanguagePrediction *> * _Nonnull)languagePredictions timestampInMilliseconds:(NSInteger)timestampInMilliseconds;
+		[Export ("initWithLanguagePredictions:timestampInMilliseconds:")]
+		NativeHandle Constructor (MPPLanguagePrediction[] languagePredictions, nint timestampInMilliseconds);
+	}
+
+	// @interface MPPLanguageDetector : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MPPLanguageDetector
+	{
+		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
+		[Export ("initWithModelPath:error:")]
+		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
+
+		// -(instancetype _Nullable)initWithOptions:(MPPLanguageDetectorOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
+		[Export ("initWithOptions:error:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPLanguageDetectorOptions options, [NullAllowed] out NSError error);
+
+		// -(MPPLanguageDetectorResult * _Nullable)detectText:(NSString * _Nonnull)text error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("detect(text:)")));
+		[Export ("detectText:error:")]
+		[return: NullAllowed]
+		MPPLanguageDetectorResult DetectText (string text, [NullAllowed] out NSError error);
 	}
 
 	// @interface MPPTextClassifierOptions : MPPTaskOptions <NSCopying>
