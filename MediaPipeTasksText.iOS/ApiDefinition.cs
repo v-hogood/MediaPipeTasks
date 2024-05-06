@@ -13,12 +13,9 @@ namespace MediaPipeTasksText
 		[Export ("modelAssetPath")]
 		string ModelAssetPath { get; set; }
 
-		[Wrap ("WeakDelegate")]
-		MPPDelegate Delegate { get; set; }
-
 		// @property (nonatomic) MPPDelegate delegate;
-		[NullAllowed, Export ("delegate", ArgumentSemantic.Assign)]
-		NSObject WeakDelegate { get; set; }
+		[Export ("delegate", ArgumentSemantic.Assign)]
+		MPPDelegate Delegate { get; set; }
 	}
 
 	// @interface MPPCategory : NSObject

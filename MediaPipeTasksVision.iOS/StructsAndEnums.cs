@@ -31,8 +31,11 @@ namespace MediaPipeTasksVision
 		UnavailableError = 14,
 		DataLossError = 15,
 		UnauthenticatedError = 16,
+		AudioRecordPermissionDeniedError = 17,
+		AudioRecordPermissionUndeterminedError = 18,
+		AudioRecordWaitingForNewMicInputError = 19,
 		First = CancelledError,
-		Last = UnauthenticatedError
+		Last = AudioRecordWaitingForNewMicInputError
 	}
 
 	[Native]

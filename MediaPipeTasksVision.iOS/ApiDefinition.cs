@@ -17,12 +17,9 @@ namespace MediaPipeTasksVision
 		[Export ("modelAssetPath")]
 		string ModelAssetPath { get; set; }
 
-		[Wrap ("WeakDelegate")]
-		MPPDelegate Delegate { get; set; }
-
 		// @property (nonatomic) MPPDelegate delegate;
-		[NullAllowed, Export ("delegate", ArgumentSemantic.Assign)]
-		NSObject WeakDelegate { get; set; }
+		[Export ("delegate", ArgumentSemantic.Assign)]
+		MPPDelegate Delegate { get; set; }
 	}
 
 	// @interface MPPCategory : NSObject
@@ -642,6 +639,51 @@ namespace MediaPipeTasksVision
 		[Static]
 		[Export ("faceConnections")]
 		MPPConnection[] FaceConnections { get; }
+	}
+
+	// @interface MPPFaceStylizerOptions : MPPTaskOptions <NSCopying>
+	[BaseType (typeof(MPPTaskOptions))]
+	interface MPPFaceStylizerOptions : INSCopying
+	{
+	}
+
+	// @interface MPPFaceStylizerResult : MPPTaskResult
+	[BaseType (typeof(MPPTaskResult))]
+	[DisableDefaultCtor]
+	interface MPPFaceStylizerResult
+	{
+		// @property (readonly, nonatomic) MPPImage * _Nullable stylizedImage;
+		[NullAllowed, Export ("stylizedImage")]
+		MPPImage StylizedImage { get; }
+
+		// -(instancetype _Nonnull)initWithImage:(MPPImage * _Nullable)image timestampInMilliseconds:(NSInteger)timestampInMilliseconds;
+		[Export ("initWithImage:timestampInMilliseconds:")]
+		NativeHandle Constructor ([NullAllowed] MPPImage image, nint timestampInMilliseconds);
+	}
+
+	// @interface MPPFaceStylizer : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MPPFaceStylizer
+	{
+		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
+		[Export ("initWithModelPath:error:")]
+		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
+
+		// -(instancetype _Nullable)initWithOptions:(MPPFaceStylizerOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
+		[Export ("initWithOptions:error:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPFaceStylizerOptions options, [NullAllowed] out NSError error);
+
+		// -(MPPFaceStylizerResult * _Nullable)stylizeImage:(MPPImage * _Nonnull)image error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("stylize(image:)")));
+		[Export ("stylizeImage:error:")]
+		[return: NullAllowed]
+		MPPFaceStylizerResult StylizeImage (MPPImage image, [NullAllowed] out NSError error);
+
+		// -(MPPFaceStylizerResult * _Nullable)stylizeImage:(MPPImage * _Nonnull)image regionOfInterest:(CGRect)regionOfInterest error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("stylize(image:regionOfInterest:)")));
+		[Export ("stylizeImage:regionOfInterest:error:")]
+		[return: NullAllowed]
+		MPPFaceStylizerResult StylizeImage (MPPImage image, CGRect regionOfInterest, [NullAllowed] out NSError error);
 	}
 
 	// @interface MPPGestureRecognizerResult : MPPTaskResult
