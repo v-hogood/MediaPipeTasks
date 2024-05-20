@@ -27,6 +27,9 @@
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Gpu']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.GPU</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Nnapi']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.NNAPI</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Xnnpack']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.XNNPACK</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfig']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfigs</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfig.InputTensorMapCase']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfigs.InputTensorMapCases</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfig.OutputTensorMapCase']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfigs.OutputTensorMapCases</attr>
 
   <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='ClassificationProto.ClassificationList']" name="managedName">ClassificationsProto.Classifications</attr>
   <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='DetectionProto.DetectionList']" name="managedName">DetectionProto.Detections</attr>

@@ -7,7 +7,7 @@
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
     <PackageId>MediaPipeTasksVision.iOS</PackageId>
-    <PackageVersion>0.10.13</PackageVersion>
+    <PackageVersion>0.10.14</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
@@ -37,7 +37,7 @@
     <None Remove="frameworks/**/*" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="BeforeBuild">
-    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20240503-111248/MediaPipeTasksVision-0.10.13.tar.gz" DestinationFolder="." />
-    <Exec Command="tar -xf MediaPipeTasksVision-0.10.13.tar.gz" />
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20240510-090346/MediaPipeTasksVision-0.10.14.tar.gz" DestinationFolder="." />
+    <Exec Command="tar -xf MediaPipeTasksVision-0.10.14.tar.gz" />
   </Target>
 </Project>

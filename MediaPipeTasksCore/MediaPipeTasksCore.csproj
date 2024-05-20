@@ -7,7 +7,7 @@
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
     <PackageId>MediaPipeTasksCore.Android</PackageId>
-    <PackageVersion>0.10.11</PackageVersion>
+    <PackageVersion>0.10.14</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseUrl>https://github.com/tensorflow/tflite-support/blob/master/LICENSE</PackageLicenseUrl>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
@@ -21,11 +21,11 @@
     <NoWarn>1701;1702;CS1573;CS1591;CS0108;CS0114;CS0618;CS8764;BG8403</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Flogger.SystemBackend" Version="0.8.0.2" />
-    <PackageReference Include="Xamarin.Google.Android.DataTransport.TransportBackendCct" Version="3.1.9.4" />
-    <PackageReference Include="Xamarin.Grpc.Protobuf.Lite" Version=" 1.57.2.1" />
+    <PackageReference Include="Xamarin.Flogger.SystemBackend" Version="0.8.0.3" />
+    <PackageReference Include="Xamarin.Google.Android.DataTransport.TransportBackendCct" Version="3.2.0.2" />
+    <PackageReference Include="Xamarin.Grpc.Protobuf.Lite" Version=" 1.58.1.1" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="_ExtractAar">
-    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-core/0.10.11/tasks-core-0.10.11.aar" DestinationFolder="Jars" />
+    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-core/0.10.14/tasks-core-0.10.14.aar" DestinationFolder="Jars" />
   </Target>
 </Project>
