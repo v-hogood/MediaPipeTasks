@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net7.0-ios</TargetFramework>
     <Nullable>disable</Nullable>
@@ -6,25 +6,24 @@
     <IsBindingProject>true</IsBindingProject>
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
-    <PackageId>MediaPipeTasksVision.iOS</PackageId>
+    <PackageId>MediaPipeTasksGenAI.iOS</PackageId>
     <PackageVersion>0.10.14</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
     <RepositoryUrl>https://github.com/google/mediapipe</RepositoryUrl>
     <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
-    <Summary>iOS .NET bindings for MediaPipe Tasks Vision Library.</Summary>
+    <Summary>iOS .NET bindings for MediaPipe Tasks GenAI Library.</Summary>
     <PackageTags>maui ios mediapipe</PackageTags>
-    <Title>MediaPipeTasksVision</Title>
-    <Description>.NET iOS bindings for MediaPipe Tasks Vision Library.</Description>
+    <Title>MediaPipeTasksGenAI</Title>
+    <Description>.NET iOS bindings for MediaPipe Tasks GenAI Library.</Description>
   </PropertyGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
-    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
     <None Include="LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="frameworks/MediaPipeTasksVision.xcframework">
+    <NativeReference Include="frameworks/MediaPipeTasksGenAI.xcframework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
       <LinkerFlags>-ObjC</LinkerFlags>
@@ -37,7 +36,7 @@
     <None Remove="frameworks/**/*" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="BeforeBuild">
-    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20240510-090346/MediaPipeTasksVision-0.10.14.tar.gz" DestinationFolder="." />
-    <Exec Command="tar -xf MediaPipeTasksVision-0.10.14.tar.gz" />
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20240510-090346/MediaPipeTasksGenAI-0.10.14.tar.gz" DestinationFolder="." />
+    <Exec Command="tar -xf MediaPipeTasksGenAI-0.10.14.tar.gz" />
   </Target>
 </Project>

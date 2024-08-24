@@ -9,15 +9,15 @@
     <PackageId>MediaPipeTasksAudio.Android</PackageId>
     <PackageVersion>0.10.14</PackageVersion>
     <Authors>Howard Good</Authors>
-    <PackageLicenseUrl>https://github.com/tensorflow/tflite-support/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/google-ai-edge/mediapipe/blob/master/LICENSE</PackageLicenseUrl>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
-    <RepositoryUrl>https://github.com/tensorflow/tflite-support</RepositoryUrl>
+    <RepositoryUrl>https://github.com/google-ai-edge/mediapipe</RepositoryUrl>
     <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
     <Summary>Android .NET bindings for MediaPipe Tasks Audio Library.</Summary>
     <PackageTags>xamarin android tensorflow</PackageTags>
     <Title>MediaPipeTasksAudio.Android</Title>
     <Description>Android .NET bindings for MediaPipe Tasks Audio Library.</Description>
-    <NoWarn>1701;1702;CS1573;CS1591;CS0108;CS0114;CS0618;CS8764;BG8403</NoWarn>
+    <NoWarn>BG8403</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\MediaPipeTasksCore\MediaPipeTasksCore.csproj" />

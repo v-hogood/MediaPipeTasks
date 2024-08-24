@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksVision", "Med
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksAudio", "MediaPipeTasksAudio\MediaPipeTasksAudio.csproj", "{81A9C81E-7832-4430-B0D2-4E9C0D8A50AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksGenAI", "MediaPipeTasksGenAI\MediaPipeTasksGenAI.csproj", "{DDF90E2F-1700-4580-BE63-D465258E5DFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{81A9C81E-7832-4430-B0D2-4E9C0D8A50AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81A9C81E-7832-4430-B0D2-4E9C0D8A50AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81A9C81E-7832-4430-B0D2-4E9C0D8A50AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDF90E2F-1700-4580-BE63-D465258E5DFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDF90E2F-1700-4580-BE63-D465258E5DFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDF90E2F-1700-4580-BE63-D465258E5DFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDF90E2F-1700-4580-BE63-D465258E5DFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

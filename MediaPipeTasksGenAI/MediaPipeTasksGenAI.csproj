@@ -6,23 +6,23 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
-    <PackageId>MediaPipeTasksText.Android</PackageId>
+    <PackageId>MediaPipeTasksGenAI.Android</PackageId>
     <PackageVersion>0.10.14</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseUrl>https://github.com/google-ai-edge/mediapipe/blob/master/LICENSE</PackageLicenseUrl>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
     <RepositoryUrl>https://github.com/google-ai-edge/mediapipe</RepositoryUrl>
     <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
-    <Summary>Android .NET bindings for MediaPipe Tasks Text Library.</Summary>
-    <PackageTags>xamarin android tensorflow</PackageTags>
-    <Title>MediaPipeTasksText.Android</Title>
-    <Description>Android .NET bindings for MediaPipe Tasks Text Library.</Description>
-    <NoWarn>BG8403</NoWarn>
+    <Summary>Android .NET bindings for MediaPipe Tasks GenAI Library.</Summary>
+    <PackageTags>android mediapipe</PackageTags>
+    <Title>MediaPipeTasksGenAI.Android</Title>
+    <Description>Android .NET bindings for MediaPipe Tasks GenAI Library.</Description>
+    <NoWarn>CS0108;BG8403</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\MediaPipeTasksCore\MediaPipeTasksCore.csproj" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="_ExtractAar">
-    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-text/0.10.14/tasks-text-0.10.14.aar" DestinationFolder="Jars" />
+    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-genai/0.10.14/tasks-genai-0.10.14.aar" DestinationFolder="Jars" />
   </Target>
 </Project>

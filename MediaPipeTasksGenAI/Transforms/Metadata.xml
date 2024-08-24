@@ -1,0 +1,14 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']" name="managedName">MediaPipe.Tasks.Core.Jni.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.core']" name="managedName">MediaPipe.Tasks.Core</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference']" name="managedName">MediaPipe.Tasks.GenAI.LlmInference</attr>
+
+</metadata>
