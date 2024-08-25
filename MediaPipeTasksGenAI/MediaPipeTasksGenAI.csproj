@@ -14,7 +14,7 @@
     <RepositoryUrl>https://github.com/google-ai-edge/mediapipe</RepositoryUrl>
     <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
     <Summary>Android .NET bindings for MediaPipe Tasks GenAI Library.</Summary>
-    <PackageTags>android mediapipe</PackageTags>
+    <PackageTags>maui xamarin android mediapipe</PackageTags>
     <Title>MediaPipeTasksGenAI.Android</Title>
     <Description>Android .NET bindings for MediaPipe Tasks GenAI Library.</Description>
     <NoWarn>CS0108;BG8403</NoWarn>

@@ -14,16 +14,16 @@
     <RepositoryUrl>https://github.com/google-ai-edge/mediapipe</RepositoryUrl>
     <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
     <Summary>Android .NET bindings for MediaPipe Tasks Core Library.</Summary>
-    <PackageTags>xamarin android tensorflow</PackageTags>
+    <PackageTags>maui xamarin android mediapipe</PackageTags>
     <Title>MediaPipeTasksCore.Android</Title>
     <Description>Android .NET bindings for MediaPipe Tasks Core Library.</Description>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>CS0108;CS0114;CS0618;BG8403</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Flogger.SystemBackend" Version="0.8.0.3" />
-    <PackageReference Include="Xamarin.Google.Android.DataTransport.TransportBackendCct" Version="3.2.0.2" />
-    <PackageReference Include="Xamarin.Grpc.Protobuf.Lite" Version=" 1.58.1.1" />
+    <PackageReference Include="Xamarin.Flogger.SystemBackend" Version="0.8.0.6" />
+    <PackageReference Include="Xamarin.Google.Guava" Version="33.2.1.1" />
+    <PackageReference Include="Xamarin.Protobuf.JavaLite" Version="4.27.3" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="_ExtractAar">
     <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-core/0.10.14/tasks-core-0.10.14.aar" DestinationFolder="Jars" />

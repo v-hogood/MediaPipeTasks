@@ -14,7 +14,7 @@
     <RepositoryUrl>https://github.com/google-ai-edge/mediapipe</RepositoryUrl>
     <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
     <Summary>Android .NET bindings for MediaPipe Tasks Vision Library.</Summary>
-    <PackageTags>xamarin android tensorflow</PackageTags>
+    <PackageTags>maui xamarin android mediapipe</PackageTags>
     <Title>MediaPipeTasksVision.Android</Title>
     <Description>Android .NET bindings for MediaPipe Tasks Vision Library.</Description>
     <NoWarn>CS0108;CS0114;CS0618;BG8403</NoWarn>

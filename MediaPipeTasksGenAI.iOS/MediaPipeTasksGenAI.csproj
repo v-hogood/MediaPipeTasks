@@ -14,7 +14,7 @@
     <RepositoryUrl>https://github.com/google/mediapipe</RepositoryUrl>
     <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
     <Summary>iOS .NET bindings for MediaPipe Tasks GenAI Library.</Summary>
-    <PackageTags>maui ios mediapipe</PackageTags>
+    <PackageTags>maui xamarin ios mediapipe</PackageTags>
     <Title>MediaPipeTasksGenAI</Title>
     <Description>.NET iOS bindings for MediaPipe Tasks GenAI Library.</Description>
   </PropertyGroup>
