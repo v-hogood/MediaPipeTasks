@@ -29,10 +29,10 @@ namespace MediaPipeTasksGenAI
 		bool GenerateResponseAsyncWithInputText (string inputText, [NullAllowed] out NSError error, Action<NSString, NSError> progress, Action completion);
 	}
 
-	// @interface MediaPipeTasksGenAI_Swift_297 (MPPLLMInference)
+	// @interface MediaPipeTasksGenAI_Swift_345 (MPPLLMInference)
 	[Category]
 	[BaseType (typeof(MPPLLMInference))]
-	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_297
+	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_345
 	{
 	}
 
@@ -60,6 +60,14 @@ namespace MediaPipeTasksGenAI
 		// @property (nonatomic) NSInteger randomSeed;
 		[Export ("randomSeed")]
 		nint RandomSeed { get; set; }
+
+		// @property (nonatomic) NSInteger numOfSupportedLoraRanks;
+		[Export ("numOfSupportedLoraRanks")]
+		nint NumOfSupportedLoraRanks { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nonnull supportedLoraRanks;
+		[Export ("supportedLoraRanks", ArgumentSemantic.Copy)]
+		NSNumber[] SupportedLoraRanks { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nullable loraPath;
 		[NullAllowed, Export ("loraPath")]

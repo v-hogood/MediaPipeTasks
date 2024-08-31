@@ -17,9 +17,12 @@ namespace MediaPipeTasksVision
 		[Export ("modelAssetPath")]
 		string ModelAssetPath { get; set; }
 
-		// @property (nonatomic) MPPDelegate delegate;
-		[Export ("delegate", ArgumentSemantic.Assign)]
+		[Wrap ("WeakDelegate")]
 		MPPDelegate Delegate { get; set; }
+
+		// @property (nonatomic) MPPDelegate delegate;
+		[NullAllowed, Export ("delegate", ArgumentSemantic.Assign)]
+		MPPDelegate WeakDelegate { get; set; }
 	}
 
 	// @interface MPPCategory : NSObject
@@ -919,6 +922,182 @@ namespace MediaPipeTasksVision
 		bool DetectAsyncImage (MPPImage image, nint timestampInMilliseconds, [NullAllowed] out NSError error);
 	}
 
+	// @interface MPPMask : NSObject <NSCopying>
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MPPMask : INSCopying
+	{
+		// @property (readonly, nonatomic) NSInteger width;
+		[Export ("width")]
+		nint Width { get; }
+
+		// @property (readonly, nonatomic) NSInteger height;
+		[Export ("height")]
+		nint Height { get; }
+
+		// @property (readonly, nonatomic) MPPMaskDataType dataType;
+		[Export ("dataType")]
+		MPPMaskDataType DataType { get; }
+
+		// @property (readonly, assign, nonatomic) const UInt8 * _Nonnull uint8Data;
+		[Export ("uint8Data", ArgumentSemantic.Assign)]
+		unsafe byte* Uint8Data { get; }
+
+		// @property (readonly, assign, nonatomic) const float * _Nonnull float32Data;
+		[Export ("float32Data", ArgumentSemantic.Assign)]
+		unsafe float* Float32Data { get; }
+
+		// -(instancetype _Nullable)initWithUInt8Data:(const UInt8 * _Nonnull)uint8Data width:(NSInteger)width height:(NSInteger)height shouldCopy:(BOOL)shouldCopy __attribute__((objc_designated_initializer));
+		[Export ("initWithUInt8Data:width:height:shouldCopy:")]
+		[DesignatedInitializer]
+		unsafe NativeHandle Constructor (byte* uint8Data, nint width, nint height, bool shouldCopy);
+
+		// -(instancetype _Nullable)initWithFloat32Data:(const float * _Nonnull)float32Data width:(NSInteger)width height:(NSInteger)height shouldCopy:(BOOL)shouldCopy __attribute__((objc_designated_initializer));
+		[Export ("initWithFloat32Data:width:height:shouldCopy:")]
+		[DesignatedInitializer]
+		unsafe NativeHandle Constructor (float* float32Data, nint width, nint height, bool shouldCopy);
+	}
+
+	// @interface MPPHolisticLandmarkerResult : MPPTaskResult
+	[BaseType (typeof(MPPTaskResult))]
+	[DisableDefaultCtor]
+	interface MPPHolisticLandmarkerResult
+	{
+		// @property (readonly, nonatomic) NSArray<MPPNormalizedLandmark *> * _Nonnull faceLandmarks;
+		[Export ("faceLandmarks")]
+		MPPNormalizedLandmark[] FaceLandmarks { get; }
+
+		// @property (readonly, nonatomic) MPPClassifications * _Nullable faceBlendshapes;
+		[NullAllowed, Export ("faceBlendshapes")]
+		MPPClassifications FaceBlendshapes { get; }
+
+		// @property (readonly, nonatomic) NSArray<MPPNormalizedLandmark *> * _Nonnull poseLandmarks;
+		[Export ("poseLandmarks")]
+		MPPNormalizedLandmark[] PoseLandmarks { get; }
+
+		// @property (readonly, nonatomic) NSArray<MPPLandmark *> * _Nonnull poseWorldLandmarks;
+		[Export ("poseWorldLandmarks")]
+		MPPLandmark[] PoseWorldLandmarks { get; }
+
+		// @property (readonly, nonatomic) MPPMask * _Nullable poseSegmentationMask;
+		[NullAllowed, Export ("poseSegmentationMask")]
+		MPPMask PoseSegmentationMask { get; }
+
+		// @property (readonly, nonatomic) NSArray<MPPNormalizedLandmark *> * _Nonnull leftHandLandmarks;
+		[Export ("leftHandLandmarks")]
+		MPPNormalizedLandmark[] LeftHandLandmarks { get; }
+
+		// @property (readonly, nonatomic) NSArray<MPPLandmark *> * _Nonnull leftHandWorldLandmarks;
+		[Export ("leftHandWorldLandmarks")]
+		MPPLandmark[] LeftHandWorldLandmarks { get; }
+
+		// @property (readonly, nonatomic) NSArray<MPPNormalizedLandmark *> * _Nonnull rightHandLandmarks;
+		[Export ("rightHandLandmarks")]
+		MPPNormalizedLandmark[] RightHandLandmarks { get; }
+
+		// @property (readonly, nonatomic) NSArray<MPPLandmark *> * _Nonnull rightHandWorldLandmarks;
+		[Export ("rightHandWorldLandmarks")]
+		MPPLandmark[] RightHandWorldLandmarks { get; }
+
+		// -(instancetype _Nonnull)initWithFaceLandmarks:(NSArray<MPPNormalizedLandmark *> * _Nonnull)faceLandmarks faceBlendshapes:(MPPClassifications * _Nullable)faceBlendshapes poseLandmarks:(NSArray<MPPNormalizedLandmark *> * _Nonnull)poseLandmarks poseWorldLandmarks:(NSArray<MPPLandmark *> * _Nonnull)poseWorldLandmarks poseSegmentationMask:(MPPMask * _Nullable)poseSegmentationMask leftHandLandmarks:(NSArray<MPPNormalizedLandmark *> * _Nonnull)leftHandLandmarks leftHandWorldLandmarks:(NSArray<MPPLandmark *> * _Nonnull)leftHandWorldLandmarks rightHandLandmarks:(NSArray<MPPNormalizedLandmark *> * _Nonnull)rightHandLandmarks rightHandWorldLandmarks:(NSArray<MPPLandmark *> * _Nonnull)rightHandWorldLandmarks timestampInMilliseconds:(NSInteger)timestampInMilliseconds __attribute__((objc_designated_initializer));
+		[Export ("initWithFaceLandmarks:faceBlendshapes:poseLandmarks:poseWorldLandmarks:poseSegmentationMask:leftHandLandmarks:leftHandWorldLandmarks:rightHandLandmarks:rightHandWorldLandmarks:timestampInMilliseconds:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPNormalizedLandmark[] faceLandmarks, [NullAllowed] MPPClassifications faceBlendshapes, MPPNormalizedLandmark[] poseLandmarks, MPPLandmark[] poseWorldLandmarks, [NullAllowed] MPPMask poseSegmentationMask, MPPNormalizedLandmark[] leftHandLandmarks, MPPLandmark[] leftHandWorldLandmarks, MPPNormalizedLandmark[] rightHandLandmarks, MPPLandmark[] rightHandWorldLandmarks, nint timestampInMilliseconds);
+	}
+
+	// @protocol MPPHolisticLandmarkerLiveStreamDelegate <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface MPPHolisticLandmarkerLiveStreamDelegate
+	{
+		// @required -(void)holisticLandmarker:(MPPHolisticLandmarker * _Nonnull)holisticLandmarker didFinishDetectionWithResult:(MPPHolisticLandmarkerResult * _Nullable)result timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable)error __attribute__((swift_name("holisticLandmarker(_:didFinishDetection:timestampInMilliseconds:error:)")));
+		[Abstract]
+		[Export ("holisticLandmarker:didFinishDetectionWithResult:timestampInMilliseconds:error:")]
+		void DidFinishDetectionWithResult (MPPHolisticLandmarker holisticLandmarker, [NullAllowed] MPPHolisticLandmarkerResult result, nint timestampInMilliseconds, [NullAllowed] NSError error);
+	}
+
+	// @interface MPPHolisticLandmarkerOptions : MPPTaskOptions <NSCopying>
+	[BaseType (typeof(MPPTaskOptions))]
+	interface MPPHolisticLandmarkerOptions : INSCopying
+	{
+		// @property (nonatomic) MPPRunningMode runningMode;
+		[Export ("runningMode", ArgumentSemantic.Assign)]
+		MPPRunningMode RunningMode { get; set; }
+
+		[Wrap ("WeakHolisticLandmarkerLiveStreamDelegate")]
+		[NullAllowed]
+		MPPHolisticLandmarkerLiveStreamDelegate HolisticLandmarkerLiveStreamDelegate { get; set; }
+
+		// @property (nonatomic, weak) id<MPPHolisticLandmarkerLiveStreamDelegate> _Nullable holisticLandmarkerLiveStreamDelegate;
+		[NullAllowed, Export ("holisticLandmarkerLiveStreamDelegate", ArgumentSemantic.Weak)]
+		NSObject WeakHolisticLandmarkerLiveStreamDelegate { get; set; }
+
+		// @property (nonatomic) float minFaceDetectionConfidence;
+		[Export ("minFaceDetectionConfidence")]
+		float MinFaceDetectionConfidence { get; set; }
+
+		// @property (nonatomic) float minFaceSuppressionThreshold;
+		[Export ("minFaceSuppressionThreshold")]
+		float MinFaceSuppressionThreshold { get; set; }
+
+		// @property (nonatomic) float minFacePresenceConfidence;
+		[Export ("minFacePresenceConfidence")]
+		float MinFacePresenceConfidence { get; set; }
+
+		// @property (nonatomic) float minPoseDetectionConfidence;
+		[Export ("minPoseDetectionConfidence")]
+		float MinPoseDetectionConfidence { get; set; }
+
+		// @property (nonatomic) float minPoseSuppressionThreshold;
+		[Export ("minPoseSuppressionThreshold")]
+		float MinPoseSuppressionThreshold { get; set; }
+
+		// @property (nonatomic) float minPosePresenceConfidence;
+		[Export ("minPosePresenceConfidence")]
+		float MinPosePresenceConfidence { get; set; }
+
+		// @property (nonatomic) BOOL outputFaceBlendshapes;
+		[Export ("outputFaceBlendshapes")]
+		bool OutputFaceBlendshapes { get; set; }
+
+		// @property (nonatomic) BOOL outputPoseSegmentationMasks;
+		[Export ("outputPoseSegmentationMasks")]
+		bool OutputPoseSegmentationMasks { get; set; }
+
+		// @property (nonatomic) float minHandLandmarksConfidence;
+		[Export ("minHandLandmarksConfidence")]
+		float MinHandLandmarksConfidence { get; set; }
+	}
+
+	// @interface MPPHolisticLandmarker : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MPPHolisticLandmarker
+	{
+		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
+		[Export ("initWithModelPath:error:")]
+		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
+
+		// -(instancetype _Nullable)initWithOptions:(MPPHolisticLandmarkerOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
+		[Export ("initWithOptions:error:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPHolisticLandmarkerOptions options, [NullAllowed] out NSError error);
+
+		// -(MPPHolisticLandmarkerResult * _Nullable)detectImage:(MPPImage * _Nonnull)image error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("detect(image:)")));
+		[Export ("detectImage:error:")]
+		[return: NullAllowed]
+		MPPHolisticLandmarkerResult DetectImage (MPPImage image, [NullAllowed] out NSError error);
+
+		// -(MPPHolisticLandmarkerResult * _Nullable)detectVideoFrame:(MPPImage * _Nonnull)image timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("detect(videoFrame:timestampInMilliseconds:)")));
+		[Export ("detectVideoFrame:timestampInMilliseconds:error:")]
+		[return: NullAllowed]
+		MPPHolisticLandmarkerResult DetectVideoFrame (MPPImage image, nint timestampInMilliseconds, [NullAllowed] out NSError error);
+
+		// -(BOOL)detectAsyncImage:(MPPImage * _Nonnull)image timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("detectAsync(image:timestampInMilliseconds:)")));
+		[Export ("detectAsyncImage:timestampInMilliseconds:error:")]
+		bool DetectAsyncImage (MPPImage image, nint timestampInMilliseconds, [NullAllowed] out NSError error);
+	}
+
 	// @interface MPPImageClassifierResult : MPPTaskResult
 	[BaseType (typeof(MPPTaskResult))]
 	interface MPPImageClassifierResult
@@ -1118,42 +1297,6 @@ namespace MediaPipeTasksVision
 		[Export ("cosineSimilarityBetweenEmbedding1:andEmbedding2:error:")]
 		[return: NullAllowed]
 		NSNumber CosineSimilarityBetweenEmbedding1 (MPPEmbedding embedding1, MPPEmbedding embedding2, [NullAllowed] out NSError error);
-	}
-
-	// @interface MPPMask : NSObject <NSCopying>
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MPPMask : INSCopying
-	{
-		// @property (readonly, nonatomic) NSInteger width;
-		[Export ("width")]
-		nint Width { get; }
-
-		// @property (readonly, nonatomic) NSInteger height;
-		[Export ("height")]
-		nint Height { get; }
-
-		// @property (readonly, nonatomic) MPPMaskDataType dataType;
-		[Export ("dataType")]
-		MPPMaskDataType DataType { get; }
-
-		// @property (readonly, assign, nonatomic) const UInt8 * _Nonnull uint8Data;
-		[Export ("uint8Data", ArgumentSemantic.Assign)]
-		unsafe byte* Uint8Data { get; }
-
-		// @property (readonly, assign, nonatomic) const float * _Nonnull float32Data;
-		[Export ("float32Data", ArgumentSemantic.Assign)]
-		unsafe float* Float32Data { get; }
-
-		// -(instancetype _Nullable)initWithUInt8Data:(const UInt8 * _Nonnull)uint8Data width:(NSInteger)width height:(NSInteger)height shouldCopy:(BOOL)shouldCopy __attribute__((objc_designated_initializer));
-		[Export ("initWithUInt8Data:width:height:shouldCopy:")]
-		[DesignatedInitializer]
-		unsafe NativeHandle Constructor (byte* uint8Data, nint width, nint height, bool shouldCopy);
-
-		// -(instancetype _Nullable)initWithFloat32Data:(const float * _Nonnull)float32Data width:(NSInteger)width height:(NSInteger)height shouldCopy:(BOOL)shouldCopy __attribute__((objc_designated_initializer));
-		[Export ("initWithFloat32Data:width:height:shouldCopy:")]
-		[DesignatedInitializer]
-		unsafe NativeHandle Constructor (float* float32Data, nint width, nint height, bool shouldCopy);
 	}
 
 	// @interface MPPImageSegmenterResult : MPPTaskResult
