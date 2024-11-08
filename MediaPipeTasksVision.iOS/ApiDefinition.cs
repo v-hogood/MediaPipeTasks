@@ -473,7 +473,7 @@ namespace MediaPipeTasksVision
 
 		// @property (readonly, nonatomic) float * _Nonnull data;
 		[Export ("data")]
-		unsafe float* Data { get; }
+		unsafe NativeHandle Data { get; }
 
 		// -(instancetype _Nonnull)initWithData:(const float * _Nonnull)data rows:(NSInteger)rows columns:(NSInteger)columns __attribute__((objc_designated_initializer));
 		[Export ("initWithData:rows:columns:")]
@@ -941,11 +941,11 @@ namespace MediaPipeTasksVision
 
 		// @property (readonly, assign, nonatomic) const UInt8 * _Nonnull uint8Data;
 		[Export ("uint8Data", ArgumentSemantic.Assign)]
-		unsafe byte* Uint8Data { get; }
+		unsafe NativeHandle Uint8Data { get; }
 
 		// @property (readonly, assign, nonatomic) const float * _Nonnull float32Data;
 		[Export ("float32Data", ArgumentSemantic.Assign)]
-		unsafe float* Float32Data { get; }
+		unsafe NativeHandle Float32Data { get; }
 
 		// -(instancetype _Nullable)initWithUInt8Data:(const UInt8 * _Nonnull)uint8Data width:(NSInteger)width height:(NSInteger)height shouldCopy:(BOOL)shouldCopy __attribute__((objc_designated_initializer));
 		[Export ("initWithUInt8Data:width:height:shouldCopy:")]

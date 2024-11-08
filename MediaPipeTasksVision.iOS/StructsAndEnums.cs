@@ -34,8 +34,9 @@ namespace MediaPipeTasksVision
 		AudioRecordPermissionDeniedError = 17,
 		AudioRecordPermissionUndeterminedError = 18,
 		AudioRecordWaitingForNewMicInputError = 19,
+		AudioRecordNotTappingMicError = 20,
 		First = CancelledError,
-		Last = AudioRecordWaitingForNewMicInputError
+		Last = AudioRecordNotTappingMicError
 	}
 
 	[Native]

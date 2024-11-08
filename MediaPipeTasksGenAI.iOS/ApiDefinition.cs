@@ -29,10 +29,67 @@ namespace MediaPipeTasksGenAI
 		bool GenerateResponseAsyncWithInputText (string inputText, [NullAllowed] out NSError error, Action<NSString, NSError> progress, Action completion);
 	}
 
-	// @interface MediaPipeTasksGenAI_Swift_345 (MPPLLMInference)
+	// @interface MediaPipeTasksGenAI_Swift_361 (MPPLLMInference)
 	[Category]
 	[BaseType (typeof(MPPLLMInference))]
-	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_345
+	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_361
+	{
+	}
+
+	// @interface MPPLLMInferenceSession : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MPPLLMInferenceSession
+	{
+		// -(instancetype _Nullable)initWithLlmInference:(MPPLLMInference * _Nonnull)llmInference options:(MPPLLMInferenceSessionOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
+		[Export ("initWithLlmInference:options:error:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPLLMInference llmInference, MPPLLMInferenceSessionOptions options, [NullAllowed] out NSError error);
+
+		// -(instancetype _Nullable)initWithLlmInference:(MPPLLMInference * _Nonnull)llmInference error:(NSError * _Nullable * _Nullable)error;
+		[Export ("initWithLlmInference:error:")]
+		NativeHandle Constructor (MPPLLMInference llmInference, [NullAllowed] out NSError error);
+
+		// -(BOOL)addQueryChunkWithInputText:(NSString * _Nonnull)inputText error:(NSError * _Nullable * _Nullable)error;
+		[Export ("addQueryChunkWithInputText:error:")]
+		bool AddQueryChunkWithInputText (string inputText, [NullAllowed] out NSError error);
+
+		// -(NSString * _Nullable)generateResponseAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((warn_unused_result("")));
+		[Export ("generateResponseAndReturnError:")]
+		[return: NullAllowed]
+		string GenerateResponseAndReturnError ([NullAllowed] out NSError error);
+
+		// -(BOOL)generateResponseAsyncAndReturnError:(NSError * _Nullable * _Nullable)error progress:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))progress completion:(void (^ _Nonnull)(void))completion;
+		[Export ("generateResponseAsyncAndReturnError:progress:completion:")]
+		bool GenerateResponseAsyncAndReturnError ([NullAllowed] out NSError error, Action<NSString, NSError> progress, Action completion);
+	}
+
+	// @interface MediaPipeTasksGenAI_Swift_437 (MPPLLMInference)
+	[Category]
+	[BaseType (typeof(MPPLLMInference))]
+	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_437
+	{
+	}
+
+	// @interface MPPLLMInferenceMetrics : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MPPLLMInferenceMetrics
+	{
+		// @property (readonly, nonatomic) NSTimeInterval initializationTimeInSeconds;
+		[Export ("initializationTimeInSeconds")]
+		double InitializationTimeInSeconds { get; }
+
+		// -(instancetype _Nonnull)initWithInitializationTimeInSeconds:(NSTimeInterval)initializationTimeInSeconds __attribute__((objc_designated_initializer));
+		[Export ("initWithInitializationTimeInSeconds:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (double initializationTimeInSeconds);
+	}
+
+	// @interface MediaPipeTasksGenAI_Swift_455 (MPPLLMInference)
+	[Category]
+	[BaseType (typeof(MPPLLMInference))]
+	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_455
 	{
 	}
 
@@ -49,9 +106,64 @@ namespace MediaPipeTasksGenAI
 		[Export ("maxTokens")]
 		nint MaxTokens { get; set; }
 
+		// @property (nonatomic) NSInteger maxTopk;
+		[Export ("maxTopk")]
+		nint MaxTopk { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nonnull supportedLoraRanks;
+		[Export ("supportedLoraRanks", ArgumentSemantic.Copy)]
+		NSNumber[] SupportedLoraRanks { get; set; }
+
+		// @property (nonatomic) BOOL waitForWeightUploads;
+		[Export ("waitForWeightUploads")]
+		bool WaitForWeightUploads { get; set; }
+
+		// -(instancetype _Nonnull)initWithModelPath:(NSString * _Nonnull)modelPath __attribute__((objc_designated_initializer));
+		[Export ("initWithModelPath:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (string modelPath);
+	}
+
+	// @interface MediaPipeTasksGenAI_Swift_489 (MPPLLMInferenceSession)
+	[Category]
+	[BaseType (typeof(MPPLLMInferenceSession))]
+	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_489
+	{
+	}
+
+	// @interface MPPLLMInferenceSessionMetrics : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MPPLLMInferenceSessionMetrics
+	{
+		// @property (readonly, nonatomic) NSTimeInterval responseGenerationTimeInSeconds;
+		[Export ("responseGenerationTimeInSeconds")]
+		double ResponseGenerationTimeInSeconds { get; }
+
+		// -(instancetype _Nonnull)initWithResponseGenerationTimeInSeconds:(NSTimeInterval)responseGenerationTimeInSeconds __attribute__((objc_designated_initializer));
+		[Export ("initWithResponseGenerationTimeInSeconds:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (double responseGenerationTimeInSeconds);
+	}
+
+	// @interface MediaPipeTasksGenAI_Swift_505 (MPPLLMInferenceSession)
+	[Category]
+	[BaseType (typeof(MPPLLMInferenceSession))]
+	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_505
+	{
+	}
+
+	// @interface MPPLLMInferenceSessionOptions : NSObject
+	[BaseType (typeof(NSObject))]
+	interface MPPLLMInferenceSessionOptions
+	{
 		// @property (nonatomic) NSInteger topk;
 		[Export ("topk")]
 		nint Topk { get; set; }
+
+		// @property (nonatomic) float topp;
+		[Export ("topp")]
+		float Topp { get; set; }
 
 		// @property (nonatomic) float temperature;
 		[Export ("temperature")]
@@ -61,21 +173,8 @@ namespace MediaPipeTasksGenAI
 		[Export ("randomSeed")]
 		nint RandomSeed { get; set; }
 
-		// @property (nonatomic) NSInteger numOfSupportedLoraRanks;
-		[Export ("numOfSupportedLoraRanks")]
-		nint NumOfSupportedLoraRanks { get; set; }
-
-		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nonnull supportedLoraRanks;
-		[Export ("supportedLoraRanks", ArgumentSemantic.Copy)]
-		NSNumber[] SupportedLoraRanks { get; set; }
-
 		// @property (copy, nonatomic) NSString * _Nullable loraPath;
 		[NullAllowed, Export ("loraPath")]
 		string LoraPath { get; set; }
-
-		// -(instancetype _Nonnull)initWithModelPath:(NSString * _Nonnull)modelPath __attribute__((objc_designated_initializer));
-		[Export ("initWithModelPath:")]
-		[DesignatedInitializer]
-		NativeHandle Constructor (string modelPath);
 	}
 }
