@@ -7,7 +7,7 @@
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
     <PackageId>MediaPipeTasksCore.Android</PackageId>
-    <PackageVersion>0.10.18</PackageVersion>
+    <PackageVersion>0.10.20</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseUrl>https://github.com/google-ai-edge/mediapipe/blob/master/LICENSE</PackageLicenseUrl>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
@@ -23,10 +23,10 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Flogger.SystemBackend" Version="0.8.0.9" />
     <PackageReference Include="Xamarin.Google.Android.DataTransport.TransportBackendCct" Version="4.0.0.1" />
-    <PackageReference Include="Xamarin.Google.Guava" Version="33.3.1.1" />
-    <PackageReference Include="Xamarin.Protobuf.JavaLite" Version="4.28.3.1" />
+    <PackageReference Include="Xamarin.Google.Guava" Version="33.4.0" />
+    <PackageReference Include="Xamarin.Protobuf.JavaLite" Version="4.29.3" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="_ExtractAar">
-    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-core/0.10.18/tasks-core-0.10.18.aar" DestinationFolder="Jars" />
+    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-core/0.10.20/tasks-core-0.10.20.aar" DestinationFolder="Jars" />
   </Target>
 </Project>
