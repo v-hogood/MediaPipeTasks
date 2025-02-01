@@ -1,0 +1,18 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+
+  <!-- Change the visibility of a class -->
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagegenerator']/class[@name='ImageGenerator.ConditionImageResult']" name="visibility">public</attr>
+
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.core']" name="managedName">MediaPipe.Tasks.Vision.Core</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facelandmarker']" name="managedName">MediaPipe.Tasks.Vision.FaceLandmarker</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagesegmenter']" name="managedName">MediaPipe.Tasks.Vision.ImageSegmenter</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagegenerator']" name="managedName">MediaPipe.Tasks.Vision.ImageGenerator</attr>
+
+</metadata>

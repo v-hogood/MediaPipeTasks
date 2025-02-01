@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>24</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PackOnBuild>true</PackOnBuild>
+    <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
+    <PackageId>MediaPipeTasksVisionImageGenerator.Android</PackageId>
+    <PackageVersion>0.10.20</PackageVersion>
+    <Authors>Howard Good</Authors>
+    <PackageLicenseUrl>https://github.com/google-ai-edge/mediapipe/blob/master/LICENSE</PackageLicenseUrl>
+    <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
+    <RepositoryUrl>https://github.com/google-ai-edge/mediapipe</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
+    <Summary>Android .NET bindings for MediaPipe Tasks Vision Image Generator Library.</Summary>
+    <PackageTags>maui xamarin android mediapipe</PackageTags>
+    <Title>MediaPipeTasksVisionImageGenerator.Android</Title>
+    <Description>Android .NET bindings for MediaPipe Tasks Vision Image Generator Library.</Description>
+    <NoWarn>CS0108;CS0114;CS0618;BG8403</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediaPipeTasksCore\MediaPipeTasksCore.csproj" />
+  </ItemGroup>
+  <Target Name="DownloadFile" BeforeTargets="_ExtractAar">
+    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-vision-image-generator/0.10.20/tasks-vision-image-generator-0.10.20.aar" DestinationFolder="Jars" />
+  </Target>
+</Project>
