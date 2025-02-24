@@ -10,6 +10,7 @@
   <remove-node path="/api/package[@name='com.google.mediapipe.tasks.core']/class[@name='OutputHandler']/field[@name='latestOutputTimestamp']" />
   <remove-node path="/api/package[@name='com.google.mediapipe.framework']/class[@name='AssetCacheDbHelper']/field[@name='DATABASE_NAME']" />
 
+  <attr path="/api/package[@name='com.google.mediapipe.proto']/class[@name='CalculatorProto.InputCollection.InputType']" name="managedName">CalculatorProto.InputCollection.InputTypes</attr>
   <attr path="/api/package[@name='com.google.mediapipe.proto']/class[@name='MediaPipeLoggingProto.SolutionEvent.EventDetailsCase']" name="managedName">MediaPipeLoggingProto.SolutionEvent.EventDetailsCases</attr>
 
   <attr path="/api/package[@name='com.google.mediapipe.tasks.core']/class[@name='Delegate']" name="managedName">Delegates</attr>
@@ -17,25 +18,38 @@
 
   <attr path="/api/package[@name='com.google.mediapipe.tasks.components.containers.proto']/class[@name='EmbeddingsProto.Embedding.EmbeddingCase']" name="managedName">EmbeddingsProto.Embedding.EmbeddingCases</attr>
 
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facegeometry.proto']/class[@name='Mesh3DProto.Mesh3d.PrimitiveType']" name="managedName">Mesh3dProto.Mesh3d.PrimitiveTypes</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facegeometry.proto']/class[@name='Mesh3DProto.Mesh3d.VertexType']" name="managedName">Mesh3dProto.Mesh3d.VertexTypes</attr>
+
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagegenerator.proto']/class[@name='ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.ConditionTypeOptionsCase']" name="managedName">ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.ConditionTypeOptionsCases</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagegenerator.proto']/class[@name='ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.DepthConditionTypeOptions']" name="managedName">ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.DepthConditionTypeOption</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagegenerator.proto']/class[@name='ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.EdgeConditionTypeOptions']" name="managedName">ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.EdgeConditionTypeOption</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagegenerator.proto']/class[@name='ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.FaceConditionTypeOptions']" name="managedName">ConditionedImageGraphOptionsProto.ConditionedImageGraphOptions.FaceConditionTypeOption</attr>
 
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagesegmenter.proto']/class[@name='SegmenterOptionsProto.SegmenterOptions.Activation']" name="managedName">SegmenterOptionsProto.SegmenterOptions.Activations</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagesegmenter.proto']/class[@name='SegmenterOptionsProto.SegmenterOptions.OutputType']" name="managedName">SegmenterOptionsProto.SegmenterOptions.OutputTypes</attr>
+
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.DelegateCase']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.DelegatesCase</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Gpu']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.GPU</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Gpu.Api']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.GPU.API</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Gpu.CacheWritingBehavior']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.GPU.CacheWritingBehaviors</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Nnapi']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.NNAPI</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Xnnpack']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.XNNPACK</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfig']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfigs</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfig.InputTensorMapCase']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfigs.InputTensorMapCases</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfig.OutputTensorMapCase']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfigs.OutputTensorMapCases</attr>
 
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='StableDiffusionIterateCalculatorOptionsProto.StableDiffusionIterateCalculatorOptions.ClPriorityHint']" name="managedName">StableDiffusionIterateCalculatorOptionsProto.StableDiffusionIterateCalculatorOptions.ClPriorityHints</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='StableDiffusionIterateCalculatorOptionsProto.StableDiffusionIterateCalculatorOptions.ModelType']" name="managedName">StableDiffusionIterateCalculatorOptionsProto.StableDiffusionIterateCalculatorOptions.ModelTypes</attr>
+
   <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='ClassificationProto.ClassificationList']" name="managedName">ClassificationsProto.Classifications</attr>
   <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='DetectionProto.DetectionList']" name="managedName">DetectionProto.Detections</attr>
   <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='LandmarkProto.LandmarkList']" name="managedName">LandmarkProto.Landmarks</attr>
   <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='LocationDataProto.LocationData.BoundingBox']" name="managedName">LocationDataProto.LocationData.Bounds</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='LocationDataProto.LocationData.Format']" name="managedName">LocationDataProto.LocationData.Formats</attr>
   <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='LocationDataProto.LocationData.RelativeBoundingBox']" name="managedName">LocationDataProto.LocationData.RelativeBounds</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.formats.proto']/class[@name='MatrixDataProto.MatrixData.Layout']" name="managedName">MatrixDataProto.MatrixData.Layouts</attr>
 
   <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.Arrow']" name="managedName">RenderDataProto.RenderAnnotation.Arrows</attr>
   <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.DataCase']" name="managedName">RenderDataProto.RenderAnnotation.DataCases</attr>
@@ -44,6 +58,7 @@
   <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.FilledRoundedRectangle']" name="managedName">RenderDataProto.RenderAnnotation.FilledRoundedRectangles</attr>
   <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.GradientLine']" name="managedName">RenderDataProto.RenderAnnotation.GradientLines</attr>
   <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.Line']" name="managedName">RenderDataProto.RenderAnnotation.Lines</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.Line.LineType']" name="managedName">RenderDataProto.RenderAnnotation.Lines.LinesType</attr>
   <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.Oval']" name="managedName">RenderDataProto.RenderAnnotation.Ovals</attr>
   <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.Point']" name="managedName">RenderDataProto.RenderAnnotation.Points</attr>
   <attr path="/api/package[@name='com.google.mediapipe.util.proto']/class[@name='RenderDataProto.RenderAnnotation.Rectangle']" name="managedName">RenderDataProto.RenderAnnotation.Rectangles</attr>

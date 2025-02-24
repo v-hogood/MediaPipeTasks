@@ -7,6 +7,10 @@
   <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
   -->
 
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/class[@name='LlmOptionsProto.LlmModelSettings']/method[@name='getLlmPreferredBackend']" name="propertyName">GetLlmPreferredBackend</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/class[@name='LlmOptionsProto.LlmModelSettings.Builder']/method[@name='getLlmPreferredBackend']" name="propertyName">GetLlmPreferredBackend</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/interface[@name='LlmOptionsProto.LlmModelSettingsOrBuilder']/method[@name='getLlmPreferredBackend']" name="propertyName">GetLlmPreferredBackend</attr>
+
   <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/class[@name='LlmOptionsProto.LlmModelSettings']/method[@name='getVisionModelSettings']" name="propertyName">GetVisionModelSettings</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/class[@name='LlmOptionsProto.LlmModelSettings.Builder']/method[@name='getVisionModelSettings']" name="propertyName">GetVisionModelSettings</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/interface[@name='LlmOptionsProto.LlmModelSettingsOrBuilder']/method[@name='getVisionModelSettings']" name="propertyName">GetVisionModelSettings</attr>

@@ -17,7 +17,7 @@
     <PackageTags>maui xamarin android mediapipe</PackageTags>
     <Title>MediaPipeTasksVisionImageGenerator.Android</Title>
     <Description>Android .NET bindings for MediaPipe Tasks Vision Image Generator Library.</Description>
-    <NoWarn>CS0108;CS0114;CS0618;BG8403</NoWarn>
+    <NoWarn>CS0108;CS0114;BG8403</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\MediaPipeTasksCore\MediaPipeTasksCore.csproj" />

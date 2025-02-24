@@ -17,11 +17,18 @@
     <PackageTags>maui xamarin android mediapipe</PackageTags>
     <Title>MediaPipeTasksGenAI.Android</Title>
     <Description>Android .NET bindings for MediaPipe Tasks GenAI Library.</Description>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeProjectReferenceDlls</TargetsForTfmSpecificBuildOutput>
     <NoWarn>CS0108;BG8403</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\MediaPipeTasksCore\MediaPipeTasksCore.csproj" />
+    <ProjectReference Include="..\Protobuf.Internal\Protobuf.Internal.csproj" PrivateAssets="all" />
   </ItemGroup>
+  <Target Name="IncludeProjectReferenceDlls" DependsOnTargets="BuildOnlySettings;ResolveReferences">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')->WithMetadataValue('PrivateAssets', 'all'))"/>
+    </ItemGroup>
+  </Target>
   <Target Name="DownloadFile" BeforeTargets="_ExtractAar">
     <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-genai/0.10.21/tasks-genai-0.10.21.aar" DestinationFolder="Jars" />
   </Target>
