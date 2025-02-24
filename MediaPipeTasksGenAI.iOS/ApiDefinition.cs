@@ -118,16 +118,20 @@ namespace MediaPipeTasksGenAI
 		[Export ("waitForWeightUploads")]
 		bool WaitForWeightUploads { get; set; }
 
+		// @property (nonatomic) BOOL useSubmodel;
+		[Export ("useSubmodel")]
+		bool UseSubmodel { get; set; }
+
 		// -(instancetype _Nonnull)initWithModelPath:(NSString * _Nonnull)modelPath __attribute__((objc_designated_initializer));
 		[Export ("initWithModelPath:")]
 		[DesignatedInitializer]
 		NativeHandle Constructor (string modelPath);
 	}
 
-	// @interface MediaPipeTasksGenAI_Swift_489 (MPPLLMInferenceSession)
+	// @interface MediaPipeTasksGenAI_Swift_492 (MPPLLMInferenceSession)
 	[Category]
 	[BaseType (typeof(MPPLLMInferenceSession))]
-	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_489
+	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_492
 	{
 	}
 
@@ -146,10 +150,10 @@ namespace MediaPipeTasksGenAI
 		NativeHandle Constructor (double responseGenerationTimeInSeconds);
 	}
 
-	// @interface MediaPipeTasksGenAI_Swift_505 (MPPLLMInferenceSession)
+	// @interface MediaPipeTasksGenAI_Swift_508 (MPPLLMInferenceSession)
 	[Category]
 	[BaseType (typeof(MPPLLMInferenceSession))]
-	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_505
+	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_508
 	{
 	}
 
