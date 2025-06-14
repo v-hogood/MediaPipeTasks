@@ -4,7 +4,7 @@
     <SupportedOSPlatformVersion>24</SupportedOSPlatformVersion>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <NoWarn>BG8604</NoWarn>
+    <NoWarn>CS0108;CS0114;BG8604</NoWarn>
   </PropertyGroup>
   <Target Name="DownloadFile" BeforeTargets="_ExtractAar">
     <DownloadFile SourceUrl="https://repo1.maven.org/maven2/com/google/protobuf/protobuf-javalite/4.29.3/protobuf-javalite-4.29.3.jar" DestinationFolder="Jars" />

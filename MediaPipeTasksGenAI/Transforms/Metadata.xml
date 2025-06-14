@@ -7,20 +7,23 @@
   <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
   -->
 
-  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/class[@name='LlmOptionsProto.LlmModelSettings']/method[@name='getLlmPreferredBackend']" name="propertyName">GetLlmPreferredBackend</attr>
-  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/class[@name='LlmOptionsProto.LlmModelSettings.Builder']/method[@name='getLlmPreferredBackend']" name="propertyName">GetLlmPreferredBackend</attr>
-  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/interface[@name='LlmOptionsProto.LlmModelSettingsOrBuilder']/method[@name='getLlmPreferredBackend']" name="propertyName">GetLlmPreferredBackend</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference.jni.proto']/class[@name='LlmOptionsProto.LlmModelSettings']/method[@name='getLlmPreferredBackend']" name="propertyName">GetLlmPreferredBackend</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference.jni.proto']/class[@name='LlmOptionsProto.LlmModelSettings.Builder']/method[@name='getLlmPreferredBackend']" name="propertyName">GetLlmPreferredBackend</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference.jni.proto']/interface[@name='LlmOptionsProto.LlmModelSettingsOrBuilder']/method[@name='getLlmPreferredBackend']" name="propertyName">GetLlmPreferredBackend</attr>
 
-  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/class[@name='LlmOptionsProto.LlmModelSettings']/method[@name='getVisionModelSettings']" name="propertyName">GetVisionModelSettings</attr>
-  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/class[@name='LlmOptionsProto.LlmModelSettings.Builder']/method[@name='getVisionModelSettings']" name="propertyName">GetVisionModelSettings</attr>
-  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/interface[@name='LlmOptionsProto.LlmModelSettingsOrBuilder']/method[@name='getVisionModelSettings']" name="propertyName">GetVisionModelSettings</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference.jni.proto']/class[@name='LlmOptionsProto.LlmModelSettings']/method[@name='getVisionModelSettings']" name="propertyName">GetVisionModelSettings</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference.jni.proto']/class[@name='LlmOptionsProto.LlmModelSettings.Builder']/method[@name='getVisionModelSettings']" name="propertyName">GetVisionModelSettings</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference.jni.proto']/interface[@name='LlmOptionsProto.LlmModelSettingsOrBuilder']/method[@name='getVisionModelSettings']" name="propertyName">GetVisionModelSettings</attr>
 
-  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/class[@name='LlmOptionsProto.LlmSessionConfig']/method[@name='getGraphConfig']" name="propertyName">GetGraphConfig</attr>
-  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/class[@name='LlmOptionsProto.LlmSessionConfig.Builder']/method[@name='getGraphConfig']" name="propertyName">GetGraphConfig</attr>
-  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']/interface[@name='LlmOptionsProto.LlmSessionConfigOrBuilder']/method[@name='getGraphConfig']" name="propertyName">GetGraphConfig</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference.jni.proto']/class[@name='LlmOptionsProto.LlmSessionConfig']/method[@name='getGraphConfig']" name="propertyName">GetGraphConfig</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference.jni.proto']/class[@name='LlmOptionsProto.LlmSessionConfig.Builder']/method[@name='getGraphConfig']" name="propertyName">GetGraphConfig</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference.jni.proto']/interface[@name='LlmOptionsProto.LlmSessionConfigOrBuilder']/method[@name='getGraphConfig']" name="propertyName">GetGraphConfig</attr>
 
-  <attr path="/api/package[@name='com.google.mediapipe.tasks.core.jni.proto']" name="managedName">MediaPipe.Tasks.Core.Jni.Proto</attr>
-  <attr path="/api/package[@name='com.google.mediapipe.tasks.core']" name="managedName">MediaPipe.Tasks.Core</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference.jni.proto']/class[@name='LlmOptionsProto.LlmSessionConfig']/method[@name='getPromptTemplates']" name="propertyName">GetPromptTemplates</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference.jni.proto']/class[@name='LlmOptionsProto.LlmSessionConfig.Builder']/method[@name='getPromptTemplates']" name="propertyName">GetPromptTemplates</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference.jni.proto']/interface[@name='LlmOptionsProto.LlmSessionConfigOrBuilder']/method[@name='getPromptTemplates']" name="propertyName">GetPromptTemplates</attr>
+
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference.jni.proto']" name="managedName">MediaPipe.Tasks.GenAI.LlmInference.Jni.Proto</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.genai.llminference']" name="managedName">MediaPipe.Tasks.GenAI.LlmInference</attr>
 
 </metadata>

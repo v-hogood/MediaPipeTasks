@@ -21,17 +21,17 @@
     <NoWarn>CS0108;CS0114;CS0618</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Flogger.SystemBackend" Version="0.8.0.10" />
-    <PackageReference Include="Xamarin.Google.Android.DataTransport.TransportBackendCct" Version="4.0.0.2" />
-    <PackageReference Include="Xamarin.Google.Guava" Version="33.4.0.1" />
-    <PackageReference Include="Xamarin.Protobuf.JavaLite" Version="4.29.3.1" />
+    <PackageReference Include="Xamarin.Flogger.SystemBackend" Version="0.8.0.12" />
+    <PackageReference Include="Xamarin.Google.Android.DataTransport.TransportBackendCct" Version="4.0.0.4" />
+    <PackageReference Include="Xamarin.Google.Guava" Version="33.4.8.2" />
+    <PackageReference Include="Xamarin.Protobuf.JavaLite" Version="4.30.2.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Protobuf.Internal\Protobuf.Internal.csproj" PrivateAssets="all" />
   </ItemGroup>
   <Target Name="IncludeProjectReferenceDlls" DependsOnTargets="BuildOnlySettings;ResolveReferences">
     <ItemGroup>
-      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')->WithMetadataValue('PrivateAssets', 'all'))"/>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')-&gt;WithMetadataValue('PrivateAssets', 'all'))" />
     </ItemGroup>
   </Target>
   <Target Name="DownloadFile" BeforeTargets="_ExtractAar">

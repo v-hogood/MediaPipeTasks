@@ -103,21 +103,16 @@
   <remove-node path="/api/package[@name='com.google.protobuf']/class[@name='WireFormat']" />
   <remove-node path="/api/package[@name='com.google.protobuf']/class[@name='WrappersProto']" />
 
-  <remove-node path="/api/package[@name='com.google.protobuf']/interface[@name='Internal.ProtobufList']" />
-  <remove-node path="/api/package[@name='com.google.protobuf']/interface[@name='Internal.BooleanList']" />
-  <remove-node path="/api/package[@name='com.google.protobuf']/interface[@name='Internal.DoubleList']" />
-  <remove-node path="/api/package[@name='com.google.protobuf']/interface[@name='Internal.FloatList']" />
-  <remove-node path="/api/package[@name='com.google.protobuf']/interface[@name='Internal.IntList']" />
-  <remove-node path="/api/package[@name='com.google.protobuf']/interface[@name='Internal.LongList']" />
+  <attr path="/api/package[@name='com.google.protobuf']/interface[@name='Internal.BooleanList']/method[@name='mutableCopyWithCapacity']" name="managedReturn">IProtobufList</attr>
+  <attr path="/api/package[@name='com.google.protobuf']/interface[@name='Internal.DoubleList']/method[@name='mutableCopyWithCapacity']" name="managedReturn">IProtobufList</attr>
+  <attr path="/api/package[@name='com.google.protobuf']/interface[@name='Internal.FloatList']/method[@name='mutableCopyWithCapacity']" name="managedReturn">IProtobufList</attr>
+  <attr path="/api/package[@name='com.google.protobuf']/interface[@name='Internal.IntList']/method[@name='mutableCopyWithCapacity']" name="managedReturn">IProtobufList</attr>
+  <attr path="/api/package[@name='com.google.protobuf']/interface[@name='Internal.LongList']/method[@name='mutableCopyWithCapacity']" name="managedReturn">IProtobufList</attr>
   <remove-node path="/api/package[@name='com.google.protobuf']/class[@name='Internal']/field[@name='EMPTY_BYTE_ARRAY']" />
   <remove-node path="/api/package[@name='com.google.protobuf']/class[@name='Internal']/field[@name='EMPTY_BYTE_BUFFER']" />
   <remove-node path="/api/package[@name='com.google.protobuf']/class[@name='Internal']/field[@name='EMPTY_CODED_INPUT_STREAM']" />
-  <remove-node path="/api/package[@name='com.google.protobuf']/class[@name='Internal']/method[@name='byteArrayDefaultValue']" />
-  <remove-node path="/api/package[@name='com.google.protobuf']/class[@name='Internal']/method[@name='byteBufferDefaultValue']" />
   <remove-node path="/api/package[@name='com.google.protobuf']/class[@name='Internal']/method[@name='bytesDefaultValue']" />
-  <remove-node path="/api/package[@name='com.google.protobuf']/class[@name='Internal']/method[@name='stringDefaultValue']" />
   <remove-node path="/api/package[@name='com.google.protobuf']/class[@name='Internal']/method[@name='getDefaultInstance']" />
   <remove-node path="/api/package[@name='com.google.protobuf']/class[@name='Internal']/method[@name='isValidUtf8']" />
-  <remove-node path="/api/package[@name='com.google.protobuf']/class[@name='Internal.IntListAdapter']" />
-  <remove-node path="/api/package[@name='com.google.protobuf']/class[@name='Internal.MapAdapter']" />
+  <attr path="/api/package[@name='com.google.protobuf']/class[@name='Internal.MapAdapter']/method[@name='entrySet']" name="return">System.Collections.ICollection</attr>
 </metadata>
