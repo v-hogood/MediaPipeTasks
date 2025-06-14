@@ -7,7 +7,7 @@
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
     <PackageId>MediaPipeTasksGenAI.iOS</PackageId>
-    <PackageVersion>0.10.21</PackageVersion>
+    <PackageVersion>0.10.24</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
@@ -29,15 +29,31 @@
       <SmartLink>False</SmartLink>
       <LinkerFlags>-ObjC</LinkerFlags>
     </NativeReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MediaPipeTasksCommon.iOS\MediaPipeTasksCommon.csproj" />
+    <NativeReference Include="frameworks/MediaPipeTasksGenAIC.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+      <LinkerFlags>-ObjC -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -Wl,-rpath -Wl,@executable_path/Frameworks</LinkerFlags>
+      <Frameworks>Accelerate CoreVideo Metal OpenGLES</Frameworks>
+    </NativeReference>
+    <NativeReference Include="frameworks/genai_libraries/libMediaPipeTasksGenAIC_device.a">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+    <NativeReference Include="frameworks/genai_libraries/libMediaPipeTasksGenAIC_simulator.a">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
   </ItemGroup>
   <ItemGroup>
     <None Remove="frameworks/**/*" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="BeforeBuild">
-    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20250131-063213/MediaPipeTasksGenAI-0.10.21.tar.gz" DestinationFolder="." />
-    <Exec Command="tar -xf MediaPipeTasksGenAI-0.10.21.tar.gz" />
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20250519/MediaPipeTasksGenAI-0.10.24.tar.gz" DestinationFolder="." />
+    <Exec Command="tar -xf MediaPipeTasksGenAI-0.10.24.tar.gz" />
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20250519/MediaPipeTasksGenAIC-0.10.24.tar.gz" DestinationFolder="." />
+    <Exec Command="tar -xf MediaPipeTasksGenAIC-0.10.24.tar.gz" />
+    <Exec Command="lipo -remove arm64 libMediaPipeTasksGenAIC_simulator.a -output libMediaPipeTasksGenAIC_simulator.a" WorkingDirectory="frameworks/genai_libraries" />
   </Target>
 </Project>

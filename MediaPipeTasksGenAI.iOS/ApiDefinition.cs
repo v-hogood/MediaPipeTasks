@@ -1,4 +1,5 @@
 using System;
+using CoreGraphics;
 using Foundation;
 using MediaPipeTasksGenAI;
 using ObjCRuntime;
@@ -29,10 +30,10 @@ namespace MediaPipeTasksGenAI
 		bool GenerateResponseAsyncWithInputText (string inputText, [NullAllowed] out NSError error, Action<NSString, NSError> progress, Action completion);
 	}
 
-	// @interface MediaPipeTasksGenAI_Swift_361 (MPPLLMInference)
+	// @interface MediaPipeTasksGenAI_Swift_389 (MPPLLMInference)
 	[Category]
 	[BaseType (typeof(MPPLLMInference))]
-	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_361
+	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_389
 	{
 	}
 
@@ -54,6 +55,10 @@ namespace MediaPipeTasksGenAI
 		[Export ("addQueryChunkWithInputText:error:")]
 		bool AddQueryChunkWithInputText (string inputText, [NullAllowed] out NSError error);
 
+		// -(BOOL)addImageWithImage:(CGImageRef _Nonnull)image error:(NSError * _Nullable * _Nullable)error;
+		[Export ("addImageWithImage:error:")]
+		bool AddImageWithImage (CGImage image, [NullAllowed] out NSError error);
+
 		// -(NSString * _Nullable)generateResponseAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((warn_unused_result("")));
 		[Export ("generateResponseAndReturnError:")]
 		[return: NullAllowed]
@@ -64,10 +69,10 @@ namespace MediaPipeTasksGenAI
 		bool GenerateResponseAsyncAndReturnError ([NullAllowed] out NSError error, Action<NSString, NSError> progress, Action completion);
 	}
 
-	// @interface MediaPipeTasksGenAI_Swift_437 (MPPLLMInference)
+	// @interface MediaPipeTasksGenAI_Swift_466 (MPPLLMInference)
 	[Category]
 	[BaseType (typeof(MPPLLMInference))]
-	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_437
+	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_466
 	{
 	}
 
@@ -86,10 +91,10 @@ namespace MediaPipeTasksGenAI
 		NativeHandle Constructor (double initializationTimeInSeconds);
 	}
 
-	// @interface MediaPipeTasksGenAI_Swift_455 (MPPLLMInference)
+	// @interface MediaPipeTasksGenAI_Swift_484 (MPPLLMInference)
 	[Category]
 	[BaseType (typeof(MPPLLMInference))]
-	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_455
+	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_484
 	{
 	}
 
@@ -102,9 +107,21 @@ namespace MediaPipeTasksGenAI
 		[Export ("modelPath")]
 		string ModelPath { get; set; }
 
+		// @property (copy, nonatomic) NSString * _Nonnull visionEncoderPath;
+		[Export ("visionEncoderPath")]
+		string VisionEncoderPath { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull visionAdapterPath;
+		[Export ("visionAdapterPath")]
+		string VisionAdapterPath { get; set; }
+
 		// @property (nonatomic) NSInteger maxTokens;
 		[Export ("maxTokens")]
 		nint MaxTokens { get; set; }
+
+		// @property (nonatomic) NSInteger maxImages;
+		[Export ("maxImages")]
+		nint MaxImages { get; set; }
 
 		// @property (nonatomic) NSInteger maxTopk;
 		[Export ("maxTopk")]
@@ -122,16 +139,20 @@ namespace MediaPipeTasksGenAI
 		[Export ("useSubmodel")]
 		bool UseSubmodel { get; set; }
 
+		// @property (nonatomic) NSInteger sequenceBatchSize;
+		[Export ("sequenceBatchSize")]
+		nint SequenceBatchSize { get; set; }
+
 		// -(instancetype _Nonnull)initWithModelPath:(NSString * _Nonnull)modelPath __attribute__((objc_designated_initializer));
 		[Export ("initWithModelPath:")]
 		[DesignatedInitializer]
 		NativeHandle Constructor (string modelPath);
 	}
 
-	// @interface MediaPipeTasksGenAI_Swift_492 (MPPLLMInferenceSession)
+	// @interface MediaPipeTasksGenAI_Swift_533 (MPPLLMInferenceSession)
 	[Category]
 	[BaseType (typeof(MPPLLMInferenceSession))]
-	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_492
+	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_533
 	{
 	}
 
@@ -150,10 +171,10 @@ namespace MediaPipeTasksGenAI
 		NativeHandle Constructor (double responseGenerationTimeInSeconds);
 	}
 
-	// @interface MediaPipeTasksGenAI_Swift_508 (MPPLLMInferenceSession)
+	// @interface MediaPipeTasksGenAI_Swift_549 (MPPLLMInferenceSession)
 	[Category]
 	[BaseType (typeof(MPPLLMInferenceSession))]
-	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_508
+	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_549
 	{
 	}
 
@@ -180,5 +201,9 @@ namespace MediaPipeTasksGenAI
 		// @property (copy, nonatomic) NSString * _Nullable loraPath;
 		[NullAllowed, Export ("loraPath")]
 		string LoraPath { get; set; }
+
+		// @property (nonatomic) BOOL enableVisionModality;
+		[Export ("enableVisionModality")]
+		bool EnableVisionModality { get; set; }
 	}
 }
