@@ -59,6 +59,10 @@ namespace MediaPipeTasksGenAI
 		[Export ("addImageWithImage:error:")]
 		bool AddImageWithImage (CGImage image, [NullAllowed] out NSError error);
 
+		// -(BOOL)addAudioWithAudio:(NSData * _Nonnull)audio error:(NSError * _Nullable * _Nullable)error;
+		[Export ("addAudioWithAudio:error:")]
+		bool AddAudioWithAudio (NSData audio, [NullAllowed] out NSError error);
+
 		// -(NSString * _Nullable)generateResponseAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((warn_unused_result("")));
 		[Export ("generateResponseAndReturnError:")]
 		[return: NullAllowed]
@@ -91,10 +95,10 @@ namespace MediaPipeTasksGenAI
 		NativeHandle Constructor (double initializationTimeInSeconds);
 	}
 
-	// @interface MediaPipeTasksGenAI_Swift_484 (MPPLLMInference)
+	// @interface MediaPipeTasksGenAI_Swift_482 (MPPLLMInference)
 	[Category]
 	[BaseType (typeof(MPPLLMInference))]
-	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_484
+	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_482
 	{
 	}
 
@@ -114,6 +118,10 @@ namespace MediaPipeTasksGenAI
 		// @property (copy, nonatomic) NSString * _Nonnull visionAdapterPath;
 		[Export ("visionAdapterPath")]
 		string VisionAdapterPath { get; set; }
+
+		// @property (nonatomic) enum LlmPreferredBackend preferredBackend;
+		[Export ("preferredBackend", ArgumentSemantic.Assign)]
+		LlmPreferredBackend PreferredBackend { get; set; }
 
 		// @property (nonatomic) NSInteger maxTokens;
 		[Export ("maxTokens")]
@@ -143,16 +151,24 @@ namespace MediaPipeTasksGenAI
 		[Export ("sequenceBatchSize")]
 		nint SequenceBatchSize { get; set; }
 
+		// @property (nonatomic) NSInteger maxAudioSequenceLength;
+		[Export ("maxAudioSequenceLength")]
+		nint MaxAudioSequenceLength { get; set; }
+
+		// @property (nonatomic) BOOL enableAudioModality;
+		[Export ("enableAudioModality")]
+		bool EnableAudioModality { get; set; }
+
 		// -(instancetype _Nonnull)initWithModelPath:(NSString * _Nonnull)modelPath __attribute__((objc_designated_initializer));
 		[Export ("initWithModelPath:")]
 		[DesignatedInitializer]
 		NativeHandle Constructor (string modelPath);
 	}
 
-	// @interface MediaPipeTasksGenAI_Swift_533 (MPPLLMInferenceSession)
+	// @interface MediaPipeTasksGenAI_Swift_547 (MPPLLMInferenceSession)
 	[Category]
 	[BaseType (typeof(MPPLLMInferenceSession))]
-	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_533
+	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_547
 	{
 	}
 
@@ -171,10 +187,10 @@ namespace MediaPipeTasksGenAI
 		NativeHandle Constructor (double responseGenerationTimeInSeconds);
 	}
 
-	// @interface MediaPipeTasksGenAI_Swift_549 (MPPLLMInferenceSession)
+	// @interface MediaPipeTasksGenAI_Swift_561 (MPPLLMInferenceSession)
 	[Category]
 	[BaseType (typeof(MPPLLMInferenceSession))]
-	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_549
+	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_561
 	{
 	}
 
@@ -205,5 +221,9 @@ namespace MediaPipeTasksGenAI
 		// @property (nonatomic) BOOL enableVisionModality;
 		[Export ("enableVisionModality")]
 		bool EnableVisionModality { get; set; }
+
+		// @property (nonatomic) BOOL enableAudioModality;
+		[Export ("enableAudioModality")]
+		bool EnableAudioModality { get; set; }
 	}
 }

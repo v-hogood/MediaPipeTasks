@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-ios</TargetFramework>
+    <TargetFramework>net9.0-ios</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
     <PackageId>MediaPipeTasksVision.iOS</PackageId>
-    <PackageVersion>0.10.21</PackageVersion>
+    <PackageVersion>0.10.33</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
@@ -38,7 +38,8 @@
     <None Remove="frameworks/**/*" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="BeforeBuild">
-    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20250131-063213/MediaPipeTasksVision-0.10.21.tar.gz" DestinationFolder="." />
-    <Exec Command="tar -xf MediaPipeTasksVision-0.10.21.tar.gz" />
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20260319-173539/MediaPipeTasksVision-0.10.33.tar.gz" DestinationFolder="." />
+    <Exec Command="tar -xf MediaPipeTasksVision-0.10.33.tar.gz" />
+    <Exec Command="sed -i '' 's/MediaPipeTasksVision.a/MediaPipeTasksVision.framework/g' frameworks/MediaPipeTasksVision.xcframework/Info.plist" />
   </Target>
 </Project>
