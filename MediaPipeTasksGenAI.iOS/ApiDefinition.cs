@@ -71,6 +71,10 @@ namespace MediaPipeTasksGenAI
 		// -(BOOL)generateResponseAsyncAndReturnError:(NSError * _Nullable * _Nullable)error progress:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))progress completion:(void (^ _Nonnull)(void))completion;
 		[Export ("generateResponseAsyncAndReturnError:progress:completion:")]
 		bool GenerateResponseAsyncAndReturnError ([NullAllowed] out NSError error, Action<NSString, NSError> progress, Action completion);
+
+		// -(NSNumber * _Nullable)sizeInTokensObjCWithText:(NSString * _Nonnull)text error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+		[Export ("sizeInTokensObjCWithText:error:")]
+		NSNumber SizeInTokensWithText (string text, [NullAllowed] out NSError error);
 	}
 
 	// @interface MediaPipeTasksGenAI_Swift_466 (MPPLLMInference)

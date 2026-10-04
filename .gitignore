@@ -4,5 +4,9 @@ obj
 *.aar
 *.jar
 *.tar.gz
-Frameworks
+frameworks
+*.xcframework
+*.xcarchive
+*.xcworkspace
+xc*data
 LICENSE

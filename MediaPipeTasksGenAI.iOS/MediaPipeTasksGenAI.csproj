@@ -31,20 +31,32 @@
       <SmartLink>False</SmartLink>
       <LinkerFlags>-ObjC</LinkerFlags>
     </NativeReference>
-    <NativeReference Include="frameworks/MediaPipeTasksGenAIC.xcframework">
-      <Kind>Framework</Kind>
+    <NativeReference Include="MediaPipeTasksGenAIProxy/MediaPipeTasksGenAIProxy.xcframework">
+      <Kind>Static</Kind>
       <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <LinkerFlags>-ObjC</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="frameworks/MediaPipeTasksGenAIC.xcframework">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
       <LinkerFlags>-ObjC</LinkerFlags>
       <Frameworks>Accelerate CoreVideo Metal OpenGLES</Frameworks>
     </NativeReference>
   </ItemGroup>
   <ItemGroup>
     <None Remove="frameworks/**/*" />
+    <None Remove="MediaPipeTasksGenAIProxy/**/*" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="BeforeBuild">
     <DownloadFile SourceUrl="https://dl.google.com/cpdc/20260319-173534/MediaPipeTasksGenAI-0.10.33.tar.gz" DestinationFolder="." />
     <Exec Command="tar -xf MediaPipeTasksGenAI-0.10.33.tar.gz" />
     <DownloadFile SourceUrl="https://dl.google.com/cpdc/20260319-173537/MediaPipeTasksGenAIC-0.10.33.tar.gz" DestinationFolder="." />
     <Exec Command="tar -xf MediaPipeTasksGenAIC-0.10.33.tar.gz" />
+    <RemoveDir Directories="MediaPipeTasksGenAIProxy/MediaPipeTasksGenAIProxy.xcframework" />
+    <Exec Command="xcodebuild archive -scheme MediaPipeTasksGenAIProxy -archivePath iphoneos.xcarchive -sdk iphoneos" WorkingDirectory="./MediaPipeTasksGenAIProxy" />
+    <Exec Command="xcodebuild archive -scheme MediaPipeTasksGenAIProxy -archivePath iphonesimulator.xcarchive -sdk iphonesimulator" WorkingDirectory="./MediaPipeTasksGenAIProxy" />
+    <Exec Command="xcodebuild -create-xcframework -archive iphoneos.xcarchive -framework MediaPipeTasksGenAIProxy.framework -archive iphonesimulator.xcarchive -framework MediaPipeTasksGenAIProxy.framework -output MediaPipeTasksGenAIProxy.xcframework" WorkingDirectory="./MediaPipeTasksGenAIProxy" />
   </Target>
 </Project>
