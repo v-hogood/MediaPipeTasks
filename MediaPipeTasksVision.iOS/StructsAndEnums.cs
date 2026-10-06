@@ -1,6 +1,3 @@
-using System.Runtime.InteropServices;
-using Foundation;
-using MediaPipeTasksVision;
 using ObjCRuntime;
 
 namespace MediaPipeTasksVision
@@ -45,18 +42,6 @@ namespace MediaPipeTasksVision
 		Image,
 		Video,
 		LiveStream
-	}
-
-	public static class CFunctions
-	{
-		public static NSString MPPRunningModeDisplayName(MPPRunningMode runningMode) =>
-			runningMode switch
-			{
-				MPPRunningMode.Image => (NSString)"Image",
-				MPPRunningMode.Video => (NSString)"Video",
-				MPPRunningMode.LiveStream => (NSString)"Live Stream",
-				_ => null
-			};
 	}
 
 	[Native]

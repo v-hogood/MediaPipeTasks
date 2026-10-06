@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using CoreGraphics;
 using CoreMedia;
 using CoreVideo;
@@ -232,6 +233,31 @@ namespace MediaPipeTasksVision
 		[Export ("initWithEmbeddings:timestampInMilliseconds:")]
 		[DesignatedInitializer]
 		NativeHandle Constructor (MPPEmbedding[] embeddings, nint timestampInMilliseconds);
+	}
+
+	[Static]
+	partial interface CFunctions
+	{       
+		// NSString * _Nullable MPPRunningModeDisplayName (MPPRunningMode runningMode) __attribute__((always_inline));  
+		[DllImport ("MediaPipeTasksVision")]
+		[return: NullAllowed]
+		static extern NSString MPPRunningModeDisplayName (MPPRunningMode runningMode);
+	}
+
+	[Static]
+	partial interface Constants
+	{
+		// const MPPImageSourceType MPPImageSourceTypeImage;
+		[Field ("MPPImageSourceTypeImage", "MediaPipeTasksVision")]
+		nint MPPImageSourceTypeImage { get; }
+
+		// const MPPImageSourceType MPPImageSourceTypePixelBuffer;
+		[Field ("MPPImageSourceTypePixelBuffer", "MediaPipeTasksVision")]
+		nint MPPImageSourceTypePixelBuffer { get; }
+
+		// const MPPImageSourceType MPPImageSourceTypeSampleBuffer;
+		[Field ("MPPImageSourceTypeSampleBuffer", "MediaPipeTasksVision")]
+		nint MPPImageSourceTypeSampleBuffer { get; }
 	}
 
 	// @interface MPPImage : NSObject

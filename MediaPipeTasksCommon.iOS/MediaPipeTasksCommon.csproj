@@ -7,7 +7,7 @@
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
     <PackageId>MediaPipeTasksCommon.iOS</PackageId>
-    <PackageVersion>0.10.33</PackageVersion>
+    <PackageVersion>0.10.35</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
@@ -45,8 +45,8 @@
     <None Remove="frameworks/**/*" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="BeforeBuild">
-    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20260319-173533/MediaPipeTasksCommon-0.10.33.tar.gz" DestinationFolder="." />
-    <Exec Command="tar -xf MediaPipeTasksCommon-0.10.33.tar.gz" />
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20260427-204214/MediaPipeTasksCommon-0.10.35.tar.gz" DestinationFolder="." />
+    <Exec Command="tar -xf MediaPipeTasksCommon-0.10.35.tar.gz" />
     <Exec Command="lipo -remove arm64 libMediaPipeTasksCommon_simulator_graph.a -output libMediaPipeTasksCommon_simulator_graph.a" WorkingDirectory="frameworks/graph_libraries" />
     <Exec Command="sed -i '' 's/MediaPipeTasksCommon.a/MediaPipeTasksCommon.framework/g' frameworks/MediaPipeTasksCommon.xcframework/Info.plist" />
   </Target>
