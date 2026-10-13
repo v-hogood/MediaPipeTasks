@@ -10,6 +10,11 @@
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.core']" name="managedName">MediaPipe.Tasks.Vision.Core</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facedetector']" name="managedName">MediaPipe.Tasks.Vision.FaceDetector</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.facelandmarker']" name="managedName">MediaPipe.Tasks.Vision.FaceLandmarker</attr>
+  <remove-node path="/api/package[@name='com.google.mediapipe.tasks.vision.facelandmarker']/class[@name='FaceLandmarker']/method[@name='detect' and count(parameter)=1]" />
+  <remove-node path="/api/package[@name='com.google.mediapipe.tasks.vision.facelandmarker']/class[@name='FaceLandmarker']/method[@name='detect' and count(parameter)=2]" />
+  <remove-node path="/api/package[@name='com.google.mediapipe.tasks.vision.facelandmarker']/class[@name='FaceLandmarker']/method[@name='detectForVideo' and count(parameter)=2]" />
+  <remove-node path="/api/package[@name='com.google.mediapipe.tasks.vision.facelandmarker']/class[@name='FaceLandmarker']/method[@name='detectForVideo' and count(parameter)=3]" />
+  <remove-node path="/api/package[@name='com.google.mediapipe.tasks.vision.facelandmarker']/class[@name='FaceLandmarkerResult']/method[@name='faceLandmarks' and count(parameter)=0]" />
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.gesturerecognizer']" name="managedName">MediaPipe.Tasks.Vision.GestureRecognizer</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.handlandmarker']" name="managedName">MediaPipe.Tasks.Vision.HandLandmarker</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.holisticlandmarker']" name="managedName">MediaPipe.Tasks.Vision.HolisticLandmarker</attr>
