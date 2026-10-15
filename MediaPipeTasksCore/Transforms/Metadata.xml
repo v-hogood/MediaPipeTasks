@@ -10,6 +10,8 @@
   <remove-node path="/api/package[@name='com.google.mediapipe.tasks.core']/class[@name='OutputHandler']/field[@name='latestOutputTimestamp']" />
   <remove-node path="/api/package[@name='com.google.mediapipe.framework']/class[@name='AssetCacheDbHelper']/field[@name='DATABASE_NAME']" />
 
+  <attr path="/api/package[@name='com.google.mediapipe.framework']/class[@name='AppTextureFrame']/method[@name='finalize']" name="managedName">Finalizer</attr>
+
   <attr path="/api/package[@name='com.google.mediapipe.proto']/class[@name='CalculatorProto.InputCollection.InputType']" name="managedName">CalculatorProto.InputCollection.InputTypes</attr>
   <attr path="/api/package[@name='com.google.mediapipe.proto']/class[@name='MediaPipeLoggingProto.SolutionEvent.EventDetailsCase']" name="managedName">MediaPipeLoggingProto.SolutionEvent.EventDetailsCases</attr>
 
@@ -29,7 +31,8 @@
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagesegmenter.proto']/class[@name='SegmenterOptionsProto.SegmenterOptions.Activation']" name="managedName">SegmenterOptionsProto.SegmenterOptions.Activations</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagesegmenter.proto']/class[@name='SegmenterOptionsProto.SegmenterOptions.OutputType']" name="managedName">SegmenterOptionsProto.SegmenterOptions.OutputTypes</attr>
 
-  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.interactivesegmenter.proto']/class[@name='RegionOfInterestProto.RegionOfInterest.FocusRegionCase']" name="managedName">RegionOfInterestProto.RegionOfInterest.FocusRegionCases</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.interactivesegmenter.proto']/class[@name='StrokeProto.Stroke.BrushMode']" name="managedName">StrokeProto.Stroke.BrushModes</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.interactivesegmenterlegacy.proto']/class[@name='RegionOfInterestProto.RegionOfInterest.FocusRegionCase']" name="managedName">RegionOfInterestProto.RegionOfInterest.FocusRegionCases</attr>
 
   <attr path="/api/package[@name='com.google.mediapipe.tasks']/class[@name='TensorsToSegmentationCalculatorOptionsProto.TensorsToSegmentationCalculatorOptions.ConfidenceMaskOptions']" name="managedName">TensorsToSegmentationCalculatorOptionsProto.TensorsToSegmentationCalculatorOptions.ConfidenceMaskOption</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks']/class[@name='TensorsToSegmentationCalculatorOptionsProto.TensorsToSegmentationCalculatorOptions.ConfidenceMaskOptions.OutputFormat']" name="managedName">TensorsToSegmentationCalculatorOptionsProto.TensorsToSegmentationCalculatorOptions.ConfidenceMaskOption.OutputFormats</attr>
@@ -40,6 +43,8 @@
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Gpu.Api']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.GPU.API</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Gpu.CacheWritingBehavior']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.GPU.CacheWritingBehaviors</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Nnapi']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.NNAPI</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.WebNn.DeviceType']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.WebNn.DeviceTypes</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.WebNn.PowerPreference']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.WebNn.PowerPreferences</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.Delegate.Xnnpack']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.Delegates.XNNPACK</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfig']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfigs</attr>
   <attr path="/api/package[@name='com.google.mediapipe.calculator.proto']/class[@name='InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfig.InputTensorMapCase']" name="managedName">InferenceCalculatorProto.InferenceCalculatorOptions.InputOutputConfigs.InputTensorMapCases</attr>
@@ -103,6 +108,7 @@
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagegenerator.proto']" name="managedName">MediaPipe.Tasks.Vision.ImageGenerator.Proto</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagesegmenter.proto']" name="managedName">MediaPipe.Tasks.Vision.ImageSegmenter.Proto</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.interactivesegmenter.proto']" name="managedName">MediaPipe.Tasks.Vision.InteractiveSegmenter.Proto</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.interactivesegmenterlegacy.proto']" name="managedName">MediaPipe.Tasks.Vision.InteractiveSegmenterLegacy.Proto</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.objectdetector.proto']" name="managedName">MediaPipe.Tasks.Vision.ObjectDetector.Proto</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.posedetector.proto']" name="managedName">MediaPipe.Tasks.Vision.PoseDetector.Proto</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.poselandmarker.proto']" name="managedName">MediaPipe.Tasks.Vision.PoseLandmarker.Proto</attr>
