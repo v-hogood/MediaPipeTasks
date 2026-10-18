@@ -1,17 +1,17 @@
+using System.Runtime.InteropServices;
+using Foundation;
+using MediaPipeTasksVision;
 using ObjCRuntime;
 
-namespace MediaPipeTasksVision
-{
+namespace MediaPipeTasksVision {
 	[Native]
-	public enum MPPDelegate : ulong
-	{
+	public enum MPPDelegate : ulong {
 		Cpu,
 		Gpu
 	}
 
 	[Native]
-	public enum MPPTasksErrorCode : ulong
-	{
+	public enum MPPTasksErrorCode : ulong {
 		CancelledError = 1,
 		UnknownError = 2,
 		InvalidArgumentError = 3,
@@ -37,16 +37,24 @@ namespace MediaPipeTasksVision
 	}
 
 	[Native]
-	public enum MPPRunningMode : ulong
-	{
+	public enum MPPCoreRunningMode : ulong {
+		Unspecified,
+		Image,
+		Video,
+		LiveStream,
+		AudioClips,
+		AudioStream
+	}
+
+	[Native]
+	public enum MPPRunningMode : ulong {
 		Image,
 		Video,
 		LiveStream
 	}
 
 	[Native]
-	public enum MPPHandLandmark : ulong
-	{
+	public enum MPPHandLandmark : ulong {
 		Wrist,
 		ThumbCMC,
 		ThumbMCP,
@@ -71,9 +79,16 @@ namespace MediaPipeTasksVision
 	}
 
 	[Native]
-	public enum MPPMaskDataType : ulong
-	{
+	public enum MPPMaskDataType : ulong {
 		UInt8,
 		Float32
+	}
+
+	[Native]
+	public enum MPPBrushMode : ulong {
+		Unspecified = 0,
+		Positive = 1,
+		Negative = 2,
+		Lasso = 3
 	}
 }

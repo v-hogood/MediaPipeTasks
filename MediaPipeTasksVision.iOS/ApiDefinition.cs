@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using CoreFoundation;
 using CoreGraphics;
 using CoreMedia;
 using CoreVideo;
@@ -8,12 +9,10 @@ using MediaPipeTasksVision;
 using ObjCRuntime;
 using UIKit;
 
-namespace MediaPipeTasksVision
-{
+namespace MediaPipeTasksVision {
 	// @interface MPPBaseOptions : NSObject <NSCopying>
-	[BaseType (typeof(NSObject))]
-	interface MPPBaseOptions : INSCopying
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPBaseOptions : INSCopying {
 		// @property (copy, nonatomic) NSString * _Nonnull modelAssetPath;
 		[Export ("modelAssetPath")]
 		string ModelAssetPath { get; set; }
@@ -27,10 +26,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPCategory : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPCategory : INativeObject
-	{
+	interface MPPCategory : INativeObject {
 		// @property (readonly, nonatomic) NSInteger index;
 		[Export ("index")]
 		nint Index { get; }
@@ -54,10 +52,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPClassifications : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPClassifications
-	{
+	interface MPPClassifications {
 		// @property (readonly, nonatomic) NSInteger headIndex;
 		[Export ("headIndex")]
 		nint HeadIndex { get; }
@@ -68,26 +65,25 @@ namespace MediaPipeTasksVision
 
 		// @property (readonly, nonatomic) NSArray<MPPCategory *> * _Nonnull categories;
 		[Export ("categories")]
-		MPPCategory[] Categories { get; }
+		MPPCategory [] Categories { get; }
 
 		// -(instancetype _Nonnull)initWithHeadIndex:(NSInteger)headIndex categories:(NSArray<MPPCategory *> * _Nonnull)categories;
 		[Export ("initWithHeadIndex:categories:")]
-		NativeHandle Constructor (nint headIndex, MPPCategory[] categories);
+		NativeHandle Constructor (nint headIndex, MPPCategory [] categories);
 
 		// -(instancetype _Nonnull)initWithHeadIndex:(NSInteger)headIndex headName:(NSString * _Nullable)headName categories:(NSArray<MPPCategory *> * _Nonnull)categories __attribute__((objc_designated_initializer));
 		[Export ("initWithHeadIndex:headName:categories:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (nint headIndex, [NullAllowed] string headName, MPPCategory[] categories);
+		NativeHandle Constructor (nint headIndex, [NullAllowed] string headName, MPPCategory [] categories);
 	}
 
 	// @interface MPPClassificationResult : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPClassificationResult
-	{
+	interface MPPClassificationResult {
 		// @property (readonly, nonatomic) NSArray<MPPClassifications *> * _Nonnull classifications;
 		[Export ("classifications")]
-		MPPClassifications[] Classifications { get; }
+		MPPClassifications [] Classifications { get; }
 
 		// @property (readonly, nonatomic) NSInteger timestampInMilliseconds;
 		[Export ("timestampInMilliseconds")]
@@ -96,13 +92,12 @@ namespace MediaPipeTasksVision
 		// -(instancetype _Nonnull)initWithClassifications:(NSArray<MPPClassifications *> * _Nonnull)classifications timestampInMilliseconds:(NSInteger)timestampInMilliseconds __attribute__((objc_designated_initializer));
 		[Export ("initWithClassifications:timestampInMilliseconds:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (MPPClassifications[] classifications, nint timestampInMilliseconds);
+		NativeHandle Constructor (MPPClassifications [] classifications, nint timestampInMilliseconds);
 	}
 
 	// @interface MPPClassifierOptions : NSObject <NSCopying>
-	[BaseType (typeof(NSObject))]
-	interface MPPClassifierOptions : INSCopying
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPClassifierOptions : INSCopying {
 		// @property (copy, nonatomic) NSString * _Nullable displayNamesLocale;
 		[NullAllowed, Export ("displayNamesLocale")]
 		string DisplayNamesLocale { get; set; }
@@ -117,18 +112,17 @@ namespace MediaPipeTasksVision
 
 		// @property (copy, nonatomic) NSArray<NSString *> * _Nullable categoryAllowlist;
 		[NullAllowed, Export ("categoryAllowlist", ArgumentSemantic.Copy)]
-		string[] CategoryAllowlist { get; set; }
+		string [] CategoryAllowlist { get; set; }
 
 		// @property (copy, nonatomic) NSArray<NSString *> * _Nullable categoryDenylist;
 		[NullAllowed, Export ("categoryDenylist", ArgumentSemantic.Copy)]
-		string[] CategoryDenylist { get; set; }
+		string [] CategoryDenylist { get; set; }
 	}
 
 	// @interface MPPConnection : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPConnection
-	{
+	interface MPPConnection {
 		// @property (readonly, nonatomic) NSUInteger start;
 		[Export ("start")]
 		nuint Start { get; }
@@ -144,10 +138,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPNormalizedKeypoint : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPNormalizedKeypoint
-	{
+	interface MPPNormalizedKeypoint {
 		// @property (readonly, nonatomic) CGPoint location;
 		[Export ("location")]
 		CGPoint Location { get; }
@@ -167,13 +160,12 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPDetection : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPDetection
-	{
+	interface MPPDetection {
 		// @property (readonly, nonatomic) NSArray<MPPCategory *> * _Nonnull categories;
 		[Export ("categories")]
-		MPPCategory[] Categories { get; }
+		MPPCategory [] Categories { get; }
 
 		// @property (readonly, nonatomic) CGRect boundingBox;
 		[Export ("boundingBox")]
@@ -181,26 +173,25 @@ namespace MediaPipeTasksVision
 
 		// @property (readonly, nonatomic) NSArray<MPPNormalizedKeypoint *> * _Nullable keypoints;
 		[NullAllowed, Export ("keypoints")]
-		MPPNormalizedKeypoint[] Keypoints { get; }
+		MPPNormalizedKeypoint [] Keypoints { get; }
 
 		// -(instancetype _Nonnull)initWithCategories:(NSArray<MPPCategory *> * _Nonnull)categories boundingBox:(CGRect)boundingBox keypoints:(NSArray<MPPNormalizedKeypoint *> * _Nullable)keypoints __attribute__((objc_designated_initializer));
 		[Export ("initWithCategories:boundingBox:keypoints:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (MPPCategory[] categories, CGRect boundingBox, [NullAllowed] MPPNormalizedKeypoint[] keypoints);
+		NativeHandle Constructor (MPPCategory [] categories, CGRect boundingBox, [NullAllowed] MPPNormalizedKeypoint [] keypoints);
 	}
 
 	// @interface MPPEmbedding : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPEmbedding
-	{
+	interface MPPEmbedding {
 		// @property (readonly, nonatomic) NSArray<NSNumber *> * _Nullable floatEmbedding;
 		[NullAllowed, Export ("floatEmbedding")]
-		NSNumber[] FloatEmbedding { get; }
+		NSNumber [] FloatEmbedding { get; }
 
 		// @property (readonly, nonatomic) NSArray<NSNumber *> * _Nullable quantizedEmbedding;
 		[NullAllowed, Export ("quantizedEmbedding")]
-		NSNumber[] QuantizedEmbedding { get; }
+		NSNumber [] QuantizedEmbedding { get; }
 
 		// @property (readonly, nonatomic) NSInteger headIndex;
 		[Export ("headIndex")]
@@ -213,17 +204,16 @@ namespace MediaPipeTasksVision
 		// -(instancetype _Nonnull)initWithFloatEmbedding:(NSArray<NSNumber *> * _Nullable)floatEmbedding quantizedEmbedding:(NSArray<NSNumber *> * _Nullable)quantizedEmbedding headIndex:(NSInteger)headIndex headName:(NSString * _Nullable)headName __attribute__((objc_designated_initializer));
 		[Export ("initWithFloatEmbedding:quantizedEmbedding:headIndex:headName:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor ([NullAllowed] NSNumber[] floatEmbedding, [NullAllowed] NSNumber[] quantizedEmbedding, nint headIndex, [NullAllowed] string headName);
+		NativeHandle Constructor ([NullAllowed] NSNumber [] floatEmbedding, [NullAllowed] NSNumber [] quantizedEmbedding, nint headIndex, [NullAllowed] string headName);
 	}
 
 	// @interface MPPEmbeddingResult : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPEmbeddingResult
-	{
+	interface MPPEmbeddingResult {
 		// @property (readonly, nonatomic) NSArray<MPPEmbedding *> * _Nonnull embeddings;
 		[Export ("embeddings")]
-		MPPEmbedding[] Embeddings { get; }
+		MPPEmbedding [] Embeddings { get; }
 
 		// @property (readonly, nonatomic) NSInteger timestampInMilliseconds;
 		[Export ("timestampInMilliseconds")]
@@ -232,21 +222,23 @@ namespace MediaPipeTasksVision
 		// -(instancetype _Nonnull)initWithEmbeddings:(NSArray<MPPEmbedding *> * _Nonnull)embeddings timestampInMilliseconds:(NSInteger)timestampInMilliseconds __attribute__((objc_designated_initializer));
 		[Export ("initWithEmbeddings:timestampInMilliseconds:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (MPPEmbedding[] embeddings, nint timestampInMilliseconds);
+		NativeHandle Constructor (MPPEmbedding [] embeddings, nint timestampInMilliseconds);
 	}
 
 	[Static]
-	partial interface CFunctions
-	{       
+	partial interface CFunctions {
 		// NSString * _Nullable MPPRunningModeDisplayName (MPPRunningMode runningMode) __attribute__((always_inline));  
 		[DllImport ("MediaPipeTasksVision")]
 		[return: NullAllowed]
 		static extern NSString MPPRunningModeDisplayName (MPPRunningMode runningMode);
+
+		// MPPCoreRunningMode MPPCoreRunningModeFromVisionRunningMode (MPPRunningMode runningMode) __attribute__((always_inline));
+		[DllImport ("MediaPipeTasksVision")]
+		static extern MPPCoreRunningMode MPPCoreRunningModeFromVisionRunningMode (MPPRunningMode runningMode);
 	}
 
 	[Static]
-	partial interface Constants
-	{
+	partial interface Constants {
 		// const MPPImageSourceType MPPImageSourceTypeImage;
 		[Field ("MPPImageSourceTypeImage", "MediaPipeTasksVision")]
 		nint MPPImageSourceTypeImage { get; }
@@ -261,10 +253,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPImage : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPImage
-	{
+	interface MPPImage {
 		// @property (readonly, nonatomic) CGFloat width;
 		[Export ("width")]
 		nfloat Width { get; }
@@ -322,19 +313,17 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPTaskOptions : NSObject <NSCopying>
-	[BaseType (typeof(NSObject))]
-	interface MPPTaskOptions : INSCopying
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPTaskOptions : INSCopying {
 		// @property (copy, nonatomic) MPPBaseOptions * _Nonnull baseOptions;
 		[Export ("baseOptions", ArgumentSemantic.Copy)]
 		MPPBaseOptions BaseOptions { get; set; }
 	}
 
 	// @interface MPPTaskResult : NSObject <NSCopying>
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPTaskResult : INSCopying
-	{
+	interface MPPTaskResult : INSCopying {
 		// @property (readonly, assign, nonatomic) NSInteger timestampInMilliseconds;
 		[Export ("timestampInMilliseconds")]
 		nint TimestampInMilliseconds { get; }
@@ -346,32 +335,29 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPFaceDetectorResult : MPPTaskResult
-	[BaseType (typeof(MPPTaskResult))]
-	interface MPPFaceDetectorResult
-	{
+	[BaseType (typeof (MPPTaskResult))]
+	interface MPPFaceDetectorResult {
 		// @property (readonly, nonatomic) NSArray<MPPDetection *> * _Nonnull detections;
 		[Export ("detections")]
-		MPPDetection[] Detections { get; }
+		MPPDetection [] Detections { get; }
 
 		// -(instancetype _Nonnull)initWithDetections:(NSArray<MPPDetection *> * _Nonnull)detections timestampInMilliseconds:(NSInteger)timestampInMilliseconds;
 		[Export ("initWithDetections:timestampInMilliseconds:")]
-		NativeHandle Constructor (MPPDetection[] detections, nint timestampInMilliseconds);
+		NativeHandle Constructor (MPPDetection [] detections, nint timestampInMilliseconds);
 	}
 
 	// @protocol MPPFaceDetectorLiveStreamDelegate <NSObject>
 	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
-	interface MPPFaceDetectorLiveStreamDelegate
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPFaceDetectorLiveStreamDelegate {
 		// @optional -(void)faceDetector:(MPPFaceDetector * _Nonnull)faceDetector didFinishDetectionWithResult:(MPPFaceDetectorResult * _Nullable)result timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable)error __attribute__((swift_name("faceDetector(_:didFinishDetection:timestampInMilliseconds:error:)")));
 		[Export ("faceDetector:didFinishDetectionWithResult:timestampInMilliseconds:error:")]
 		void DidFinishDetectionWithResult (MPPFaceDetector faceDetector, [NullAllowed] MPPFaceDetectorResult result, nint timestampInMilliseconds, [NullAllowed] NSError error);
 	}
 
 	// @interface MPPFaceDetectorOptions : MPPTaskOptions <NSCopying>
-	[BaseType (typeof(MPPTaskOptions))]
-	interface MPPFaceDetectorOptions : INSCopying
-	{
+	[BaseType (typeof (MPPTaskOptions))]
+	interface MPPFaceDetectorOptions : INSCopying {
 		// @property (nonatomic) MPPRunningMode runningMode;
 		[Export ("runningMode", ArgumentSemantic.Assign)]
 		MPPRunningMode RunningMode { get; set; }
@@ -394,10 +380,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPFaceDetector : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPFaceDetector
-	{
+	interface MPPFaceDetector {
 		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
 		[Export ("initWithModelPath:error:")]
 		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
@@ -423,10 +408,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPLandmark : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPLandmark : INativeObject
-	{
+	interface MPPLandmark : INativeObject {
 		// @property (readonly, nonatomic) float x;
 		[Export ("x")]
 		float X { get; }
@@ -454,10 +438,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPNormalizedLandmark : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPNormalizedLandmark : INativeObject
-	{
+	interface MPPNormalizedLandmark : INativeObject {
 		// @property (readonly, nonatomic) float x;
 		[Export ("x")]
 		float X { get; }
@@ -485,10 +468,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPTransformMatrix : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPTransformMatrix
-	{
+	interface MPPTransformMatrix {
 		// @property (readonly, nonatomic) NSUInteger rows;
 		[Export ("rows")]
 		nuint Rows { get; }
@@ -512,33 +494,31 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPFaceLandmarkerResult : MPPTaskResult
-	[BaseType (typeof(MPPTaskResult))]
+	[BaseType (typeof (MPPTaskResult))]
 	[DisableDefaultCtor]
-	interface MPPFaceLandmarkerResult
-	{
+	interface MPPFaceLandmarkerResult {
 		// @property (readonly, nonatomic) NSArray<NSArray<MPPNormalizedLandmark *> *> * _Nonnull faceLandmarks;
 		[Export ("faceLandmarks")]
-		NSArray<MPPNormalizedLandmark>[] FaceLandmarks { get; }
+		NSArray<MPPNormalizedLandmark> [] FaceLandmarks { get; }
 
 		// @property (readonly, nonatomic) NSArray<MPPClassifications *> * _Nonnull faceBlendshapes;
 		[Export ("faceBlendshapes")]
-		MPPClassifications[] FaceBlendshapes { get; }
+		MPPClassifications [] FaceBlendshapes { get; }
 
 		// @property (readonly, nonatomic) NSArray<MPPTransformMatrix *> * _Nonnull facialTransformationMatrixes;
 		[Export ("facialTransformationMatrixes")]
-		MPPTransformMatrix[] FacialTransformationMatrixes { get; }
+		MPPTransformMatrix [] FacialTransformationMatrixes { get; }
 
 		// -(instancetype _Nonnull)initWithFaceLandmarks:(NSArray<NSArray<MPPNormalizedLandmark *> *> * _Nonnull)faceLandmarks faceBlendshapes:(NSArray<MPPClassifications *> * _Nonnull)faceBlendshapes facialTransformationMatrixes:(NSArray<MPPTransformMatrix *> * _Nonnull)facialTransformationMatrixes timestampInMilliseconds:(NSInteger)timestampInMilliseconds __attribute__((objc_designated_initializer));
 		[Export ("initWithFaceLandmarks:faceBlendshapes:facialTransformationMatrixes:timestampInMilliseconds:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (NSArray<MPPNormalizedLandmark>[] faceLandmarks, MPPClassifications[] faceBlendshapes, MPPTransformMatrix[] facialTransformationMatrixes, nint timestampInMilliseconds);
+		NativeHandle Constructor (NSArray<MPPNormalizedLandmark> [] faceLandmarks, MPPClassifications [] faceBlendshapes, MPPTransformMatrix [] facialTransformationMatrixes, nint timestampInMilliseconds);
 	}
 
 	// @protocol MPPFaceLandmarkerLiveStreamDelegate <NSObject>
 	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
-	interface MPPFaceLandmarkerLiveStreamDelegate
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPFaceLandmarkerLiveStreamDelegate {
 		// @required -(void)faceLandmarker:(MPPFaceLandmarker * _Nonnull)faceLandmarker didFinishDetectionWithResult:(MPPFaceLandmarkerResult * _Nullable)result timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable)error __attribute__((swift_name("faceLandmarker(_:didFinishDetection:timestampInMilliseconds:error:)")));
 		[Abstract]
 		[Export ("faceLandmarker:didFinishDetectionWithResult:timestampInMilliseconds:error:")]
@@ -546,9 +526,8 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPFaceLandmarkerOptions : MPPTaskOptions <NSCopying>
-	[BaseType (typeof(MPPTaskOptions))]
-	interface MPPFaceLandmarkerOptions : INSCopying
-	{
+	[BaseType (typeof (MPPTaskOptions))]
+	interface MPPFaceLandmarkerOptions : INSCopying {
 		// @property (nonatomic) MPPRunningMode runningMode;
 		[Export ("runningMode", ArgumentSemantic.Assign)]
 		MPPRunningMode RunningMode { get; set; }
@@ -587,10 +566,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPFaceLandmarker : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPFaceLandmarker
-	{
+	interface MPPFaceLandmarker {
 		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
 		[Export ("initWithModelPath:error:")]
 		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
@@ -617,98 +595,95 @@ namespace MediaPipeTasksVision
 		// +(NSArray<MPPConnection *> * _Nonnull)lipsConnections;
 		[Static]
 		[Export ("lipsConnections")]
-		MPPConnection[] LipsConnections { get; }
+		MPPConnection [] LipsConnections { get; }
 
 		// +(NSArray<MPPConnection *> * _Nonnull)leftEyeConnections;
 		[Static]
 		[Export ("leftEyeConnections")]
-		MPPConnection[] LeftEyeConnections { get; }
+		MPPConnection [] LeftEyeConnections { get; }
 
 		// +(NSArray<MPPConnection *> * _Nonnull)leftEyebrowConnections;
 		[Static]
 		[Export ("leftEyebrowConnections")]
-		MPPConnection[] LeftEyebrowConnections { get; }
+		MPPConnection [] LeftEyebrowConnections { get; }
 
 		// +(NSArray<MPPConnection *> * _Nonnull)leftIrisConnections;
 		[Static]
 		[Export ("leftIrisConnections")]
-		MPPConnection[] LeftIrisConnections { get; }
+		MPPConnection [] LeftIrisConnections { get; }
 
 		// +(NSArray<MPPConnection *> * _Nonnull)rightEyeConnections;
 		[Static]
 		[Export ("rightEyeConnections")]
-		MPPConnection[] RightEyeConnections { get; }
+		MPPConnection [] RightEyeConnections { get; }
 
 		// +(NSArray<MPPConnection *> * _Nonnull)rightEyebrowConnections;
 		[Static]
 		[Export ("rightEyebrowConnections")]
-		MPPConnection[] RightEyebrowConnections { get; }
+		MPPConnection [] RightEyebrowConnections { get; }
 
 		// +(NSArray<MPPConnection *> * _Nonnull)rightIrisConnections;
 		[Static]
 		[Export ("rightIrisConnections")]
-		MPPConnection[] RightIrisConnections { get; }
+		MPPConnection [] RightIrisConnections { get; }
 
 		// +(NSArray<MPPConnection *> * _Nonnull)faceOvalConnections;
 		[Static]
 		[Export ("faceOvalConnections")]
-		MPPConnection[] FaceOvalConnections { get; }
+		MPPConnection [] FaceOvalConnections { get; }
 
 		// +(NSArray<MPPConnection *> * _Nonnull)contoursConnections;
 		[Static]
 		[Export ("contoursConnections")]
-		MPPConnection[] ContoursConnections { get; }
+		MPPConnection [] ContoursConnections { get; }
 
 		// +(NSArray<MPPConnection *> * _Nonnull)tesselationConnections;
 		[Static]
 		[Export ("tesselationConnections")]
-		MPPConnection[] TesselationConnections { get; }
+		MPPConnection [] TesselationConnections { get; }
 
 		// +(NSArray<MPPConnection *> * _Nonnull)faceConnections;
 		[Static]
 		[Export ("faceConnections")]
-		MPPConnection[] FaceConnections { get; }
+		MPPConnection [] FaceConnections { get; }
 	}
 
 	// @interface MPPGestureRecognizerResult : MPPTaskResult
-	[BaseType (typeof(MPPTaskResult))]
-	interface MPPGestureRecognizerResult
-	{
+	[BaseType (typeof (MPPTaskResult))]
+	interface MPPGestureRecognizerResult {
 		// @property (readonly, nonatomic) NSArray<NSArray<MPPNormalizedLandmark *> *> * _Nonnull landmarks;
 		[Export ("landmarks")]
-		NSArray<MPPNormalizedLandmark>[] Landmarks { get; }
+		NSArray<MPPNormalizedLandmark> [] Landmarks { get; }
 
 		// @property (readonly, nonatomic) NSArray<NSArray<MPPLandmark *> *> * _Nonnull worldLandmarks;
 		[Export ("worldLandmarks")]
-		NSArray<MPPLandmark>[] WorldLandmarks { get; }
+		NSArray<MPPLandmark> [] WorldLandmarks { get; }
 
 		// @property (readonly, nonatomic) NSArray<NSArray<MPPCategory *> *> * _Nonnull handedness;
 		[Export ("handedness")]
-		NSArray<MPPCategory>[] Handedness { get; }
+		NSArray<MPPCategory> [] Handedness { get; }
 
 		// @property (readonly, nonatomic) NSArray<NSArray<MPPCategory *> *> * _Nonnull gestures;
 		[Export ("gestures")]
-		NSArray<MPPCategory>[] Gestures { get; }
+		NSArray<MPPCategory> [] Gestures { get; }
 
 		// -(instancetype _Nonnull)initWithGestures:(NSArray<NSArray<MPPCategory *> *> * _Nonnull)gestures handedness:(NSArray<NSArray<MPPCategory *> *> * _Nonnull)handedness landmarks:(NSArray<NSArray<MPPNormalizedLandmark *> *> * _Nonnull)landmarks worldLandmarks:(NSArray<NSArray<MPPLandmark *> *> * _Nonnull)worldLandmarks timestampInMilliseconds:(NSInteger)timestampInMilliseconds;
 		[Export ("initWithGestures:handedness:landmarks:worldLandmarks:timestampInMilliseconds:")]
-		NativeHandle Constructor (NSArray<MPPCategory>[] gestures, NSArray<MPPCategory>[] handedness, NSArray<MPPNormalizedLandmark>[] landmarks, NSArray<MPPLandmark>[] worldLandmarks, nint timestampInMilliseconds);
+		NativeHandle Constructor (NSArray<MPPCategory> [] gestures, NSArray<MPPCategory> [] handedness, NSArray<MPPNormalizedLandmark> [] landmarks, NSArray<MPPLandmark> [] worldLandmarks, nint timestampInMilliseconds);
 	}
 
 	// @protocol MPPGestureRecognizerLiveStreamDelegate <NSObject>
 	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
-	interface MPPGestureRecognizerLiveStreamDelegate
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPGestureRecognizerLiveStreamDelegate {
 		// @optional -(void)gestureRecognizer:(MPPGestureRecognizer * _Nonnull)gestureRecognizer didFinishRecognitionWithResult:(MPPGestureRecognizerResult * _Nullable)result timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable)error __attribute__((swift_name("gestureRecognizer(_:didFinishGestureRecognition:timestampInMilliseconds:error:)")));
 		[Export ("gestureRecognizer:didFinishRecognitionWithResult:timestampInMilliseconds:error:")]
 		void DidFinishRecognitionWithResult (MPPGestureRecognizer gestureRecognizer, [NullAllowed] MPPGestureRecognizerResult result, nint timestampInMilliseconds, [NullAllowed] NSError error);
 	}
 
 	// @interface MPPGestureRecognizerOptions : MPPTaskOptions <NSCopying>
-	[BaseType (typeof(MPPTaskOptions))]
-	interface MPPGestureRecognizerOptions : INSCopying
-	{
+	[BaseType (typeof (MPPTaskOptions))]
+	interface MPPGestureRecognizerOptions : INSCopying {
 		// @property (nonatomic) MPPRunningMode runningMode;
 		[Export ("runningMode", ArgumentSemantic.Assign)]
 		MPPRunningMode RunningMode { get; set; }
@@ -747,10 +722,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPGestureRecognizer : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPGestureRecognizer
-	{
+	interface MPPGestureRecognizer {
 		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
 		[Export ("initWithModelPath:error:")]
 		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
@@ -776,40 +750,37 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPHandLandmarkerResult : MPPTaskResult
-	[BaseType (typeof(MPPTaskResult))]
-	interface MPPHandLandmarkerResult
-	{
+	[BaseType (typeof (MPPTaskResult))]
+	interface MPPHandLandmarkerResult {
 		// @property (readonly, nonatomic) NSArray<NSArray<MPPNormalizedLandmark *> *> * _Nonnull landmarks;
 		[Export ("landmarks")]
-		NSArray<MPPNormalizedLandmark>[] Landmarks { get; }
+		NSArray<MPPNormalizedLandmark> [] Landmarks { get; }
 
 		// @property (readonly, nonatomic) NSArray<NSArray<MPPLandmark *> *> * _Nonnull worldLandmarks;
 		[Export ("worldLandmarks")]
-		NSArray<MPPLandmark>[] WorldLandmarks { get; }
+		NSArray<MPPLandmark> [] WorldLandmarks { get; }
 
 		// @property (readonly, nonatomic) NSArray<NSArray<MPPCategory *> *> * _Nonnull handedness;
 		[Export ("handedness")]
-		NSArray<MPPCategory>[] Handedness { get; }
+		NSArray<MPPCategory> [] Handedness { get; }
 
 		// -(instancetype _Nonnull)initWithLandmarks:(NSArray<NSArray<MPPNormalizedLandmark *> *> * _Nonnull)landmarks worldLandmarks:(NSArray<NSArray<MPPLandmark *> *> * _Nonnull)worldLandmarks handedness:(NSArray<NSArray<MPPCategory *> *> * _Nonnull)handedness timestampInMilliseconds:(NSInteger)timestampInMilliseconds;
 		[Export ("initWithLandmarks:worldLandmarks:handedness:timestampInMilliseconds:")]
-		NativeHandle Constructor (NSArray<MPPNormalizedLandmark>[] landmarks, NSArray<MPPLandmark>[] worldLandmarks, NSArray<MPPCategory>[] handedness, nint timestampInMilliseconds);
+		NativeHandle Constructor (NSArray<MPPNormalizedLandmark> [] landmarks, NSArray<MPPLandmark> [] worldLandmarks, NSArray<MPPCategory> [] handedness, nint timestampInMilliseconds);
 	}
 
 	// @protocol MPPHandLandmarkerLiveStreamDelegate <NSObject>
 	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
-	interface MPPHandLandmarkerLiveStreamDelegate
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPHandLandmarkerLiveStreamDelegate {
 		// @optional -(void)handLandmarker:(MPPHandLandmarker * _Nonnull)handLandmarker didFinishDetectionWithResult:(MPPHandLandmarkerResult * _Nullable)result timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable)error __attribute__((swift_name("handLandmarker(_:didFinishDetection:timestampInMilliseconds:error:)")));
 		[Export ("handLandmarker:didFinishDetectionWithResult:timestampInMilliseconds:error:")]
 		void DidFinishDetectionWithResult (MPPHandLandmarker handLandmarker, [NullAllowed] MPPHandLandmarkerResult result, nint timestampInMilliseconds, [NullAllowed] NSError error);
 	}
 
 	// @interface MPPHandLandmarkerOptions : MPPTaskOptions <NSCopying>
-	[BaseType (typeof(MPPTaskOptions))]
-	interface MPPHandLandmarkerOptions : INSCopying
-	{
+	[BaseType (typeof (MPPTaskOptions))]
+	interface MPPHandLandmarkerOptions : INSCopying {
 		// @property (nonatomic) MPPRunningMode runningMode;
 		[Export ("runningMode", ArgumentSemantic.Assign)]
 		MPPRunningMode RunningMode { get; set; }
@@ -840,44 +811,43 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPHandLandmarker : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPHandLandmarker
-	{
+	interface MPPHandLandmarker {
 		// @property (readonly, nonatomic, class) NSArray<MPPConnection *> * _Nonnull handPalmConnections;
 		[Static]
 		[Export ("handPalmConnections")]
-		MPPConnection[] HandPalmConnections { get; }
+		MPPConnection [] HandPalmConnections { get; }
 
 		// @property (readonly, nonatomic, class) NSArray<MPPConnection *> * _Nonnull handThumbConnections;
 		[Static]
 		[Export ("handThumbConnections")]
-		MPPConnection[] HandThumbConnections { get; }
+		MPPConnection [] HandThumbConnections { get; }
 
 		// @property (readonly, nonatomic, class) NSArray<MPPConnection *> * _Nonnull handIndexFingerConnections;
 		[Static]
 		[Export ("handIndexFingerConnections")]
-		MPPConnection[] HandIndexFingerConnections { get; }
+		MPPConnection [] HandIndexFingerConnections { get; }
 
 		// @property (readonly, nonatomic, class) NSArray<MPPConnection *> * _Nonnull handMiddleFingerConnections;
 		[Static]
 		[Export ("handMiddleFingerConnections")]
-		MPPConnection[] HandMiddleFingerConnections { get; }
+		MPPConnection [] HandMiddleFingerConnections { get; }
 
 		// @property (readonly, nonatomic, class) NSArray<MPPConnection *> * _Nonnull handRingFingerConnections;
 		[Static]
 		[Export ("handRingFingerConnections")]
-		MPPConnection[] HandRingFingerConnections { get; }
+		MPPConnection [] HandRingFingerConnections { get; }
 
 		// @property (readonly, nonatomic, class) NSArray<MPPConnection *> * _Nonnull handPinkyConnections;
 		[Static]
 		[Export ("handPinkyConnections")]
-		MPPConnection[] HandPinkyConnections { get; }
+		MPPConnection [] HandPinkyConnections { get; }
 
 		// @property (readonly, nonatomic, class) NSArray<MPPConnection *> * _Nonnull handConnections;
 		[Static]
 		[Export ("handConnections")]
-		MPPConnection[] HandConnections { get; }
+		MPPConnection [] HandConnections { get; }
 
 		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
 		[Export ("initWithModelPath:error:")]
@@ -904,10 +874,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPMask : NSObject <NSCopying>
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPMask : INSCopying
-	{
+	interface MPPMask : INSCopying {
 		// @property (readonly, nonatomic) NSInteger width;
 		[Export ("width")]
 		nint Width { get; }
@@ -940,13 +909,12 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPHolisticLandmarkerResult : MPPTaskResult
-	[BaseType (typeof(MPPTaskResult))]
+	[BaseType (typeof (MPPTaskResult))]
 	[DisableDefaultCtor]
-	interface MPPHolisticLandmarkerResult
-	{
+	interface MPPHolisticLandmarkerResult {
 		// @property (readonly, nonatomic) NSArray<MPPNormalizedLandmark *> * _Nonnull faceLandmarks;
 		[Export ("faceLandmarks")]
-		MPPNormalizedLandmark[] FaceLandmarks { get; }
+		MPPNormalizedLandmark [] FaceLandmarks { get; }
 
 		// @property (readonly, nonatomic) MPPClassifications * _Nullable faceBlendshapes;
 		[NullAllowed, Export ("faceBlendshapes")]
@@ -954,11 +922,11 @@ namespace MediaPipeTasksVision
 
 		// @property (readonly, nonatomic) NSArray<MPPNormalizedLandmark *> * _Nonnull poseLandmarks;
 		[Export ("poseLandmarks")]
-		MPPNormalizedLandmark[] PoseLandmarks { get; }
+		MPPNormalizedLandmark [] PoseLandmarks { get; }
 
 		// @property (readonly, nonatomic) NSArray<MPPLandmark *> * _Nonnull poseWorldLandmarks;
 		[Export ("poseWorldLandmarks")]
-		MPPLandmark[] PoseWorldLandmarks { get; }
+		MPPLandmark [] PoseWorldLandmarks { get; }
 
 		// @property (readonly, nonatomic) MPPMask * _Nullable poseSegmentationMask;
 		[NullAllowed, Export ("poseSegmentationMask")]
@@ -966,31 +934,30 @@ namespace MediaPipeTasksVision
 
 		// @property (readonly, nonatomic) NSArray<MPPNormalizedLandmark *> * _Nonnull leftHandLandmarks;
 		[Export ("leftHandLandmarks")]
-		MPPNormalizedLandmark[] LeftHandLandmarks { get; }
+		MPPNormalizedLandmark [] LeftHandLandmarks { get; }
 
 		// @property (readonly, nonatomic) NSArray<MPPLandmark *> * _Nonnull leftHandWorldLandmarks;
 		[Export ("leftHandWorldLandmarks")]
-		MPPLandmark[] LeftHandWorldLandmarks { get; }
+		MPPLandmark [] LeftHandWorldLandmarks { get; }
 
 		// @property (readonly, nonatomic) NSArray<MPPNormalizedLandmark *> * _Nonnull rightHandLandmarks;
 		[Export ("rightHandLandmarks")]
-		MPPNormalizedLandmark[] RightHandLandmarks { get; }
+		MPPNormalizedLandmark [] RightHandLandmarks { get; }
 
 		// @property (readonly, nonatomic) NSArray<MPPLandmark *> * _Nonnull rightHandWorldLandmarks;
 		[Export ("rightHandWorldLandmarks")]
-		MPPLandmark[] RightHandWorldLandmarks { get; }
+		MPPLandmark [] RightHandWorldLandmarks { get; }
 
 		// -(instancetype _Nonnull)initWithFaceLandmarks:(NSArray<MPPNormalizedLandmark *> * _Nonnull)faceLandmarks faceBlendshapes:(MPPClassifications * _Nullable)faceBlendshapes poseLandmarks:(NSArray<MPPNormalizedLandmark *> * _Nonnull)poseLandmarks poseWorldLandmarks:(NSArray<MPPLandmark *> * _Nonnull)poseWorldLandmarks poseSegmentationMask:(MPPMask * _Nullable)poseSegmentationMask leftHandLandmarks:(NSArray<MPPNormalizedLandmark *> * _Nonnull)leftHandLandmarks leftHandWorldLandmarks:(NSArray<MPPLandmark *> * _Nonnull)leftHandWorldLandmarks rightHandLandmarks:(NSArray<MPPNormalizedLandmark *> * _Nonnull)rightHandLandmarks rightHandWorldLandmarks:(NSArray<MPPLandmark *> * _Nonnull)rightHandWorldLandmarks timestampInMilliseconds:(NSInteger)timestampInMilliseconds __attribute__((objc_designated_initializer));
 		[Export ("initWithFaceLandmarks:faceBlendshapes:poseLandmarks:poseWorldLandmarks:poseSegmentationMask:leftHandLandmarks:leftHandWorldLandmarks:rightHandLandmarks:rightHandWorldLandmarks:timestampInMilliseconds:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (MPPNormalizedLandmark[] faceLandmarks, [NullAllowed] MPPClassifications faceBlendshapes, MPPNormalizedLandmark[] poseLandmarks, MPPLandmark[] poseWorldLandmarks, [NullAllowed] MPPMask poseSegmentationMask, MPPNormalizedLandmark[] leftHandLandmarks, MPPLandmark[] leftHandWorldLandmarks, MPPNormalizedLandmark[] rightHandLandmarks, MPPLandmark[] rightHandWorldLandmarks, nint timestampInMilliseconds);
+		NativeHandle Constructor (MPPNormalizedLandmark [] faceLandmarks, [NullAllowed] MPPClassifications faceBlendshapes, MPPNormalizedLandmark [] poseLandmarks, MPPLandmark [] poseWorldLandmarks, [NullAllowed] MPPMask poseSegmentationMask, MPPNormalizedLandmark [] leftHandLandmarks, MPPLandmark [] leftHandWorldLandmarks, MPPNormalizedLandmark [] rightHandLandmarks, MPPLandmark [] rightHandWorldLandmarks, nint timestampInMilliseconds);
 	}
 
 	// @protocol MPPHolisticLandmarkerLiveStreamDelegate <NSObject>
 	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
-	interface MPPHolisticLandmarkerLiveStreamDelegate
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPHolisticLandmarkerLiveStreamDelegate {
 		// @required -(void)holisticLandmarker:(MPPHolisticLandmarker * _Nonnull)holisticLandmarker didFinishDetectionWithResult:(MPPHolisticLandmarkerResult * _Nullable)result timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable)error __attribute__((swift_name("holisticLandmarker(_:didFinishDetection:timestampInMilliseconds:error:)")));
 		[Abstract]
 		[Export ("holisticLandmarker:didFinishDetectionWithResult:timestampInMilliseconds:error:")]
@@ -998,9 +965,8 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPHolisticLandmarkerOptions : MPPTaskOptions <NSCopying>
-	[BaseType (typeof(MPPTaskOptions))]
-	interface MPPHolisticLandmarkerOptions : INSCopying
-	{
+	[BaseType (typeof (MPPTaskOptions))]
+	interface MPPHolisticLandmarkerOptions : INSCopying {
 		// @property (nonatomic) MPPRunningMode runningMode;
 		[Export ("runningMode", ArgumentSemantic.Assign)]
 		MPPRunningMode RunningMode { get; set; }
@@ -1051,10 +1017,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPHolisticLandmarker : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPHolisticLandmarker
-	{
+	interface MPPHolisticLandmarker {
 		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
 		[Export ("initWithModelPath:error:")]
 		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
@@ -1080,9 +1045,8 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPImageClassifierResult : MPPTaskResult
-	[BaseType (typeof(MPPTaskResult))]
-	interface MPPImageClassifierResult
-	{
+	[BaseType (typeof (MPPTaskResult))]
+	interface MPPImageClassifierResult {
 		// @property (readonly, nonatomic) MPPClassificationResult * _Nonnull classificationResult;
 		[Export ("classificationResult")]
 		MPPClassificationResult ClassificationResult { get; }
@@ -1094,18 +1058,16 @@ namespace MediaPipeTasksVision
 
 	// @protocol MPPImageClassifierLiveStreamDelegate <NSObject>
 	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
-	interface MPPImageClassifierLiveStreamDelegate
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPImageClassifierLiveStreamDelegate {
 		// @optional -(void)imageClassifier:(MPPImageClassifier * _Nonnull)imageClassifier didFinishClassificationWithResult:(MPPImageClassifierResult * _Nullable)result timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable)error __attribute__((swift_name("imageClassifier(_:didFinishClassification:timestampInMilliseconds:error:)")));
 		[Export ("imageClassifier:didFinishClassificationWithResult:timestampInMilliseconds:error:")]
 		void DidFinishClassificationWithResult (MPPImageClassifier imageClassifier, [NullAllowed] MPPImageClassifierResult result, nint timestampInMilliseconds, [NullAllowed] NSError error);
 	}
 
 	// @interface MPPImageClassifierOptions : MPPTaskOptions <NSCopying>
-	[BaseType (typeof(MPPTaskOptions))]
-	interface MPPImageClassifierOptions : INSCopying
-	{
+	[BaseType (typeof (MPPTaskOptions))]
+	interface MPPImageClassifierOptions : INSCopying {
 		// @property (nonatomic) MPPRunningMode runningMode;
 		[Export ("runningMode", ArgumentSemantic.Assign)]
 		MPPRunningMode RunningMode { get; set; }
@@ -1132,18 +1094,17 @@ namespace MediaPipeTasksVision
 
 		// @property (copy, nonatomic) NSArray<NSString *> * _Nonnull categoryAllowlist;
 		[Export ("categoryAllowlist", ArgumentSemantic.Copy)]
-		string[] CategoryAllowlist { get; set; }
+		string [] CategoryAllowlist { get; set; }
 
 		// @property (copy, nonatomic) NSArray<NSString *> * _Nonnull categoryDenylist;
 		[Export ("categoryDenylist", ArgumentSemantic.Copy)]
-		string[] CategoryDenylist { get; set; }
+		string [] CategoryDenylist { get; set; }
 	}
 
 	// @interface MPPImageClassifier : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPImageClassifier
-	{
+	interface MPPImageClassifier {
 		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
 		[Export ("initWithModelPath:error:")]
 		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
@@ -1183,10 +1144,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPImageEmbedderResult : MPPTaskResult
-	[BaseType (typeof(MPPTaskResult))]
+	[BaseType (typeof (MPPTaskResult))]
 	[DisableDefaultCtor]
-	interface MPPImageEmbedderResult
-	{
+	interface MPPImageEmbedderResult {
 		// @property (readonly, nonatomic) MPPEmbeddingResult * _Nonnull embeddingResult;
 		[Export ("embeddingResult")]
 		MPPEmbeddingResult EmbeddingResult { get; }
@@ -1198,18 +1158,16 @@ namespace MediaPipeTasksVision
 
 	// @protocol MPPImageEmbedderLiveStreamDelegate <NSObject>
 	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
-	interface MPPImageEmbedderLiveStreamDelegate
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPImageEmbedderLiveStreamDelegate {
 		// @optional -(void)imageEmbedder:(MPPImageEmbedder * _Nonnull)imageEmbedder didFinishEmbeddingWithResult:(MPPImageEmbedderResult * _Nullable)result timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable)error __attribute__((swift_name("imageEmbedder(_:didFinishEmbedding:timestampInMilliseconds:error:)")));
 		[Export ("imageEmbedder:didFinishEmbeddingWithResult:timestampInMilliseconds:error:")]
 		void DidFinishEmbeddingWithResult (MPPImageEmbedder imageEmbedder, [NullAllowed] MPPImageEmbedderResult result, nint timestampInMilliseconds, [NullAllowed] NSError error);
 	}
 
 	// @interface MPPImageEmbedderOptions : MPPTaskOptions <NSCopying>
-	[BaseType (typeof(MPPTaskOptions))]
-	interface MPPImageEmbedderOptions : INSCopying
-	{
+	[BaseType (typeof (MPPTaskOptions))]
+	interface MPPImageEmbedderOptions : INSCopying {
 		// @property (nonatomic) MPPRunningMode runningMode;
 		[Export ("runningMode", ArgumentSemantic.Assign)]
 		MPPRunningMode RunningMode { get; set; }
@@ -1232,10 +1190,9 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPImageEmbedder : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPImageEmbedder
-	{
+	interface MPPImageEmbedder {
 		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
 		[Export ("initWithModelPath:error:")]
 		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
@@ -1281,12 +1238,11 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPImageSegmenterResult : MPPTaskResult
-	[BaseType (typeof(MPPTaskResult))]
-	interface MPPImageSegmenterResult
-	{
+	[BaseType (typeof (MPPTaskResult))]
+	interface MPPImageSegmenterResult {
 		// @property (readonly, nonatomic) NSArray<MPPMask *> * _Nullable confidenceMasks;
 		[NullAllowed, Export ("confidenceMasks")]
-		MPPMask[] ConfidenceMasks { get; }
+		MPPMask [] ConfidenceMasks { get; }
 
 		// @property (readonly, nonatomic) MPPMask * _Nullable categoryMask;
 		[NullAllowed, Export ("categoryMask")]
@@ -1294,27 +1250,25 @@ namespace MediaPipeTasksVision
 
 		// @property (readonly, nonatomic) NSArray<NSNumber *> * _Nullable qualityScores;
 		[NullAllowed, Export ("qualityScores")]
-		NSNumber[] QualityScores { get; }
+		NSNumber [] QualityScores { get; }
 
 		// -(instancetype _Nonnull)initWithConfidenceMasks:(NSArray<MPPMask *> * _Nullable)confidenceMasks categoryMask:(MPPMask * _Nullable)categoryMask qualityScores:(NSArray<NSNumber *> * _Nullable)qualityScores timestampInMilliseconds:(NSInteger)timestampInMilliseconds;
 		[Export ("initWithConfidenceMasks:categoryMask:qualityScores:timestampInMilliseconds:")]
-		NativeHandle Constructor ([NullAllowed] MPPMask[] confidenceMasks, [NullAllowed] MPPMask categoryMask, [NullAllowed] NSNumber[] qualityScores, nint timestampInMilliseconds);
+		NativeHandle Constructor ([NullAllowed] MPPMask [] confidenceMasks, [NullAllowed] MPPMask categoryMask, [NullAllowed] NSNumber [] qualityScores, nint timestampInMilliseconds);
 	}
 
 	// @protocol MPPImageSegmenterLiveStreamDelegate <NSObject>
 	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
-	interface MPPImageSegmenterLiveStreamDelegate
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPImageSegmenterLiveStreamDelegate {
 		// @optional -(void)imageSegmenter:(MPPImageSegmenter * _Nonnull)imageSegmenter didFinishSegmentationWithResult:(MPPImageSegmenterResult * _Nullable)result timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable)error __attribute__((swift_name("imageSegmenter(_:didFinishSegmentation:timestampInMilliseconds:error:)")));
 		[Export ("imageSegmenter:didFinishSegmentationWithResult:timestampInMilliseconds:error:")]
 		void DidFinishSegmentationWithResult (MPPImageSegmenter imageSegmenter, [NullAllowed] MPPImageSegmenterResult result, nint timestampInMilliseconds, [NullAllowed] NSError error);
 	}
 
 	// @interface MPPImageSegmenterOptions : MPPTaskOptions <NSCopying>
-	[BaseType (typeof(MPPTaskOptions))]
-	interface MPPImageSegmenterOptions : INSCopying
-	{
+	[BaseType (typeof (MPPTaskOptions))]
+	interface MPPImageSegmenterOptions : INSCopying {
 		// @property (nonatomic) MPPRunningMode runningMode;
 		[Export ("runningMode", ArgumentSemantic.Assign)]
 		MPPRunningMode RunningMode { get; set; }
@@ -1341,13 +1295,12 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPImageSegmenter : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPImageSegmenter
-	{
+	interface MPPImageSegmenter {
 		// @property (readonly, nonatomic) NSArray<NSString *> * _Nonnull labels;
 		[Export ("labels")]
-		string[] Labels { get; }
+		string [] Labels { get; }
 
 		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
 		[Export ("initWithModelPath:error:")]
@@ -1381,18 +1334,63 @@ namespace MediaPipeTasksVision
 		bool SegmentAsyncImage (MPPImage image, nint timestampInMilliseconds, [NullAllowed] out NSError error);
 	}
 
-	// @interface MPPRegionOfInterest : NSObject
-	[BaseType (typeof(NSObject))]
+	// @interface MPPInteractiveSegmenterOptions : MPPTaskOptions <NSCopying>
+	[BaseType (typeof (MPPTaskOptions))]
+	interface MPPInteractiveSegmenterOptions : INSCopying {
+	}
+
+	// @interface MPPStroke : NSObject
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPRegionOfInterest
-	{
+	interface MPPStroke {
+		// @property (readonly, nonatomic) NSArray<MPPNormalizedKeypoint *> * _Nonnull points;
+		[Export ("points")]
+		MPPNormalizedKeypoint [] Points { get; }
+
+		// @property (readonly, nonatomic) MPPBrushMode brushMode;
+		[Export ("brushMode")]
+		MPPBrushMode BrushMode { get; }
+
+		// @property (readonly, nonatomic) BOOL isCompleted;
+		[Export ("isCompleted")]
+		bool IsCompleted { get; }
+
+		// -(instancetype _Nonnull)initWithPoints:(NSArray<MPPNormalizedKeypoint *> * _Nonnull)points brushMode:(MPPBrushMode)brushMode isCompleted:(BOOL)isCompleted __attribute__((objc_designated_initializer));
+		[Export ("initWithPoints:brushMode:isCompleted:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPNormalizedKeypoint [] points, MPPBrushMode brushMode, bool isCompleted);
+	}
+
+	// @interface MPPInteractiveSegmenter : NSObject
+	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor]
+	interface MPPInteractiveSegmenter {
+		// -(instancetype _Nullable)initWithOptions:(MPPInteractiveSegmenterOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
+		[Export ("initWithOptions:error:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPInteractiveSegmenterOptions options, [NullAllowed] out NSError error);
+
+		// -(BOOL)setImage:(MPPImage * _Nonnull)image error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("set(image:)")));
+		[Export ("setImage:error:")]
+		bool SetImage (MPPImage image, [NullAllowed] out NSError error);
+
+		// -(MPPImage * _Nullable)segment:(NSArray<MPPStroke *> * _Nonnull)strokes error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("segment(strokes:)")));
+		[Export ("segment:error:")]
+		[return: NullAllowed]
+		MPPImage Segment (MPPStroke [] strokes, [NullAllowed] out NSError error);
+	}
+
+	// @interface MPPRegionOfInterest : NSObject
+	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor]
+	interface MPPRegionOfInterest {
 		// @property (readonly, nonatomic) MPPNormalizedKeypoint * _Nullable keypoint;
 		[NullAllowed, Export ("keypoint")]
 		MPPNormalizedKeypoint Keypoint { get; }
 
 		// @property (readonly, nonatomic) NSArray<MPPNormalizedKeypoint *> * _Nullable scribbles;
 		[NullAllowed, Export ("scribbles")]
-		MPPNormalizedKeypoint[] Scribbles { get; }
+		MPPNormalizedKeypoint [] Scribbles { get; }
 
 		// -(instancetype _Nonnull)initWithNormalizedKeyPoint:(MPPNormalizedKeypoint * _Nonnull)normalizedKeypoint __attribute__((objc_designated_initializer));
 		[Export ("initWithNormalizedKeyPoint:")]
@@ -1402,13 +1400,12 @@ namespace MediaPipeTasksVision
 		// -(instancetype _Nonnull)initWithScribbles:(NSArray<MPPNormalizedKeypoint *> * _Nonnull)scribbles __attribute__((objc_designated_initializer));
 		[Export ("initWithScribbles:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (MPPNormalizedKeypoint[] scribbles);
+		NativeHandle Constructor (MPPNormalizedKeypoint [] scribbles);
 	}
 
-	// @interface MPPInteractiveSegmenterOptions : MPPTaskOptions <NSCopying>
-	[BaseType (typeof(MPPTaskOptions))]
-	interface MPPInteractiveSegmenterOptions : INSCopying
-	{
+	// @interface MPPInteractiveSegmenterLegacyOptions : MPPTaskOptions <NSCopying>
+	[BaseType (typeof (MPPTaskOptions))]
+	interface MPPInteractiveSegmenterLegacyOptions : INSCopying {
 		// @property (copy, nonatomic) NSString * _Nonnull displayNamesLocale;
 		[Export ("displayNamesLocale")]
 		string DisplayNamesLocale { get; set; }
@@ -1422,13 +1419,12 @@ namespace MediaPipeTasksVision
 		bool ShouldOutputCategoryMask { get; set; }
 	}
 
-	// @interface MPPInteractiveSegmenterResult : MPPTaskResult
-	[BaseType (typeof(MPPTaskResult))]
-	interface MPPInteractiveSegmenterResult
-	{
+	// @interface MPPInteractiveSegmenterLegacyResult : MPPTaskResult
+	[BaseType (typeof (MPPTaskResult))]
+	interface MPPInteractiveSegmenterLegacyResult {
 		// @property (readonly, nonatomic) NSArray<MPPMask *> * _Nullable confidenceMasks;
 		[NullAllowed, Export ("confidenceMasks")]
-		MPPMask[] ConfidenceMasks { get; }
+		MPPMask [] ConfidenceMasks { get; }
 
 		// @property (readonly, nonatomic) MPPMask * _Nullable categoryMask;
 		[NullAllowed, Export ("categoryMask")]
@@ -1436,68 +1432,64 @@ namespace MediaPipeTasksVision
 
 		// @property (readonly, nonatomic) NSArray<NSNumber *> * _Nullable qualityScores;
 		[NullAllowed, Export ("qualityScores")]
-		NSNumber[] QualityScores { get; }
+		NSNumber [] QualityScores { get; }
 
 		// -(instancetype _Nonnull)initWithConfidenceMasks:(NSArray<MPPMask *> * _Nullable)confidenceMasks categoryMask:(MPPMask * _Nullable)categoryMask qualityScores:(NSArray<NSNumber *> * _Nullable)qualityScores timestampInMilliseconds:(NSInteger)timestampInMilliseconds;
 		[Export ("initWithConfidenceMasks:categoryMask:qualityScores:timestampInMilliseconds:")]
-		NativeHandle Constructor ([NullAllowed] MPPMask[] confidenceMasks, [NullAllowed] MPPMask categoryMask, [NullAllowed] NSNumber[] qualityScores, nint timestampInMilliseconds);
+		NativeHandle Constructor ([NullAllowed] MPPMask [] confidenceMasks, [NullAllowed] MPPMask categoryMask, [NullAllowed] NSNumber [] qualityScores, nint timestampInMilliseconds);
 	}
 
-	// @interface MPPInteractiveSegmenter : NSObject
-	[BaseType (typeof(NSObject))]
+	// @interface MPPInteractiveSegmenterLegacy : NSObject
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPInteractiveSegmenter
-	{
+	interface MPPInteractiveSegmenterLegacy {
 		// @property (readonly, nonatomic) NSArray<NSString *> * _Nonnull labels;
 		[Export ("labels")]
-		string[] Labels { get; }
+		string [] Labels { get; }
 
 		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
 		[Export ("initWithModelPath:error:")]
 		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
 
-		// -(instancetype _Nullable)initWithOptions:(MPPInteractiveSegmenterOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
+		// -(instancetype _Nullable)initWithOptions:(MPPInteractiveSegmenterLegacyOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
 		[Export ("initWithOptions:error:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (MPPInteractiveSegmenterOptions options, [NullAllowed] out NSError error);
+		NativeHandle Constructor (MPPInteractiveSegmenterLegacyOptions options, [NullAllowed] out NSError error);
 
-		// -(MPPInteractiveSegmenterResult * _Nullable)segmentImage:(MPPImage * _Nonnull)image regionOfInterest:(MPPRegionOfInterest * _Nonnull)regionOfInterest error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("segment(image:regionOfInterest:)")));
+		// -(MPPInteractiveSegmenterLegacyResult * _Nullable)segmentImage:(MPPImage * _Nonnull)image regionOfInterest:(MPPRegionOfInterest * _Nonnull)regionOfInterest error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("segment(image:regionOfInterest:)")));
 		[Export ("segmentImage:regionOfInterest:error:")]
 		[return: NullAllowed]
-		MPPInteractiveSegmenterResult SegmentImage (MPPImage image, MPPRegionOfInterest regionOfInterest, [NullAllowed] out NSError error);
+		MPPInteractiveSegmenterLegacyResult SegmentImage (MPPImage image, MPPRegionOfInterest regionOfInterest, [NullAllowed] out NSError error);
 
-		// -(void)segmentImage:(MPPImage * _Nonnull)image regionOfInterest:(MPPRegionOfInterest * _Nonnull)regionOfInterest withCompletionHandler:(void (^ _Nonnull)(MPPInteractiveSegmenterResult * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("segment(image:regionOfInterest:completion:)")));
+		// -(void)segmentImage:(MPPImage * _Nonnull)image regionOfInterest:(MPPRegionOfInterest * _Nonnull)regionOfInterest withCompletionHandler:(void (^ _Nonnull)(MPPInteractiveSegmenterLegacyResult * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("segment(image:regionOfInterest:completion:)")));
 		[Export ("segmentImage:regionOfInterest:withCompletionHandler:")]
-		void SegmentImage (MPPImage image, MPPRegionOfInterest regionOfInterest, Action<MPPInteractiveSegmenterResult, NSError> completionHandler);
+		void SegmentImage (MPPImage image, MPPRegionOfInterest regionOfInterest, Action<MPPInteractiveSegmenterLegacyResult, NSError> completionHandler);
 	}
 
 	// @interface MPPObjectDetectorResult : MPPTaskResult
-	[BaseType (typeof(MPPTaskResult))]
-	interface MPPObjectDetectorResult
-	{
+	[BaseType (typeof (MPPTaskResult))]
+	interface MPPObjectDetectorResult {
 		// @property (readonly, nonatomic) NSArray<MPPDetection *> * _Nonnull detections;
 		[Export ("detections")]
-		MPPDetection[] Detections { get; }
+		MPPDetection [] Detections { get; }
 
 		// -(instancetype _Nonnull)initWithDetections:(NSArray<MPPDetection *> * _Nonnull)detections timestampInMilliseconds:(NSInteger)timestampInMilliseconds;
 		[Export ("initWithDetections:timestampInMilliseconds:")]
-		NativeHandle Constructor (MPPDetection[] detections, nint timestampInMilliseconds);
+		NativeHandle Constructor (MPPDetection [] detections, nint timestampInMilliseconds);
 	}
 
 	// @protocol MPPObjectDetectorLiveStreamDelegate <NSObject>
 	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
-	interface MPPObjectDetectorLiveStreamDelegate
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPObjectDetectorLiveStreamDelegate {
 		// @optional -(void)objectDetector:(MPPObjectDetector * _Nonnull)objectDetector didFinishDetectionWithResult:(MPPObjectDetectorResult * _Nullable)result timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable)error __attribute__((swift_name("objectDetector(_:didFinishDetection:timestampInMilliseconds:error:)")));
 		[Export ("objectDetector:didFinishDetectionWithResult:timestampInMilliseconds:error:")]
 		void DidFinishDetectionWithResult (MPPObjectDetector objectDetector, [NullAllowed] MPPObjectDetectorResult result, nint timestampInMilliseconds, [NullAllowed] NSError error);
 	}
 
 	// @interface MPPObjectDetectorOptions : MPPTaskOptions <NSCopying>
-	[BaseType (typeof(MPPTaskOptions))]
-	interface MPPObjectDetectorOptions : INSCopying
-	{
+	[BaseType (typeof (MPPTaskOptions))]
+	interface MPPObjectDetectorOptions : INSCopying {
 		// @property (nonatomic) MPPRunningMode runningMode;
 		[Export ("runningMode", ArgumentSemantic.Assign)]
 		MPPRunningMode RunningMode { get; set; }
@@ -1524,18 +1516,17 @@ namespace MediaPipeTasksVision
 
 		// @property (copy, nonatomic) NSArray<NSString *> * _Nonnull categoryAllowlist;
 		[Export ("categoryAllowlist", ArgumentSemantic.Copy)]
-		string[] CategoryAllowlist { get; set; }
+		string [] CategoryAllowlist { get; set; }
 
 		// @property (copy, nonatomic) NSArray<NSString *> * _Nonnull categoryDenylist;
 		[Export ("categoryDenylist", ArgumentSemantic.Copy)]
-		string[] CategoryDenylist { get; set; }
+		string [] CategoryDenylist { get; set; }
 	}
 
 	// @interface MPPObjectDetector : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPObjectDetector
-	{
+	interface MPPObjectDetector {
 		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
 		[Export ("initWithModelPath:error:")]
 		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
@@ -1561,33 +1552,31 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPPoseLandmarkerResult : MPPTaskResult
-	[BaseType (typeof(MPPTaskResult))]
+	[BaseType (typeof (MPPTaskResult))]
 	[DisableDefaultCtor]
-	interface MPPPoseLandmarkerResult
-	{
+	interface MPPPoseLandmarkerResult {
 		// @property (readonly, nonatomic) NSArray<NSArray<MPPNormalizedLandmark *> *> * _Nonnull landmarks;
 		[Export ("landmarks")]
-		NSArray<MPPNormalizedLandmark>[] Landmarks { get; }
+		NSArray<MPPNormalizedLandmark> [] Landmarks { get; }
 
 		// @property (readonly, nonatomic) NSArray<NSArray<MPPLandmark *> *> * _Nonnull worldLandmarks;
 		[Export ("worldLandmarks")]
-		NSArray<MPPLandmark>[] WorldLandmarks { get; }
+		NSArray<MPPLandmark> [] WorldLandmarks { get; }
 
 		// @property (readonly, nonatomic) NSArray<MPPMask *> * _Nonnull segmentationMasks;
 		[Export ("segmentationMasks")]
-		MPPMask[] SegmentationMasks { get; }
+		MPPMask [] SegmentationMasks { get; }
 
 		// -(instancetype _Nonnull)initWithLandmarks:(NSArray<NSArray<MPPNormalizedLandmark *> *> * _Nonnull)landmarks worldLandmarks:(NSArray<NSArray<MPPLandmark *> *> * _Nonnull)worldLandmarks segmentationMasks:(NSArray<MPPMask *> * _Nullable)segmentationMasks timestampInMilliseconds:(NSInteger)timestampInMilliseconds __attribute__((objc_designated_initializer));
 		[Export ("initWithLandmarks:worldLandmarks:segmentationMasks:timestampInMilliseconds:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (NSArray<MPPNormalizedLandmark>[] landmarks, NSArray<MPPLandmark>[] worldLandmarks, [NullAllowed] MPPMask[] segmentationMasks, nint timestampInMilliseconds);
+		NativeHandle Constructor (NSArray<MPPNormalizedLandmark> [] landmarks, NSArray<MPPLandmark> [] worldLandmarks, [NullAllowed] MPPMask [] segmentationMasks, nint timestampInMilliseconds);
 	}
 
 	// @protocol MPPPoseLandmarkerLiveStreamDelegate <NSObject>
 	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
-	interface MPPPoseLandmarkerLiveStreamDelegate
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPPoseLandmarkerLiveStreamDelegate {
 		// @required -(void)poseLandmarker:(MPPPoseLandmarker * _Nonnull)poseLandmarker didFinishDetectionWithResult:(MPPPoseLandmarkerResult * _Nullable)result timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable)error __attribute__((swift_name("poseLandmarker(_:didFinishDetection:timestampInMilliseconds:error:)")));
 		[Abstract]
 		[Export ("poseLandmarker:didFinishDetectionWithResult:timestampInMilliseconds:error:")]
@@ -1595,9 +1584,8 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPPoseLandmarkerOptions : MPPTaskOptions <NSCopying>
-	[BaseType (typeof(MPPTaskOptions))]
-	interface MPPPoseLandmarkerOptions : INSCopying
-	{
+	[BaseType (typeof (MPPTaskOptions))]
+	interface MPPPoseLandmarkerOptions : INSCopying {
 		// @property (nonatomic) MPPRunningMode runningMode;
 		[Export ("runningMode", ArgumentSemantic.Assign)]
 		MPPRunningMode RunningMode { get; set; }
@@ -1632,14 +1620,13 @@ namespace MediaPipeTasksVision
 	}
 
 	// @interface MPPPoseLandmarker : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPPoseLandmarker
-	{
+	interface MPPPoseLandmarker {
 		// @property (readonly, nonatomic, class) NSArray<MPPConnection *> * _Nonnull poseLandmarks;
 		[Static]
 		[Export ("poseLandmarks")]
-		MPPConnection[] PoseLandmarks { get; }
+		MPPConnection [] PoseLandmarks { get; }
 
 		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
 		[Export ("initWithModelPath:error:")]

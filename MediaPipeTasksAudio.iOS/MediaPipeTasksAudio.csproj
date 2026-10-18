@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-ios</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
+    <PackOnBuild>true</PackOnBuild>
+    <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
+    <PackageId>MediaPipeTasksAudio.iOS</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Howard Good</Authors>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
+    <RepositoryUrl>https://github.com/google/mediapipe</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
+    <Summary>iOS .NET bindings for MediaPipe Tasks Audio Library.</Summary>
+    <PackageTags>maui xamarin ios mediapipe</PackageTags>
+    <Title>MediaPipeTasksAudio</Title>
+    <Description>.NET iOS bindings for MediaPipe Tasks Audio Library.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+    <None Include="LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="frameworks/MediaPipeTasksAudio.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+      <LinkerFlags>-ObjC</LinkerFlags>
+    </NativeReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediaPipeTasksCommon.iOS\MediaPipeTasksCommon.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="frameworks/**/*" />
+  </ItemGroup>
+  <Target Name="DownloadFile" BeforeTargets="BeforeBuild">
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20260727-225045/MediaPipeTasksAudio-1.0.0.tar.gz" DestinationFolder="." />
+    <Exec Command="tar -xf MediaPipeTasksAudio-1.0.0.tar.gz" />
+    <Exec Command="sed -i '' 's/MediaPipeTasksAudio.a/MediaPipeTasksAudio.framework/g' frameworks/MediaPipeTasksAudio.xcframework/Info.plist" />
+  </Target>
+</Project>

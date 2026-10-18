@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net9.0-ios</TargetFramework>
+    <TargetFramework>net10.0-ios</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
     <PackageId>MediaPipeTasksCommon.iOS</PackageId>
-    <PackageVersion>0.10.35</PackageVersion>
+    <PackageVersion>1.0.0</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
@@ -25,29 +25,21 @@
   </ItemGroup>
   <ItemGroup>
     <NativeReference Include="frameworks/MediaPipeTasksCommon.xcframework">
-      <Kind>Framework</Kind>
+      <Kind>Static</Kind>
       <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
       <LinkerFlags>-ObjC</LinkerFlags>
       <Frameworks>AVFoundation Accelerate AssetsLibrary CoreFoundation CoreGraphics CoreImage CoreMedia CoreVideo Metal OpenGLES QuartzCore</Frameworks>
-    </NativeReference>
-    <NativeReference Include="frameworks/graph_libraries/libMediaPipeTasksCommon_device_graph.a">
-      <Kind>Static</Kind>
-      <SmartLink>False</SmartLink>
-      <ForceLoad>True</ForceLoad>
-    </NativeReference>
-    <NativeReference Include="frameworks/graph_libraries/libMediaPipeTasksCommon_simulator_graph.a">
-      <Kind>Static</Kind>
-      <SmartLink>False</SmartLink>
-      <ForceLoad>True</ForceLoad>
     </NativeReference>
   </ItemGroup>
   <ItemGroup>
     <None Remove="frameworks/**/*" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="BeforeBuild">
-    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20260427-204214/MediaPipeTasksCommon-0.10.35.tar.gz" DestinationFolder="." />
-    <Exec Command="tar -xf MediaPipeTasksCommon-0.10.35.tar.gz" />
-    <Exec Command="lipo -remove arm64 libMediaPipeTasksCommon_simulator_graph.a -output libMediaPipeTasksCommon_simulator_graph.a" WorkingDirectory="frameworks/graph_libraries" />
-    <Exec Command="sed -i '' 's/MediaPipeTasksCommon.a/MediaPipeTasksCommon.framework/g' frameworks/MediaPipeTasksCommon.xcframework/Info.plist" />
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20260727-225047/MediaPipeTasksCommon-1.0.0.tar.gz" DestinationFolder="." />
+    <Exec Command="tar -xf MediaPipeTasksCommon-1.0.0.tar.gz" />
+    <Exec Command="lipo -remove x86_64 libMediaPipeTasksCommon_simulator_graph.a -output libMediaPipeTasksCommon_simulator_graph.a" WorkingDirectory="frameworks/graph_libraries" />
+    <Exec Command="libtool -no_warning_for_no_symbols -static -o MediaPipeTasksCommon MediaPipeTasksCommon ../../../graph_libraries/libMediaPipeTasksCommon_device_graph.a" WorkingDirectory="frameworks/MediaPipeTasksCommon.xcframework/ios-arm64/MediaPipeTasksCommon.framework" />
+    <Exec Command="libtool -no_warning_for_no_symbols -static -o MediaPipeTasksCommon MediaPipeTasksCommon ../../../graph_libraries/libMediaPipeTasksCommon_simulator_graph.a" WorkingDirectory="frameworks/MediaPipeTasksCommon.xcframework/ios-arm64_x86_64-simulator/MediaPipeTasksCommon.framework" />
   </Target>
 </Project>

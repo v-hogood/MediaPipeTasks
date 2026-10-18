@@ -4,13 +4,11 @@ using Foundation;
 using MediaPipeTasksGenAI;
 using ObjCRuntime;
 
-namespace MediaPipeTasksGenAI
-{
+namespace MediaPipeTasksGenAI {
 	// @interface MPPLLMInference : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPLLMInference
-	{
+	interface MPPLLMInference {
 		// -(instancetype _Nullable)initWithOptions:(MPPLLMInferenceOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
 		[Export ("initWithOptions:error:")]
 		[DesignatedInitializer]
@@ -32,16 +30,14 @@ namespace MediaPipeTasksGenAI
 
 	// @interface MediaPipeTasksGenAI_Swift_389 (MPPLLMInference)
 	[Category]
-	[BaseType (typeof(MPPLLMInference))]
-	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_389
-	{
+	[BaseType (typeof (MPPLLMInference))]
+	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_389 {
 	}
 
 	// @interface MPPLLMInferenceSession : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPLLMInferenceSession
-	{
+	interface MPPLLMInferenceSession {
 		// -(instancetype _Nullable)initWithLlmInference:(MPPLLMInference * _Nonnull)llmInference options:(MPPLLMInferenceSessionOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
 		[Export ("initWithLlmInference:options:error:")]
 		[DesignatedInitializer]
@@ -79,16 +75,14 @@ namespace MediaPipeTasksGenAI
 
 	// @interface MediaPipeTasksGenAI_Swift_466 (MPPLLMInference)
 	[Category]
-	[BaseType (typeof(MPPLLMInference))]
-	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_466
-	{
+	[BaseType (typeof (MPPLLMInference))]
+	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_466 {
 	}
 
 	// @interface MPPLLMInferenceMetrics : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPLLMInferenceMetrics
-	{
+	interface MPPLLMInferenceMetrics {
 		// @property (readonly, nonatomic) NSTimeInterval initializationTimeInSeconds;
 		[Export ("initializationTimeInSeconds")]
 		double InitializationTimeInSeconds { get; }
@@ -101,16 +95,14 @@ namespace MediaPipeTasksGenAI
 
 	// @interface MediaPipeTasksGenAI_Swift_482 (MPPLLMInference)
 	[Category]
-	[BaseType (typeof(MPPLLMInference))]
-	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_482
-	{
+	[BaseType (typeof (MPPLLMInference))]
+	interface MPPLLMInference_MediaPipeTasksGenAI_Swift_482 {
 	}
 
 	// @interface MPPLLMInferenceOptions : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPLLMInferenceOptions
-	{
+	interface MPPLLMInferenceOptions {
 		// @property (copy, nonatomic) NSString * _Nonnull modelPath;
 		[Export ("modelPath")]
 		string ModelPath { get; set; }
@@ -141,7 +133,7 @@ namespace MediaPipeTasksGenAI
 
 		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nonnull supportedLoraRanks;
 		[Export ("supportedLoraRanks", ArgumentSemantic.Copy)]
-		NSNumber[] SupportedLoraRanks { get; set; }
+		NSNumber [] SupportedLoraRanks { get; set; }
 
 		// @property (nonatomic) BOOL waitForWeightUploads;
 		[Export ("waitForWeightUploads")]
@@ -171,16 +163,14 @@ namespace MediaPipeTasksGenAI
 
 	// @interface MediaPipeTasksGenAI_Swift_547 (MPPLLMInferenceSession)
 	[Category]
-	[BaseType (typeof(MPPLLMInferenceSession))]
-	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_547
-	{
+	[BaseType (typeof (MPPLLMInferenceSession))]
+	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_547 {
 	}
 
 	// @interface MPPLLMInferenceSessionMetrics : NSObject
-	[BaseType (typeof(NSObject))]
+	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPLLMInferenceSessionMetrics
-	{
+	interface MPPLLMInferenceSessionMetrics {
 		// @property (readonly, nonatomic) NSTimeInterval responseGenerationTimeInSeconds;
 		[Export ("responseGenerationTimeInSeconds")]
 		double ResponseGenerationTimeInSeconds { get; }
@@ -193,15 +183,13 @@ namespace MediaPipeTasksGenAI
 
 	// @interface MediaPipeTasksGenAI_Swift_561 (MPPLLMInferenceSession)
 	[Category]
-	[BaseType (typeof(MPPLLMInferenceSession))]
-	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_561
-	{
+	[BaseType (typeof (MPPLLMInferenceSession))]
+	interface MPPLLMInferenceSession_MediaPipeTasksGenAI_Swift_561 {
 	}
 
 	// @interface MPPLLMInferenceSessionOptions : NSObject
-	[BaseType (typeof(NSObject))]
-	interface MPPLLMInferenceSessionOptions
-	{
+	[BaseType (typeof (NSObject))]
+	interface MPPLLMInferenceSessionOptions {
 		// @property (nonatomic) NSInteger topk;
 		[Export ("topk")]
 		nint Topk { get; set; }
