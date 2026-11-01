@@ -7,7 +7,7 @@
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
     <PackageId>MediaPipeTasksVision.Android</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.2.0</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
@@ -23,11 +23,11 @@
     <ProjectReference Include="..\MediaPipeTasksCore\MediaPipeTasksCore.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidLibrary Include="Jars/tasks-vision-1.0.0.aar" />
+    <AndroidLibrary Include="Jars/tasks-vision-1.2.0.aar" />
     <None Include="LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="_ExtractAar">
     <DownloadFile SourceUrl="https://raw.githubusercontent.com/google-ai-edge/mediapipe/refs/heads/master/LICENSE" DestinationFolder="." />
-    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-vision/1.0.0/tasks-vision-1.0.0.aar" DestinationFolder="Jars" />
+    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-vision/1.2.0/tasks-vision-1.2.0.aar" DestinationFolder="Jars" />
   </Target>
 </Project>

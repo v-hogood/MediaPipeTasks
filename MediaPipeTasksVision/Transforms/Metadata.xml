@@ -17,6 +17,7 @@
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imageembedder']" name="managedName">MediaPipe.Tasks.Vision.ImageEmbedder</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.imagesegmenter']" name="managedName">MediaPipe.Tasks.Vision.ImageSegmenter</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.interactivesegmenter']" name="managedName">MediaPipe.Tasks.Vision.InteractiveSegmenter</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.interactivesegmenterlegacy']" name="managedName">MediaPipe.Tasks.Vision.InteractiveSegmenterLegacy</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.objectdetector']" name="managedName">MediaPipe.Tasks.Vision.ObjectDetector</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.vision.poselandmarker']" name="managedName">MediaPipe.Tasks.Vision.PoseLandmarker</attr>
 

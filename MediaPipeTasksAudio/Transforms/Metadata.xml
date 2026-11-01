@@ -7,7 +7,11 @@
   <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
   -->
 
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.audio.texttospeech']/class[@name='TextToSpeech.Companion']" name="managedName">TextToSpeech.Companions</attr>
+
   <attr path="/api/package[@name='com.google.mediapipe.tasks.audio.audioclassifier']" name="managedName">MediaPipe.Tasks.Audio.AudioClassifier</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.audio.audiotranscriber']" name="managedName">MediaPipe.Tasks.Audio.AudioTranscriber</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.audio.core']" name="managedName">MediaPipe.Tasks.Audio.Core</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.audio.texttospeech']" name="managedName">MediaPipe.Tasks.Audio.TextToSpeech</attr>
 
 </metadata>

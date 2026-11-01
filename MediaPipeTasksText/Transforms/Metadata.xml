@@ -10,5 +10,7 @@
   <attr path="/api/package[@name='com.google.mediapipe.tasks.text.languagedetector']" name="managedName">MediaPipe.Tasks.Text.LanguageDetector</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.text.textclassifier']" name="managedName">MediaPipe.Tasks.Text.TextClassifier</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.text.textembedder']" name="managedName">MediaPipe.Tasks.Text.TextEmbedder</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.text.textproofreader']" name="managedName">MediaPipe.Tasks.Text.TextProofreader</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.text.textsummarizer']" name="managedName">MediaPipe.Tasks.Text.TextSummarizer</attr>
 
 </metadata>
