@@ -227,6 +227,17 @@ namespace MediaPipeTasksText {
 		MPPLanguageDetectorResult DetectText (string text, [NullAllowed] out NSError error);
 	}
 
+	// @protocol MPPEmbeddingProvider <NSObject>
+	[Protocol]
+	[BaseType (typeof (NSObject))]
+	interface MPPEmbeddingProvider {
+		// @required -(MPPEmbeddingResult * _Nullable)embedContent:(NSArray<id> * _Nonnull)content error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("embed(content:)")));
+		[Abstract]
+		[Export ("embedContent:error:")]
+		[return: NullAllowed]
+		MPPEmbeddingResult Error (NSObject [] content, [NullAllowed] out NSError error);
+	}
+
 	// @interface MPPTextClassifierOptions : MPPTaskOptions <NSCopying>
 	[BaseType (typeof (MPPTaskOptions))]
 	interface MPPTextClassifierOptions : INSCopying {
@@ -323,10 +334,10 @@ namespace MediaPipeTasksText {
 		MPPTextRole TextRole { get; set; }
 	}
 
-	// @interface MPPTextEmbedder : NSObject
+	// @interface MPPTextEmbedder : NSObject <MPPEmbeddingProvider>
 	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPTextEmbedder {
+	interface MPPTextEmbedder : MPPEmbeddingProvider {
 		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
 		[Export ("initWithModelPath:error:")]
 		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
@@ -440,7 +451,7 @@ namespace MediaPipeTasksText {
 
 		// -(BOOL)proofreadStreamingWithText:(NSString * _Nonnull)text completionHandler:(void (^ _Nonnull)(MPPTextProofreaderStreamResult * _Nullable, NSError * _Nullable))completionHandler error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("proofreadStreaming(text:completion:)"))) __attribute__((swift_async("none")));
 		[Export ("proofreadStreamingWithText:completionHandler:error:")]
-		bool ProofreadStreamingWithText (string text, Action<MPPTextProofreaderStreamResult, NSError> completionHandler, [NullAllowed] out NSError error);
+		bool ProofreadStreamingWithText (string text, Action<MediaPipeTasksText.MPPTextProofreaderStreamResult, Foundation.NSError> completionHandler, [NullAllowed] out NSError error);
 
 		// -(BOOL)closeWithError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("close()")));
 		[Export ("closeWithError:")]
@@ -513,7 +524,7 @@ namespace MediaPipeTasksText {
 
 		// -(BOOL)summarizeStreamingWithText:(NSString * _Nonnull)text completionHandler:(void (^ _Nonnull)(MPPTextSummarizerStreamResult * _Nullable, NSError * _Nullable))completionHandler error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("summarizeStreaming(text:completion:)")));
 		[Export ("summarizeStreamingWithText:completionHandler:error:")]
-		bool SummarizeStreamingWithText (string text, Action<MPPTextSummarizerStreamResult, NSError> completionHandler, [NullAllowed] out NSError error);
+		bool SummarizeStreamingWithText (string text, Action<MediaPipeTasksText.MPPTextSummarizerStreamResult, Foundation.NSError> completionHandler, [NullAllowed] out NSError error);
 
 		// -(BOOL)closeWithError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("close()")));
 		[Export ("closeWithError:")]

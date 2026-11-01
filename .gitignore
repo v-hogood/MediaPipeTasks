@@ -4,6 +4,7 @@ obj
 *.aar
 *.jar
 *.tar.gz
+*.zip
 frameworks
 *.xcframework
 *.xcarchive

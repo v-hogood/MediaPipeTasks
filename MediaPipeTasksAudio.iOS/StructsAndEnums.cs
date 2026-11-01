@@ -32,8 +32,16 @@ namespace MediaPipeTasksAudio {
 
 	[Native]
 	public enum MPPDelegate : ulong {
+		Default,
 		Cpu,
 		Gpu
+	}
+
+	[Native]
+	public enum MPPAudioTranscriberModelArchitecture : ulong {
+		Auto = 0,
+		Omni = 1,
+		TinyGemma = 2
 	}
 
 	[Native]

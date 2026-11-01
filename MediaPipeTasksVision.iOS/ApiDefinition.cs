@@ -1143,6 +1143,17 @@ namespace MediaPipeTasksVision {
 		bool ClassifyAsyncImage (MPPImage image, nint timestampInMilliseconds, CGRect roi, [NullAllowed] out NSError error);
 	}
 
+	// @protocol MPPEmbeddingProvider <NSObject>
+	[Protocol]
+	[BaseType (typeof (NSObject))]
+	interface MPPEmbeddingProvider {
+		// @required -(MPPEmbeddingResult * _Nullable)embedContent:(NSArray<id> * _Nonnull)content error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("embed(content:)")));
+		[Abstract]
+		[Export ("embedContent:error:")]
+		[return: NullAllowed]
+		MPPEmbeddingResult Error (NSObject [] content, [NullAllowed] out NSError error);
+	}
+
 	// @interface MPPImageEmbedderResult : MPPTaskResult
 	[BaseType (typeof (MPPTaskResult))]
 	[DisableDefaultCtor]
@@ -1189,10 +1200,10 @@ namespace MediaPipeTasksVision {
 		bool Quantize { get; set; }
 	}
 
-	// @interface MPPImageEmbedder : NSObject
+	// @interface MPPImageEmbedder : NSObject <MPPEmbeddingProvider>
 	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
-	interface MPPImageEmbedder {
+	interface MPPImageEmbedder : MPPEmbeddingProvider {
 		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
 		[Export ("initWithModelPath:error:")]
 		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
@@ -1318,7 +1329,7 @@ namespace MediaPipeTasksVision {
 
 		// -(void)segmentImage:(MPPImage * _Nonnull)image withCompletionHandler:(void (^ _Nonnull)(MPPImageSegmenterResult * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("segment(image:completion:)")));
 		[Export ("segmentImage:withCompletionHandler:")]
-		void SegmentImage (MPPImage image, Action<MPPImageSegmenterResult, NSError> completionHandler);
+		void SegmentImage (MPPImage image, Action<MediaPipeTasksVision.MPPImageSegmenterResult, Foundation.NSError> completionHandler);
 
 		// -(MPPImageSegmenterResult * _Nullable)segmentVideoFrame:(MPPImage * _Nonnull)image timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("segment(videoFrame:timestampInMilliseconds:)")));
 		[Export ("segmentVideoFrame:timestampInMilliseconds:error:")]
@@ -1327,7 +1338,7 @@ namespace MediaPipeTasksVision {
 
 		// -(void)segmentVideoFrame:(MPPImage * _Nonnull)image timestampInMilliseconds:(NSInteger)timestampInMilliseconds withCompletionHandler:(void (^ _Nonnull)(MPPImageSegmenterResult * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("segment(videoFrame:timestampInMilliseconds:completion:)")));
 		[Export ("segmentVideoFrame:timestampInMilliseconds:withCompletionHandler:")]
-		void SegmentVideoFrame (MPPImage image, nint timestampInMilliseconds, Action<MPPImageSegmenterResult, NSError> completionHandler);
+		void SegmentVideoFrame (MPPImage image, nint timestampInMilliseconds, Action<MediaPipeTasksVision.MPPImageSegmenterResult, Foundation.NSError> completionHandler);
 
 		// -(BOOL)segmentAsyncImage:(MPPImage * _Nonnull)image timestampInMilliseconds:(NSInteger)timestampInMilliseconds error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("segmentAsync(image:timestampInMilliseconds:)")));
 		[Export ("segmentAsyncImage:timestampInMilliseconds:error:")]
@@ -1463,7 +1474,7 @@ namespace MediaPipeTasksVision {
 
 		// -(void)segmentImage:(MPPImage * _Nonnull)image regionOfInterest:(MPPRegionOfInterest * _Nonnull)regionOfInterest withCompletionHandler:(void (^ _Nonnull)(MPPInteractiveSegmenterLegacyResult * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("segment(image:regionOfInterest:completion:)")));
 		[Export ("segmentImage:regionOfInterest:withCompletionHandler:")]
-		void SegmentImage (MPPImage image, MPPRegionOfInterest regionOfInterest, Action<MPPInteractiveSegmenterLegacyResult, NSError> completionHandler);
+		void SegmentImage (MPPImage image, MPPRegionOfInterest regionOfInterest, Action<MediaPipeTasksVision.MPPInteractiveSegmenterLegacyResult, Foundation.NSError> completionHandler);
 	}
 
 	// @interface MPPObjectDetectorResult : MPPTaskResult

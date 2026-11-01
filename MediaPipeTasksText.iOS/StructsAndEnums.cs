@@ -3,6 +3,7 @@ using ObjCRuntime;
 namespace MediaPipeTasksText {
 	[Native]
 	public enum MPPDelegate : ulong {
+		Default,
 		Cpu,
 		Gpu
 	}

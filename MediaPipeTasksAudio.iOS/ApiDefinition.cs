@@ -305,6 +305,111 @@ namespace MediaPipeTasksAudio {
 		MPPAudioRecord CreateAudioRecordWithChannelCount (nuint channelCount, double sampleRate, nuint bufferLength, [NullAllowed] out NSError error);
 	}
 
+	// @interface MPPAudioTranscriberOptions : MPPTaskOptions <NSCopying>
+	[BaseType (typeof (MPPTaskOptions))]
+	interface MPPAudioTranscriberOptions : INSCopying {
+		// @property (nonatomic) double sampleRateHz;
+		[Export ("sampleRateHz")]
+		double SampleRateHz { get; set; }
+
+		// @property (nonatomic) BOOL enableInterimResults;
+		[Export ("enableInterimResults")]
+		bool EnableInterimResults { get; set; }
+
+		// @property (nonatomic) MPPAudioTranscriberModelArchitecture modelArchitecture;
+		[Export ("modelArchitecture", ArgumentSemantic.Assign)]
+		MPPAudioTranscriberModelArchitecture ModelArchitecture { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable prompt;
+		[NullAllowed, Export ("prompt")]
+		string Prompt { get; set; }
+
+		// @property (copy, nonatomic) NS_SWIFT_NAME(cacheDirectory) NSString * cacheDir __attribute__((swift_name("cacheDirectory")));
+		[Export ("cacheDir")]
+		string CacheDir { get; set; }
+	}
+
+	// @interface MPPAudioTranscriberSegment : NSObject
+	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor]
+	interface MPPAudioTranscriberSegment {
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull transcript;
+		[Export ("transcript")]
+		string Transcript { get; }
+
+		// @property (readonly, nonatomic) BOOL isFinal;
+		[Export ("isFinal")]
+		bool IsFinal { get; }
+
+		// @property (readonly, nonatomic) int64_t fromTimestampInMilliseconds;
+		[Export ("fromTimestampInMilliseconds")]
+		long FromTimestampInMilliseconds { get; }
+
+		// @property (readonly, nonatomic) int64_t toTimestampInMilliseconds;
+		[Export ("toTimestampInMilliseconds")]
+		long ToTimestampInMilliseconds { get; }
+
+		// -(instancetype _Nonnull)initWithTranscript:(NSString * _Nonnull)transcript isFinal:(BOOL)isFinal fromTimestampInMilliseconds:(int64_t)fromTimestampInMilliseconds toTimestampInMilliseconds:(int64_t)toTimestampInMilliseconds __attribute__((objc_designated_initializer));
+		[Export ("initWithTranscript:isFinal:fromTimestampInMilliseconds:toTimestampInMilliseconds:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (string transcript, bool isFinal, long fromTimestampInMilliseconds, long toTimestampInMilliseconds);
+	}
+
+	// @interface MPPAudioTranscriberResult : MPPTaskResult
+	[BaseType (typeof (MPPTaskResult))]
+	[DisableDefaultCtor]
+	interface MPPAudioTranscriberResult {
+		// @property (readonly, copy, nonatomic) NSArray<MPPAudioTranscriberSegment *> * _Nonnull segments;
+		[Export ("segments", ArgumentSemantic.Copy)]
+		MPPAudioTranscriberSegment [] Segments { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull text;
+		[Export ("text")]
+		string Text { get; }
+
+		// -(instancetype _Nonnull)initWithSegments:(NSArray<MPPAudioTranscriberSegment *> * _Nonnull)segments timestampInMilliseconds:(NSInteger)timestampInMilliseconds __attribute__((objc_designated_initializer));
+		[Export ("initWithSegments:timestampInMilliseconds:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPAudioTranscriberSegment [] segments, nint timestampInMilliseconds);
+	}
+
+	// @interface MPPAudioTranscriber : NSObject
+	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor]
+	interface MPPAudioTranscriber {
+		// -(instancetype _Nullable)initWithOptions:(MPPAudioTranscriberOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
+		[Export ("initWithOptions:error:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPAudioTranscriberOptions options, [NullAllowed] out NSError error);
+
+		// -(instancetype _Nullable)initWithModelPath:(NSString * _Nonnull)modelPath error:(NSError * _Nullable * _Nullable)error;
+		[Export ("initWithModelPath:error:")]
+		NativeHandle Constructor (string modelPath, [NullAllowed] out NSError error);
+
+		// -(MPPAudioTranscriberResult * _Nullable)transcribeFloatBuffer:(const float * _Nullable)samples length:(NSUInteger)length endOfStream:(BOOL)endOfStream error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("transcribe(samples:count:endOfStream:)")));
+		[Export ("transcribeFloatBuffer:length:endOfStream:error:")]
+		[return: NullAllowed]
+		unsafe MPPAudioTranscriberResult TranscribeFloatBuffer ([NullAllowed] NativeHandle samples, nuint length, bool endOfStream, [NullAllowed] out NSError error);
+
+		// -(MPPAudioTranscriberResult * _Nullable)transcribeSamples:(NSArray<NSNumber *> * _Nonnull)samples endOfStream:(BOOL)endOfStream error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("transcribe(samples:endOfStream:)")));
+		[Export ("transcribeSamples:endOfStream:error:")]
+		[return: NullAllowed]
+		MPPAudioTranscriberResult TranscribeSamples (NSNumber [] samples, bool endOfStream, [NullAllowed] out NSError error);
+
+		// -(MPPAudioTranscriberResult * _Nullable)finishStreamWithError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("finishStream()")));
+		[Export ("finishStreamWithError:")]
+		[return: NullAllowed]
+		MPPAudioTranscriberResult FinishStreamWithError ([NullAllowed] out NSError error);
+
+		// -(BOOL)prewarmWithError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("prewarm()")));
+		[Export ("prewarmWithError:")]
+		bool PrewarmWithError ([NullAllowed] out NSError error);
+
+		// -(BOOL)closeWithError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("close()")));
+		[Export ("closeWithError:")]
+		bool CloseWithError ([NullAllowed] out NSError error);
+	}
+
 	// @interface MPPEmbedding : NSObject
 	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
@@ -347,5 +452,16 @@ namespace MediaPipeTasksAudio {
 		[Export ("initWithEmbeddings:timestampInMilliseconds:")]
 		[DesignatedInitializer]
 		NativeHandle Constructor (MPPEmbedding [] embeddings, nint timestampInMilliseconds);
+	}
+
+	// @protocol MPPEmbeddingProvider <NSObject>
+	[Protocol]
+	[BaseType (typeof (NSObject))]
+	interface MPPEmbeddingProvider {
+		// @required -(MPPEmbeddingResult * _Nullable)embedContent:(NSArray<id> * _Nonnull)content error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("embed(content:)")));
+		[Abstract]
+		[Export ("embedContent:error:")]
+		[return: NullAllowed]
+		MPPEmbeddingResult Error (NSObject [] content, [NullAllowed] out NSError error);
 	}
 }

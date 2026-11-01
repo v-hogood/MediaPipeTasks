@@ -7,7 +7,7 @@
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
     <PackageId>MediaPipeTasksAudio.iOS</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.2.0</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
@@ -24,7 +24,7 @@
     <None Include="LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="frameworks/MediaPipeTasksAudio.xcframework">
+    <NativeReference Include="MediaPipeTasksAudio.xcframework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
       <LinkerFlags>-ObjC</LinkerFlags>
@@ -34,11 +34,11 @@
     <ProjectReference Include="..\MediaPipeTasksCommon.iOS\MediaPipeTasksCommon.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="frameworks/**/*" />
+    <None Remove="*.xcframework/**/*" />
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="BeforeBuild">
-    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20260727-225045/MediaPipeTasksAudio-1.0.0.tar.gz" DestinationFolder="." />
-    <Exec Command="tar -xf MediaPipeTasksAudio-1.0.0.tar.gz" />
-    <Exec Command="sed -i '' 's/MediaPipeTasksAudio.a/MediaPipeTasksAudio.framework/g' frameworks/MediaPipeTasksAudio.xcframework/Info.plist" />
+    <DownloadFile SourceUrl="https://raw.githubusercontent.com/google-ai-edge/mediapipe/refs/heads/master/LICENSE" DestinationFolder="." />
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20261026-192222/MediaPipeTasksAudio-1.2.0.xcframework.zip" DestinationFolder="." />
+    <Exec Command="unzip -o MediaPipeTasksAudio-1.2.0.xcframework.zip" />
   </Target>
 </Project>
