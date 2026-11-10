@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>24</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PackOnBuild>true</PackOnBuild>
+    <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
+    <PackageId>MediaPipeTasksDecision.Android</PackageId>
+    <PackageVersion>1.2.0</PackageVersion>
+    <Authors>Howard Good</Authors>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
+    <RepositoryUrl>https://github.com/google-ai-edge/mediapipe</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
+    <Summary>Android .NET bindings for MediaPipe Tasks Decision Library.</Summary>
+    <PackageTags>maui xamarin android mediapipe</PackageTags>
+    <Title>MediaPipeTasksDecision.Android</Title>
+    <Description>Android .NET bindings for MediaPipe Tasks Decision Library.</Description>
+    <NoWarn>BG8403</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediaPipeTasksCore\MediaPipeTasksCore.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidLibrary Include="Jars/tasks-decision-1.2.0.aar" />
+    <None Include="LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <Target Name="DownloadFile" BeforeTargets="_ExtractAar">
+    <DownloadFile SourceUrl="https://raw.githubusercontent.com/google-ai-edge/mediapipe/refs/heads/master/LICENSE" DestinationFolder="." />
+    <DownloadFile SourceUrl="https://dl.google.com/android/maven2/com/google/mediapipe/tasks-decision/1.2.0/tasks-decision-1.2.0.aar" DestinationFolder="Jars" />
+  </Target>
+</Project>
