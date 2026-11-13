@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>24</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PackOnBuild>true</PackOnBuild>
+    <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
+    <PackageId>MediaPipeTasksRetrieval.Android</PackageId>
+    <PackageVersion>1.2.0</PackageVersion>
+    <Authors>Howard Good</Authors>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
+    <RepositoryUrl>https://github.com/google-ai-edge/mediapipe</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
+    <Summary>Android .NET bindings for MediaPipe Tasks Retrieval Library.</Summary>
+    <PackageTags>maui xamarin android mediapipe</PackageTags>
+    <Title>MediaPipeTasksRetrieval.Android</Title>
+    <Description>Android .NET bindings for MediaPipe Tasks Retrieval Library.</Description>
+    <NoWarn>BG8403</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediaPipeTasksCore\MediaPipeTasksCore.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LICENSE" Pack="true" PackagePath="" />
+    <AndroidMavenLibrary Include="com.google.mediapipe:tasks-retrieval" Version="1.2.0" Repository="Google" VerifyDependencies="false" />
+    <AndroidMavenLibrary Include="com.google.ai.edge.litertlm:litertlm-android" Version="0.18.0" Repository="Google" VerifyDependencies="false" Bind="false" />
+    <AndroidMavenLibrary Include="androidx.appsearch:appsearch" Version="1.2.0-alpha02" Repository="Google" VerifyDependencies="false" Bind="false" />
+    <AndroidMavenLibrary Include="androidx.appsearch:appsearch-local-storage" Version="1.2.0-alpha02" Repository="Google" VerifyDependencies="false" Bind="false" />
+    <AndroidMavenLibrary Include="androidx.appsearch:appsearch-external-protobuf" Version="1.2.0-alpha02" Repository="Google" VerifyDependencies="false" Bind="false" />
+  </ItemGroup>
+  <Target Name="DownloadFile" BeforeTargets="_ExtractAar">
+    <DownloadFile SourceUrl="https://raw.githubusercontent.com/google-ai-edge/mediapipe/refs/heads/master/LICENSE" DestinationFolder="." />
+  </Target>
+</Project>

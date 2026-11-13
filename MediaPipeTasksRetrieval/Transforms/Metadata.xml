@@ -1,0 +1,16 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.retrieval.chunking']" name="managedName">MediaPipe.Tasks.Retrieval.Chunking</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.retrieval.components']" name="managedName">MediaPipe.Tasks.Retrieval.Components</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.retrieval.model']" name="managedName">MediaPipe.Tasks.Retrieval.Model</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.retrieval.semanticretriever']" name="managedName">MediaPipe.Tasks.Retrieval.SemanticRetriever</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.retrieval.universalembedder']" name="managedName">MediaPipe.Tasks.Retrieval.UniversalEmbedder</attr>
+
+</metadata>
