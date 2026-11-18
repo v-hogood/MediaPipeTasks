@@ -12,6 +12,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksGenAI", "Medi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksAudio", "MediaPipeTasksAudio.iOS\MediaPipeTasksAudio.csproj", "{5D915531-35E0-457A-AD24-3378E899BEEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksDecision", "MediaPipeTasksDecision.iOS\MediaPipeTasksDecision.csproj", "{B4D43319-E819-4657-93E8-4FBCE8721CDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksRetrieval", "MediaPipeTasksRetrieval.iOS\MediaPipeTasksRetrieval.csproj", "{DAC25AEC-F139-41A9-BA74-B722BC743738}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,14 @@ Global
 		{5D915531-35E0-457A-AD24-3378E899BEEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D915531-35E0-457A-AD24-3378E899BEEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D915531-35E0-457A-AD24-3378E899BEEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4D43319-E819-4657-93E8-4FBCE8721CDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4D43319-E819-4657-93E8-4FBCE8721CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4D43319-E819-4657-93E8-4FBCE8721CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4D43319-E819-4657-93E8-4FBCE8721CDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAC25AEC-F139-41A9-BA74-B722BC743738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC25AEC-F139-41A9-BA74-B722BC743738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC25AEC-F139-41A9-BA74-B722BC743738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC25AEC-F139-41A9-BA74-B722BC743738}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

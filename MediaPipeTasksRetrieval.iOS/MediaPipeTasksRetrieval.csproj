@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-ios</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
+    <PackOnBuild>true</PackOnBuild>
+    <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
+    <PackageId>MediaPipeTasksRetrieval.iOS</PackageId>
+    <PackageVersion>1.2.0</PackageVersion>
+    <Authors>Howard Good</Authors>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
+    <RepositoryUrl>https://github.com/google/mediapipe</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/v-hogood/MediaPipeTasks</PackageProjectUrl>
+    <Summary>iOS .NET bindings for MediaPipe Tasks Retrieval Library.</Summary>
+    <PackageTags>maui xamarin ios mediapipe</PackageTags>
+    <Title>MediaPipeTasksRetrieval</Title>
+    <Description>.NET iOS bindings for MediaPipe Tasks Retrieval Library.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+    <None Include="LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="MediaPipeTasksRetrieval.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+      <LinkerFlags>-ObjC</LinkerFlags>
+    </NativeReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediaPipeTasksCommon.iOS\MediaPipeTasksCommon.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="*.xcframework/**/*" />
+  </ItemGroup>
+  <Target Name="DownloadFile" BeforeTargets="BeforeBuild">
+    <DownloadFile SourceUrl="https://raw.githubusercontent.com/google-ai-edge/mediapipe/refs/heads/master/LICENSE" DestinationFolder="." />
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20261026-192222/MediaPipeTasksRetrieval-1.2.0.xcframework.zip" DestinationFolder="." />
+    <Microsoft.Build.Tasks.Unzip SourceFiles="MediaPipeTasksRetrieval-1.2.0.xcframework.zip" DestinationFolder="." />
+  </Target>
+</Project>
