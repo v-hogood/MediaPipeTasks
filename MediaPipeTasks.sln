@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksGenAI", "Medi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksVisionImageGenerator", "MediaPipeTasksVisionImageGenerator\MediaPipeTasksVisionImageGenerator.csproj", "{6C28F272-2DF6-453C-AA66-19AE0E0DAADD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksDecision", "MediaPipeTasksDecision\MediaPipeTasksDecision.csproj", "{B9D5564E-06E1-4AD0-8B7E-1065ABFB179E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPipeTasksRetrieval", "MediaPipeTasksRetrieval\MediaPipeTasksRetrieval.csproj", "{ED08F7A9-30E6-4BCF-90C2-F8B332006EAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,14 @@ Global
 		{6C28F272-2DF6-453C-AA66-19AE0E0DAADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C28F272-2DF6-453C-AA66-19AE0E0DAADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C28F272-2DF6-453C-AA66-19AE0E0DAADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9D5564E-06E1-4AD0-8B7E-1065ABFB179E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D5564E-06E1-4AD0-8B7E-1065ABFB179E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D5564E-06E1-4AD0-8B7E-1065ABFB179E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D5564E-06E1-4AD0-8B7E-1065ABFB179E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED08F7A9-30E6-4BCF-90C2-F8B332006EAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED08F7A9-30E6-4BCF-90C2-F8B332006EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED08F7A9-30E6-4BCF-90C2-F8B332006EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED08F7A9-30E6-4BCF-90C2-F8B332006EAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
