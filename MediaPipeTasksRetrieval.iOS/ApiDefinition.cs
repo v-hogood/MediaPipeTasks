@@ -377,7 +377,7 @@ namespace MediaPipeTasksRetrieval {
 	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
 	interface MPPRetrievalRecord {
-		// @property (readonly, copy, nonatomic) NSString * _Nonnull recordId;
+		// @property (readonly, copy, nonatomic) NS_SWIFT_NAME(id) NSString * recordId __attribute__((swift_name("id")));
 		[Export ("recordId")]
 		string RecordId { get; }
 
@@ -405,12 +405,12 @@ namespace MediaPipeTasksRetrieval {
 		[NullAllowed, Export ("childIds", ArgumentSemantic.Copy)]
 		string [] ChildIds { get; }
 
-		// -(instancetype _Nonnull)initWithRecordId:(NSString * _Nonnull)recordId content:(NSArray<MPPTaskPart *> * _Nonnull)content embeddings:(NSArray<NSNumber *> * _Nonnull)embeddings similarityScore:(NSNumber * _Nullable)similarityScore metadata:(NSDictionary<NSString *,NSString *> * _Nonnull)metadata parentId:(NSString * _Nullable)parentId childIds:(NSArray<NSString *> * _Nullable)childIds __attribute__((objc_designated_initializer));
+		// -(instancetype _Nonnull)initWithRecordId:(NSString * _Nonnull)recordId content:(NSArray<MPPTaskPart *> * _Nonnull)content embeddings:(NSArray<NSNumber *> * _Nonnull)embeddings similarityScore:(NSNumber * _Nullable)similarityScore metadata:(NSDictionary<NSString *,NSString *> * _Nonnull)metadata parentId:(NSString * _Nullable)parentId childIds:(NSArray<NSString *> * _Nullable)childIds __attribute__((objc_designated_initializer)) __attribute__((swift_name("init(id:content:embeddings:similarityScore:metadata:parentId:childIds:)")));
 		[Export ("initWithRecordId:content:embeddings:similarityScore:metadata:parentId:childIds:")]
 		[DesignatedInitializer]
 		NativeHandle Constructor (string recordId, MPPTaskPart [] content, NSNumber [] embeddings, [NullAllowed] NSNumber similarityScore, NSDictionary<NSString, NSString> metadata, [NullAllowed] string parentId, [NullAllowed] string [] childIds);
 
-		// -(instancetype _Nonnull)initWithRecordId:(NSString * _Nonnull)recordId content:(NSArray<MPPTaskPart *> * _Nonnull)content embeddings:(NSArray<NSNumber *> * _Nonnull)embeddings metadata:(NSDictionary<NSString *,NSString *> * _Nonnull)metadata parentId:(NSString * _Nullable)parentId childIds:(NSArray<NSString *> * _Nullable)childIds;
+		// -(instancetype _Nonnull)initWithRecordId:(NSString * _Nonnull)recordId content:(NSArray<MPPTaskPart *> * _Nonnull)content embeddings:(NSArray<NSNumber *> * _Nonnull)embeddings metadata:(NSDictionary<NSString *,NSString *> * _Nonnull)metadata parentId:(NSString * _Nullable)parentId childIds:(NSArray<NSString *> * _Nullable)childIds __attribute__((swift_name("init(id:content:embeddings:metadata:parentId:childIds:)")));
 		[Export ("initWithRecordId:content:embeddings:metadata:parentId:childIds:")]
 		NativeHandle Constructor (string recordId, MPPTaskPart [] content, NSNumber [] embeddings, NSDictionary<NSString, NSString> metadata, [NullAllowed] string parentId, [NullAllowed] string [] childIds);
 	}
@@ -419,7 +419,7 @@ namespace MediaPipeTasksRetrieval {
 	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor]
 	interface MPPRetrievalResult {
-		// @property (readonly, copy, nonatomic) NSString * _Nonnull recordId;
+		// @property (readonly, copy, nonatomic) NS_SWIFT_NAME(id) NSString * recordId __attribute__((swift_name("id")));
 		[Export ("recordId")]
 		string RecordId { get; }
 
@@ -439,12 +439,12 @@ namespace MediaPipeTasksRetrieval {
 		[Export ("score")]
 		double Score { get; }
 
-		// -(instancetype _Nonnull)initWithRecordId:(NSString * _Nonnull)recordId content:(NSArray<MPPTaskPart *> * _Nonnull)content embeddings:(NSArray<NSNumber *> * _Nullable)embeddings metadata:(NSDictionary<NSString *,NSString *> * _Nonnull)metadata score:(double)score __attribute__((objc_designated_initializer));
+		// -(instancetype _Nonnull)initWithRecordId:(NSString * _Nonnull)recordId content:(NSArray<MPPTaskPart *> * _Nonnull)content embeddings:(NSArray<NSNumber *> * _Nullable)embeddings metadata:(NSDictionary<NSString *,NSString *> * _Nonnull)metadata score:(double)score __attribute__((objc_designated_initializer)) __attribute__((swift_name("init(id:content:embeddings:metadata:score:)")));
 		[Export ("initWithRecordId:content:embeddings:metadata:score:")]
 		[DesignatedInitializer]
 		NativeHandle Constructor (string recordId, MPPTaskPart [] content, [NullAllowed] NSNumber [] embeddings, NSDictionary<NSString, NSString> metadata, double score);
 
-		// -(instancetype _Nonnull)initWithRecordId:(NSString * _Nonnull)recordId content:(NSArray<MPPTaskPart *> * _Nonnull)content metadata:(NSDictionary<NSString *,NSString *> * _Nonnull)metadata score:(double)score;
+		// -(instancetype _Nonnull)initWithRecordId:(NSString * _Nonnull)recordId content:(NSArray<MPPTaskPart *> * _Nonnull)content metadata:(NSDictionary<NSString *,NSString *> * _Nonnull)metadata score:(double)score __attribute__((swift_name("init(id:content:metadata:score:)")));
 		[Export ("initWithRecordId:content:metadata:score:")]
 		NativeHandle Constructor (string recordId, MPPTaskPart [] content, NSDictionary<NSString, NSString> metadata, double score);
 	}
@@ -468,17 +468,25 @@ namespace MediaPipeTasksRetrieval {
 		[Export ("deleteAllRecords:")]
 		bool DeleteAllRecords ([NullAllowed] out NSError error);
 
-		// @required -(NSArray<MPPRetrievalRecord *> * _Nullable)searchWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding topK:(NSInteger)topK error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("search(withEmbedding:topK:)")));
-		[Abstract]
+		// @optional -(NSArray<MPPRetrievalRecord *> * _Nullable)searchWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding limit:(NSInteger)limit error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("search(withEmbedding:limit:)")));
+		[Export ("searchWithEmbedding:limit:error:")]
+		[return: NullAllowed]
+		MPPRetrievalRecord [] SearchWithEmbedding (NSNumber [] queryEmbedding, nint limit, [NullAllowed] out NSError error);
+
+		// @optional -(NSArray<MPPRetrievalRecord *> * _Nullable)searchWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding limit:(NSInteger)limit metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("search(withEmbedding:limit:metadataFilter:)")));
+		[Export ("searchWithEmbedding:limit:metadataFilter:error:")]
+		[return: NullAllowed]
+		MPPRetrievalRecord [] SearchWithEmbedding (NSNumber [] queryEmbedding, nint limit, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
+
+		// @optional -(NSArray<MPPRetrievalRecord *> * _Nullable)searchWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding topK:(NSInteger)topK error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("search(withEmbedding:topK:)"))) __attribute__((deprecated("Use searchWithEmbedding:limit:error: instead.")));
 		[Export ("searchWithEmbedding:topK:error:")]
 		[return: NullAllowed]
-		MPPRetrievalRecord [] SearchWithEmbedding (NSNumber [] queryEmbedding, nint topK, [NullAllowed] out NSError error);
+		MPPRetrievalRecord [] SearchWithEmbedding (NSNumber [] queryEmbedding, uint topK, [NullAllowed] out NSError error);
 
-		// @required -(NSArray<MPPRetrievalRecord *> * _Nullable)searchWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding topK:(NSInteger)topK metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("search(withEmbedding:topK:metadataFilter:)")));
-		[Abstract]
+		// @optional -(NSArray<MPPRetrievalRecord *> * _Nullable)searchWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding topK:(NSInteger)topK metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("search(withEmbedding:topK:metadataFilter:)"))) __attribute__((deprecated("Use searchWithEmbedding:limit:metadataFilter:error: instead.")));
 		[Export ("searchWithEmbedding:topK:metadataFilter:error:")]
 		[return: NullAllowed]
-		MPPRetrievalRecord [] SearchWithEmbedding (NSNumber [] queryEmbedding, nint topK, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
+		MPPRetrievalRecord [] SearchWithEmbedding (NSNumber [] queryEmbedding, uint topK, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
 
 		// @required -(BOOL)deleteWithMetadataFilter:(NSDictionary<NSString *,NSString *> * _Nonnull)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("delete(withMetadataFilter:)")));
 		[Abstract]
@@ -578,35 +586,65 @@ namespace MediaPipeTasksRetrieval {
 		[Export ("insertContentWithId:parts:metadata:error:")]
 		bool InsertContentWithId (string recordId, MPPTaskPart [] parts, NSDictionary<NSString, NSString> metadata, [NullAllowed] out NSError error);
 
-		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithText:(NSString * _Nonnull)queryText topK:(NSInteger)topK error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withText:topK:)")));
+		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithText:(NSString * _Nonnull)queryText limit:(NSInteger)limit error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withText:limit:)")));
+		[Export ("retrieveWithText:limit:error:")]
+		[return: NullAllowed]
+		MPPRetrievalResult [] RetrieveWithText (string queryText, nint limit, [NullAllowed] out NSError error);
+
+		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithText:(NSString * _Nonnull)queryText limit:(NSInteger)limit metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withText:limit:metadataFilter:)")));
+		[Export ("retrieveWithText:limit:metadataFilter:error:")]
+		[return: NullAllowed]
+		MPPRetrievalResult [] RetrieveWithText (string queryText, nint limit, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
+
+		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithParts:(NSArray<MPPTaskPart *> * _Nonnull)queryParts limit:(NSInteger)limit error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withParts:limit:)")));
+		[Export ("retrieveWithParts:limit:error:")]
+		[return: NullAllowed]
+		MPPRetrievalResult [] RetrieveWithParts (MPPTaskPart [] queryParts, nint limit, [NullAllowed] out NSError error);
+
+		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithParts:(NSArray<MPPTaskPart *> * _Nonnull)queryParts limit:(NSInteger)limit metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withParts:limit:metadataFilter:)")));
+		[Export ("retrieveWithParts:limit:metadataFilter:error:")]
+		[return: NullAllowed]
+		MPPRetrievalResult [] RetrieveWithParts (MPPTaskPart [] queryParts, nint limit, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
+
+		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding limit:(NSInteger)limit error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withEmbedding:limit:)")));
+		[Export ("retrieveWithEmbedding:limit:error:")]
+		[return: NullAllowed]
+		MPPRetrievalResult [] RetrieveWithEmbedding (NSNumber [] queryEmbedding, nint limit, [NullAllowed] out NSError error);
+
+		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding limit:(NSInteger)limit metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withEmbedding:limit:metadataFilter:)")));
+		[Export ("retrieveWithEmbedding:limit:metadataFilter:error:")]
+		[return: NullAllowed]
+		MPPRetrievalResult [] RetrieveWithEmbedding (NSNumber [] queryEmbedding, nint limit, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
+
+		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithText:(NSString * _Nonnull)queryText topK:(NSInteger)topK error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withText:topK:)"))) __attribute__((deprecated("Use retrieveWithText:limit:error: instead.")));
 		[Export ("retrieveWithText:topK:error:")]
 		[return: NullAllowed]
-		MPPRetrievalResult [] RetrieveWithText (string queryText, nint topK, [NullAllowed] out NSError error);
+		MPPRetrievalResult [] RetrieveWithText (string queryText, uint topK, [NullAllowed] out NSError error);
 
-		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithText:(NSString * _Nonnull)queryText topK:(NSInteger)topK metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withText:topK:metadataFilter:)")));
+		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithText:(NSString * _Nonnull)queryText topK:(NSInteger)topK metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withText:topK:metadataFilter:)"))) __attribute__((deprecated("Use retrieveWithText:limit:metadataFilter:error: instead.")));
 		[Export ("retrieveWithText:topK:metadataFilter:error:")]
 		[return: NullAllowed]
-		MPPRetrievalResult [] RetrieveWithText (string queryText, nint topK, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
+		MPPRetrievalResult [] RetrieveWithText (string queryText, uint topK, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
 
-		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithParts:(NSArray<MPPTaskPart *> * _Nonnull)queryParts topK:(NSInteger)topK error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withParts:topK:)")));
+		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithParts:(NSArray<MPPTaskPart *> * _Nonnull)queryParts topK:(NSInteger)topK error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withParts:topK:)"))) __attribute__((deprecated("Use retrieveWithParts:limit:error: instead.")));
 		[Export ("retrieveWithParts:topK:error:")]
 		[return: NullAllowed]
-		MPPRetrievalResult [] RetrieveWithParts (MPPTaskPart [] queryParts, nint topK, [NullAllowed] out NSError error);
+		MPPRetrievalResult [] RetrieveWithParts (MPPTaskPart [] queryParts, uint topK, [NullAllowed] out NSError error);
 
-		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithParts:(NSArray<MPPTaskPart *> * _Nonnull)queryParts topK:(NSInteger)topK metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withParts:topK:metadataFilter:)")));
+		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithParts:(NSArray<MPPTaskPart *> * _Nonnull)queryParts topK:(NSInteger)topK metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withParts:topK:metadataFilter:)"))) __attribute__((deprecated("Use retrieveWithParts:limit:metadataFilter:error: instead.")));
 		[Export ("retrieveWithParts:topK:metadataFilter:error:")]
 		[return: NullAllowed]
-		MPPRetrievalResult [] RetrieveWithParts (MPPTaskPart [] queryParts, nint topK, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
+		MPPRetrievalResult [] RetrieveWithParts (MPPTaskPart [] queryParts, uint topK, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
 
-		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding topK:(NSInteger)topK error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withEmbedding:topK:)")));
+		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding topK:(NSInteger)topK error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withEmbedding:topK:)"))) __attribute__((deprecated("Use retrieveWithEmbedding:limit:error: instead.")));
 		[Export ("retrieveWithEmbedding:topK:error:")]
 		[return: NullAllowed]
-		MPPRetrievalResult [] RetrieveWithEmbedding (NSNumber [] queryEmbedding, nint topK, [NullAllowed] out NSError error);
+		MPPRetrievalResult [] RetrieveWithEmbedding (NSNumber [] queryEmbedding, uint topK, [NullAllowed] out NSError error);
 
-		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding topK:(NSInteger)topK metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withEmbedding:topK:metadataFilter:)")));
+		// -(NSArray<MPPRetrievalResult *> * _Nullable)retrieveWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding topK:(NSInteger)topK metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("retrieve(withEmbedding:topK:metadataFilter:)"))) __attribute__((deprecated("Use retrieveWithEmbedding:limit:metadataFilter:error: instead.")));
 		[Export ("retrieveWithEmbedding:topK:metadataFilter:error:")]
 		[return: NullAllowed]
-		MPPRetrievalResult [] RetrieveWithEmbedding (NSNumber [] queryEmbedding, nint topK, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
+		MPPRetrievalResult [] RetrieveWithEmbedding (NSNumber [] queryEmbedding, uint topK, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
 
 		// -(BOOL)deleteWithIds:(NSArray<NSString *> * _Nonnull)ids error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("delete(withIds:)")));
 		[Export ("deleteWithIds:error:")]
@@ -644,17 +682,29 @@ namespace MediaPipeTasksRetrieval {
 		[Override]
 		new bool UpsertRecords (MPPRetrievalRecord [] records, [NullAllowed] out NSError error);
 
-		// -(NSArray<MPPRetrievalRecord *> * _Nullable)searchWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding topK:(NSInteger)topK error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("search(withEmbedding:topK:)")));
+		// -(NSArray<MPPRetrievalRecord *> * _Nullable)searchWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding limit:(NSInteger)limit error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("search(withEmbedding:limit:)")));
+		[Export ("searchWithEmbedding:limit:error:")]
+		[return: NullAllowed]
+		[Override]
+		new MPPRetrievalRecord [] SearchWithEmbedding (NSNumber [] queryEmbedding, nint limit, [NullAllowed] out NSError error);
+
+		// -(NSArray<MPPRetrievalRecord *> * _Nullable)searchWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding limit:(NSInteger)limit metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("search(withEmbedding:limit:metadataFilter:)")));
+		[Export ("searchWithEmbedding:limit:metadataFilter:error:")]
+		[return: NullAllowed]
+		[Override]
+		new MPPRetrievalRecord [] SearchWithEmbedding (NSNumber [] queryEmbedding, nint limit, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
+
+		// -(NSArray<MPPRetrievalRecord *> * _Nullable)searchWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding topK:(NSInteger)topK error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("search(withEmbedding:topK:)"))) __attribute__((deprecated("Use searchWithEmbedding:limit:error: instead.")));
 		[Export ("searchWithEmbedding:topK:error:")]
 		[return: NullAllowed]
 		[Override]
-		new MPPRetrievalRecord [] SearchWithEmbedding (NSNumber [] queryEmbedding, nint topK, [NullAllowed] out NSError error);
+		new MPPRetrievalRecord [] SearchWithEmbedding (NSNumber [] queryEmbedding, uint topK, [NullAllowed] out NSError error);
 
-		// -(NSArray<MPPRetrievalRecord *> * _Nullable)searchWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding topK:(NSInteger)topK metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("search(withEmbedding:topK:metadataFilter:)")));
+		// -(NSArray<MPPRetrievalRecord *> * _Nullable)searchWithEmbedding:(NSArray<NSNumber *> * _Nonnull)queryEmbedding topK:(NSInteger)topK metadataFilter:(NSDictionary<NSString *,NSString *> * _Nullable)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("search(withEmbedding:topK:metadataFilter:)"))) __attribute__((deprecated("Use searchWithEmbedding:limit:metadataFilter:error: instead.")));
 		[Export ("searchWithEmbedding:topK:metadataFilter:error:")]
 		[return: NullAllowed]
 		[Override]
-		new MPPRetrievalRecord [] SearchWithEmbedding (NSNumber [] queryEmbedding, nint topK, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
+		new MPPRetrievalRecord [] SearchWithEmbedding (NSNumber [] queryEmbedding, uint topK, [NullAllowed] NSDictionary<NSString, NSString> metadataFilter, [NullAllowed] out NSError error);
 
 		// -(BOOL)deleteWithMetadataFilter:(NSDictionary<NSString *,NSString *> * _Nonnull)metadataFilter error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("delete(withMetadataFilter:)")));
 		[Export ("deleteWithMetadataFilter:error:")]

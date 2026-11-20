@@ -8,6 +8,7 @@
   -->
 
   <attr path="/api/package[@name='com.google.mediapipe.tasks.decision']/class[@name='ChoiceQuestion.Companion']" name="managedName">ChoiceQuestion.Companions</attr>
+  <attr path="/api/package[@name='com.google.mediapipe.tasks.decision']/class[@name='ChoiceResult.Companion']" name="managedName">ChoiceResult.Companions</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.decision']/class[@name='DecisionMaker.Companion']" name="managedName">DecisionMaker.Companions</attr>
   <attr path="/api/package[@name='com.google.mediapipe.tasks.decision']/class[@name='DecisionMakerOptions.Companion']" name="managedName">DecisionMakerOptions.Companions</attr>
 

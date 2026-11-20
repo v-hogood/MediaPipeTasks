@@ -7,7 +7,7 @@
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
     <PackageId>MediaPipeTasksAudio.iOS</PackageId>
-    <PackageVersion>1.2.0</PackageVersion>
+    <PackageVersion>1.2.3</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
@@ -38,7 +38,7 @@
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="BeforeBuild">
     <DownloadFile SourceUrl="https://raw.githubusercontent.com/google-ai-edge/mediapipe/refs/heads/master/LICENSE" DestinationFolder="." />
-    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20261026-192222/MediaPipeTasksAudio-1.2.0.xcframework.zip" DestinationFolder="." />
-    <Exec Command="unzip -o MediaPipeTasksAudio-1.2.0.xcframework.zip" />
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20261111-125016/MediaPipeTasksAudio-1.2.3.xcframework.zip" DestinationFolder="." />
+    <Microsoft.Build.Tasks.Unzip SourceFiles="MediaPipeTasksAudio-1.2.3.xcframework.zip" DestinationFolder="." />
   </Target>
 </Project>

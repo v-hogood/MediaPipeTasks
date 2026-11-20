@@ -7,7 +7,7 @@
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>$(PackOnBuild)</GeneratePackageOnBuild>
     <PackageId>MediaPipeTasksCommon.iOS</PackageId>
-    <PackageVersion>1.2.0</PackageVersion>
+    <PackageVersion>1.2.3</PackageVersion>
     <Authors>Howard Good</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Owners>https://www.nuget.org/profiles/v-hogood</Owners>
@@ -42,9 +42,9 @@
   </ItemGroup>
   <Target Name="DownloadFile" BeforeTargets="BeforeBuild">
     <DownloadFile SourceUrl="https://raw.githubusercontent.com/google-ai-edge/mediapipe/refs/heads/master/LICENSE" DestinationFolder="." />
-    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20261026-192222/MediaPipeTasksCommon-1.2.0.xcframework.zip" DestinationFolder="." />
-    <Exec Command="unzip -o MediaPipeTasksCommon-1.2.0.xcframework.zip" />
-    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20261026-192222/MediaPipeTaskGraphs-1.2.0.xcframework.zip" DestinationFolder="." />
-    <Exec Command="unzip -o MediaPipeTaskGraphs-1.2.0.xcframework.zip" />
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20261111-125016/MediaPipeTasksCommon-1.2.3.xcframework.zip" DestinationFolder="." />
+    <Microsoft.Build.Tasks.Unzip SourceFiles="MediaPipeTasksCommon-1.2.3.xcframework.zip" DestinationFolder="." />
+    <DownloadFile SourceUrl="https://dl.google.com/cpdc/20261111-125016/MediaPipeTaskGraphs-1.2.3.xcframework.zip" DestinationFolder="." />
+    <Microsoft.Build.Tasks.Unzip SourceFiles="MediaPipeTaskGraphs-1.2.3.xcframework.zip" DestinationFolder="." />
   </Target>
 </Project>

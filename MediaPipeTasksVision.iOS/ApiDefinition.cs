@@ -240,15 +240,15 @@ namespace MediaPipeTasksVision {
 	[Static]
 	partial interface Constants {
 		// const MPPImageSourceType MPPImageSourceTypeImage;
-		[Field ("MPPImageSourceTypeImage", "MediaPipeTasksVision")]
+		[Field ("MPPImageSourceTypeImage", "__Internal")]
 		nint MPPImageSourceTypeImage { get; }
 
 		// const MPPImageSourceType MPPImageSourceTypePixelBuffer;
-		[Field ("MPPImageSourceTypePixelBuffer", "MediaPipeTasksVision")]
+		[Field ("MPPImageSourceTypePixelBuffer", "__Internal")]
 		nint MPPImageSourceTypePixelBuffer { get; }
 
 		// const MPPImageSourceType MPPImageSourceTypeSampleBuffer;
-		[Field ("MPPImageSourceTypeSampleBuffer", "MediaPipeTasksVision")]
+		[Field ("MPPImageSourceTypeSampleBuffer", "__Internal")]
 		nint MPPImageSourceTypeSampleBuffer { get; }
 	}
 
@@ -1154,6 +1154,76 @@ namespace MediaPipeTasksVision {
 		MPPEmbeddingResult Error (NSObject [] content, [NullAllowed] out NSError error);
 	}
 
+	// @interface MPPTaskPart : NSObject
+	[BaseType (typeof (NSObject))]
+	interface MPPTaskPart {
+	}
+
+	// @interface MPPTextPart : MPPTaskPart
+	[BaseType (typeof (MPPTaskPart))]
+	[DisableDefaultCtor]
+	interface MPPTextPart {
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull text;
+		[Export ("text")]
+		string Text { get; }
+
+		// -(instancetype _Nonnull)initWithText:(NSString * _Nonnull)text;
+		[Export ("initWithText:")]
+		NativeHandle Constructor (string text);
+	}
+
+	// @interface MPPImagePart : MPPTaskPart
+	[BaseType (typeof (MPPTaskPart))]
+	[DisableDefaultCtor]
+	interface MPPImagePart {
+		// @property (readonly, copy, nonatomic) NSString * _Nullable filePath;
+		[NullAllowed, Export ("filePath")]
+		string FilePath { get; }
+
+		// @property (readonly, copy, nonatomic) NSData * _Nullable data;
+		[NullAllowed, Export ("data", ArgumentSemantic.Copy)]
+		NSData Data { get; }
+
+		// -(instancetype _Nonnull)initWithFilePath:(NSString * _Nonnull)filePath;
+		[Export ("initWithFilePath:")]
+		NativeHandle Constructor (string filePath);
+
+		// -(instancetype _Nonnull)initWithData:(NSData * _Nonnull)data;
+		[Export ("initWithData:")]
+		NativeHandle Constructor (NSData data);
+
+		// -(instancetype _Nonnull)initWithFilePath:(NSString * _Nullable)filePath data:(NSData * _Nullable)data __attribute__((objc_designated_initializer));
+		[Export ("initWithFilePath:data:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor ([NullAllowed] string filePath, [NullAllowed] NSData data);
+	}
+
+	// @interface MPPAudioPart : MPPTaskPart
+	[BaseType (typeof (MPPTaskPart))]
+	[DisableDefaultCtor]
+	interface MPPAudioPart {
+		// @property (readonly, copy, nonatomic) NSString * _Nullable filePath;
+		[NullAllowed, Export ("filePath")]
+		string FilePath { get; }
+
+		// @property (readonly, copy, nonatomic) NSData * _Nullable data;
+		[NullAllowed, Export ("data", ArgumentSemantic.Copy)]
+		NSData Data { get; }
+
+		// -(instancetype _Nonnull)initWithFilePath:(NSString * _Nonnull)filePath;
+		[Export ("initWithFilePath:")]
+		NativeHandle Constructor (string filePath);
+
+		// -(instancetype _Nonnull)initWithData:(NSData * _Nonnull)data;
+		[Export ("initWithData:")]
+		NativeHandle Constructor (NSData data);
+
+		// -(instancetype _Nonnull)initWithFilePath:(NSString * _Nullable)filePath data:(NSData * _Nullable)data __attribute__((objc_designated_initializer));
+		[Export ("initWithFilePath:data:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor ([NullAllowed] string filePath, [NullAllowed] NSData data);
+	}
+
 	// @interface MPPImageEmbedderResult : MPPTaskResult
 	[BaseType (typeof (MPPTaskResult))]
 	[DisableDefaultCtor]
@@ -1296,11 +1366,19 @@ namespace MediaPipeTasksVision {
 		[Export ("displayNamesLocale")]
 		string DisplayNamesLocale { get; set; }
 
-		// @property (nonatomic) BOOL shouldOutputConfidenceMasks;
+		// @property (nonatomic) BOOL outputConfidenceMasks;
+		[Export ("outputConfidenceMasks")]
+		bool OutputConfidenceMasks { get; set; }
+
+		// @property (nonatomic) BOOL outputCategoryMask;
+		[Export ("outputCategoryMask")]
+		bool OutputCategoryMask { get; set; }
+
+		// @property (nonatomic) BOOL shouldOutputConfidenceMasks __attribute__((deprecated("Use outputConfidenceMasks instead.")));
 		[Export ("shouldOutputConfidenceMasks")]
 		bool ShouldOutputConfidenceMasks { get; set; }
 
-		// @property (nonatomic) BOOL shouldOutputCategoryMask;
+		// @property (nonatomic) BOOL shouldOutputCategoryMask __attribute__((deprecated("Use outputCategoryMask instead.")));
 		[Export ("shouldOutputCategoryMask")]
 		bool ShouldOutputCategoryMask { get; set; }
 	}
@@ -1421,11 +1499,19 @@ namespace MediaPipeTasksVision {
 		[Export ("displayNamesLocale")]
 		string DisplayNamesLocale { get; set; }
 
-		// @property (nonatomic) BOOL shouldOutputConfidenceMasks;
+		// @property (nonatomic) BOOL outputConfidenceMasks;
+		[Export ("outputConfidenceMasks")]
+		bool OutputConfidenceMasks { get; set; }
+
+		// @property (nonatomic) BOOL outputCategoryMask;
+		[Export ("outputCategoryMask")]
+		bool OutputCategoryMask { get; set; }
+
+		// @property (nonatomic) BOOL shouldOutputConfidenceMasks __attribute__((deprecated("Use outputConfidenceMasks instead.")));
 		[Export ("shouldOutputConfidenceMasks")]
 		bool ShouldOutputConfidenceMasks { get; set; }
 
-		// @property (nonatomic) BOOL shouldOutputCategoryMask;
+		// @property (nonatomic) BOOL shouldOutputCategoryMask __attribute__((deprecated("Use outputCategoryMask instead.")));
 		[Export ("shouldOutputCategoryMask")]
 		bool ShouldOutputCategoryMask { get; set; }
 	}
@@ -1625,7 +1711,11 @@ namespace MediaPipeTasksVision {
 		[Export ("minTrackingConfidence")]
 		float MinTrackingConfidence { get; set; }
 
-		// @property (nonatomic) BOOL shouldOutputSegmentationMasks;
+		// @property (nonatomic) BOOL outputSegmentationMasks;
+		[Export ("outputSegmentationMasks")]
+		bool OutputSegmentationMasks { get; set; }
+
+		// @property (nonatomic) BOOL shouldOutputSegmentationMasks __attribute__((deprecated("Use outputSegmentationMasks instead.")));
 		[Export ("shouldOutputSegmentationMasks")]
 		bool ShouldOutputSegmentationMasks { get; set; }
 	}

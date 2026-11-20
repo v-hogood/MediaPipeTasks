@@ -199,13 +199,22 @@ namespace MediaPipeTasksText {
 	[BaseType (typeof (MPPTaskResult))]
 	[DisableDefaultCtor]
 	interface MPPLanguageDetectorResult {
-		// @property (readonly, nonatomic) NSArray<MPPLanguagePrediction *> * _Nonnull languagePredictions;
-		[Export ("languagePredictions")]
+		// @property (readonly, copy, nonatomic) NSArray<MPPLanguagePrediction *> * _Nonnull languages;
+		[Export ("languages", ArgumentSemantic.Copy)]
+		MPPLanguagePrediction [] Languages { get; }
+
+		// @property (readonly, copy, nonatomic) NSArray<MPPLanguagePrediction *> * _Nonnull languagePredictions __attribute__((deprecated("Use languages instead.")));
+		[Export ("languagePredictions", ArgumentSemantic.Copy)]
 		MPPLanguagePrediction [] LanguagePredictions { get; }
 
-		// -(instancetype _Nonnull)initWithLanguagePredictions:(NSArray<MPPLanguagePrediction *> * _Nonnull)languagePredictions timestampInMilliseconds:(NSInteger)timestampInMilliseconds;
+		// -(instancetype _Nonnull)initWithLanguages:(NSArray<MPPLanguagePrediction *> * _Nonnull)languages timestampInMilliseconds:(NSInteger)timestampInMilliseconds __attribute__((objc_designated_initializer));
+		[Export ("initWithLanguages:timestampInMilliseconds:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (MPPLanguagePrediction [] languages, nint timestampInMilliseconds);
+
+		// -(instancetype _Nonnull)initWithLanguagePredictions:(NSArray<MPPLanguagePrediction *> * _Nonnull)languagePredictions timestampInMilliseconds:(NSInteger)timestampInMilliseconds __attribute__((deprecated("Use initWithLanguages:timestampInMilliseconds: instead.")));
 		[Export ("initWithLanguagePredictions:timestampInMilliseconds:")]
-		NativeHandle Constructor (MPPLanguagePrediction [] languagePredictions, nint timestampInMilliseconds);
+		NativeHandle Constructor (MPPLanguagePrediction [] languagePredictions, uint timestampInMilliseconds);
 	}
 
 	// @interface MPPLanguageDetector : NSObject
@@ -236,6 +245,76 @@ namespace MediaPipeTasksText {
 		[Export ("embedContent:error:")]
 		[return: NullAllowed]
 		MPPEmbeddingResult Error (NSObject [] content, [NullAllowed] out NSError error);
+	}
+
+	// @interface MPPTaskPart : NSObject
+	[BaseType (typeof (NSObject))]
+	interface MPPTaskPart {
+	}
+
+	// @interface MPPTextPart : MPPTaskPart
+	[BaseType (typeof (MPPTaskPart))]
+	[DisableDefaultCtor]
+	interface MPPTextPart {
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull text;
+		[Export ("text")]
+		string Text { get; }
+
+		// -(instancetype _Nonnull)initWithText:(NSString * _Nonnull)text;
+		[Export ("initWithText:")]
+		NativeHandle Constructor (string text);
+	}
+
+	// @interface MPPImagePart : MPPTaskPart
+	[BaseType (typeof (MPPTaskPart))]
+	[DisableDefaultCtor]
+	interface MPPImagePart {
+		// @property (readonly, copy, nonatomic) NSString * _Nullable filePath;
+		[NullAllowed, Export ("filePath")]
+		string FilePath { get; }
+
+		// @property (readonly, copy, nonatomic) NSData * _Nullable data;
+		[NullAllowed, Export ("data", ArgumentSemantic.Copy)]
+		NSData Data { get; }
+
+		// -(instancetype _Nonnull)initWithFilePath:(NSString * _Nonnull)filePath;
+		[Export ("initWithFilePath:")]
+		NativeHandle Constructor (string filePath);
+
+		// -(instancetype _Nonnull)initWithData:(NSData * _Nonnull)data;
+		[Export ("initWithData:")]
+		NativeHandle Constructor (NSData data);
+
+		// -(instancetype _Nonnull)initWithFilePath:(NSString * _Nullable)filePath data:(NSData * _Nullable)data __attribute__((objc_designated_initializer));
+		[Export ("initWithFilePath:data:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor ([NullAllowed] string filePath, [NullAllowed] NSData data);
+	}
+
+	// @interface MPPAudioPart : MPPTaskPart
+	[BaseType (typeof (MPPTaskPart))]
+	[DisableDefaultCtor]
+	interface MPPAudioPart {
+		// @property (readonly, copy, nonatomic) NSString * _Nullable filePath;
+		[NullAllowed, Export ("filePath")]
+		string FilePath { get; }
+
+		// @property (readonly, copy, nonatomic) NSData * _Nullable data;
+		[NullAllowed, Export ("data", ArgumentSemantic.Copy)]
+		NSData Data { get; }
+
+		// -(instancetype _Nonnull)initWithFilePath:(NSString * _Nonnull)filePath;
+		[Export ("initWithFilePath:")]
+		NativeHandle Constructor (string filePath);
+
+		// -(instancetype _Nonnull)initWithData:(NSData * _Nonnull)data;
+		[Export ("initWithData:")]
+		NativeHandle Constructor (NSData data);
+
+		// -(instancetype _Nonnull)initWithFilePath:(NSString * _Nullable)filePath data:(NSData * _Nullable)data __attribute__((objc_designated_initializer));
+		[Export ("initWithFilePath:data:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor ([NullAllowed] string filePath, [NullAllowed] NSData data);
 	}
 
 	// @interface MPPTextClassifierOptions : MPPTaskOptions <NSCopying>
@@ -367,9 +446,13 @@ namespace MediaPipeTasksText {
 	// @interface MPPTextProofreaderOptions : MPPTaskOptions <NSCopying>
 	[BaseType (typeof (MPPTaskOptions))]
 	interface MPPTextProofreaderOptions : INSCopying {
-		// @property (assign, nonatomic) NSInteger maxNumTokens __attribute__((swift_name("maxTokens")));
+		// @property (assign, nonatomic) NSInteger maxNumTokens;
 		[Export ("maxNumTokens")]
 		nint MaxNumTokens { get; set; }
+
+		// @property (assign, nonatomic) NSInteger maxTokens __attribute__((deprecated("Use maxNumTokens instead.")));
+		[Export ("maxTokens")]
+		nint MaxTokens { get; set; }
 
 		// @property (copy, nonatomic) NS_SWIFT_NAME(cacheDirectory) NSString * cacheDir __attribute__((swift_name("cacheDirectory")));
 		[Export ("cacheDir")]
@@ -465,9 +548,13 @@ namespace MediaPipeTasksText {
 		[Export ("mode", ArgumentSemantic.Assign)]
 		MPPTextSummarizerMode Mode { get; set; }
 
-		// @property (assign, nonatomic) NSInteger maxNumTokens __attribute__((swift_name("maxTokens")));
+		// @property (assign, nonatomic) NSInteger maxNumTokens;
 		[Export ("maxNumTokens")]
 		nint MaxNumTokens { get; set; }
+
+		// @property (assign, nonatomic) NSInteger maxTokens __attribute__((deprecated("Use maxNumTokens instead.")));
+		[Export ("maxTokens")]
+		nint MaxTokens { get; set; }
 
 		// @property (copy, nonatomic) NS_SWIFT_NAME(cacheDirectory) NSString * cacheDir __attribute__((swift_name("cacheDirectory")));
 		[Export ("cacheDir")]
